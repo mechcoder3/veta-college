@@ -5,6 +5,174 @@
 <% boolean sw = "sw".equals(session.getAttribute("lang")); %>
 <jsp:include page="header.jsp"/>
 
+<%-- GALLERY SLIDESHOW --%>
+<div class="gallery-slideshow">
+    <div class="slides">
+        <div class="slides">
+    <div class="slide active">
+        <img src="${pageContext.request.contextPath}/Images/best.jpeg" alt="Event 1">
+        <div class="slide-caption">Katika siku ya wafanyakazi duniani mfanyakazi bora akiwa anakabidhiwa cheti chake cha mfanyakazi bora wa mwaka 2025/2026</div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/best1.jpeg" alt="Event 2">
+        <div class="slide-caption">picha ya pamoja ya mfanyakazi hodari</div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/bestmoney.jpeg" alt="Event 3">
+        <div class="slide-caption">mfanyakazi bora akipatiwa kitita cha fedha kama zawadi ya ufanyakazi hodari</div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/bestworker.jpeg" alt="Event 4">
+        <div class="slide-caption">picha ya pamoja ya mfanyakazi hodari msajiri,katibu RAAWUU tawi na mwenyekiti wa kina mama raawuu tawi</div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/chakula.jpeg" alt="Event 5">
+        <div class="slide-caption">wafanyakazi wa VETA kigoma wakipata chakula cha pamoja</div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/dg.jpeg" alt="Event 6">
+        <div class="slide-caption">mkurugenzi mkuu akiongea na mwenyekiti dawati la jinsia veta KIGOMA </div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/mayday1.jpeg" alt="Event 7">
+        <div class="slide-caption">wafanyakazi wa veta kigoma katika sherehe ya pamoja sikukuu ya wafanyakazi duniani 2026</div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/sikukuu1.jpeg" alt="Event 8">
+        <div class="slide-caption">National Celebrations</div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/student1.jpeg" alt="Event 9">
+        <div class="slide-caption">Wanafunzi wa fani ya ufundi bomba wakiwa katika matembezi ya masomo</div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/studettour.jpeg" alt="Event 10">
+        <div class="slide-caption">Wanafunzi wa fani ya ufundi bomba wakiwa katika matembezi ya masomo</div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/tour.jpeg" alt="Event 11">
+        <div class="slide-caption">Wanafunzi wa fani ya ufundi bomba wakiwa katika matembezi ya masomo</div>
+    </div>
+    <div class="slide">
+        <img src="${pageContext.request.contextPath}/Images/uvinza.jpeg" alt="Event 12">
+        <div class="slide-caption">wafanyakazi wa veta kigoma wakiwa safarini kuelekea uvinza kwa ajiri ya sikukuu ya wafanyakizi </div>
+    </div>
+</div>
+    </div>
+    <button class="slide-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="slide-btn next" onclick="changeSlide(1)">&#10095;</button>
+   <div class="slide-dots">
+    <span class="dot active" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+    <span class="dot" onclick="goToSlide(2)"></span>
+    <span class="dot" onclick="goToSlide(3)"></span>
+    <span class="dot" onclick="goToSlide(4)"></span>
+    <span class="dot" onclick="goToSlide(5)"></span>
+    <span class="dot" onclick="goToSlide(6)"></span>
+    <span class="dot" onclick="goToSlide(7)"></span>
+    <span class="dot" onclick="goToSlide(8)"></span>
+    <span class="dot" onclick="goToSlide(9)"></span>
+    <span class="dot" onclick="goToSlide(10)"></span>
+    <span class="dot" onclick="goToSlide(11)"></span>
+</div>
+</div>
+
+<style>
+.gallery-slideshow {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    background: #000;
+}
+.slides { width: 100%; height: 100%; }
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.slide.active { display: block; }
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+}
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: #fff;
+    padding: 30px 20px 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.3);
+    color: white;
+    border: none;
+    padding: 14px 18px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+    z-index: 10;
+}
+.slide-btn:hover { background: rgba(255,255,255,0.6); }
+.slide-btn.prev { left: 15px; }
+.slide-btn.next { right: 15px; }
+.slide-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.dot.active { background: #fff; }
+</style>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
+
+function changeSlide(direction) {
+    showSlide(currentSlide + direction);
+}
+
+function goToSlide(n) {
+    showSlide(n);
+}
+
+// Automatic slideshow kila sekunde 4
+setInterval(() => changeSlide(1), 4000);
+</script>
+
 <div class="page-hero">
   <div class="wrap">
     <div class="breadcrumb"><a href="${pageContext.request.contextPath}/home"><% if(sw){ %>Nyumbani<% } else { %>Home<% } %></a><span class="bcs">›</span><span><% if(sw){ %>Kuhusu Sisi<% } else { %>About Us<% } %></span></div>
