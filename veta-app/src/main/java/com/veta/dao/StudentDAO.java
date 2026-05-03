@@ -1,9 +1,7 @@
 package com.veta.dao;
-
 import com.veta.models.*;
 import com.veta.utils.DBConnection;
 import com.veta.utils.RefGenerator;
-
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,6 +43,7 @@ public class StudentDAO {
             sql += "WHERE s.status = ? ";
         }
         sql += "ORDER BY s.student_number DESC LIMIT 200";
+
         List<Student> list = new ArrayList<>();
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -81,10 +80,19 @@ public class StudentDAO {
         s.setYearOfStudy(rs.getInt("year_of_study"));
         s.setSemester(rs.getInt("semester"));
         s.setIntakeYear(rs.getInt("intake_year"));
-        s.setEnrollmentDate(rs.getDate("enrollment_date"));
         s.setStatus(rs.getString("status"));
         s.setPhotoPath(rs.getString("photo_path"));
-        s.setCreatedAt(rs.getTimestamp("created_at"));
+
+        // ✅ Salama — haitaleta error kwa date mbaya
+        try { s.setEnrollmentDate(rs.getDate("enrollment_date")); } 
+        catch (Exception ignored) {}
+        
+        try { s.setDateOfBirth(rs.getDate("date_of_birth")); } 
+        catch (Exception ignored) {}
+
+        try { s.setCreatedAt(rs.getTimestamp("created_at")); } 
+        catch (Exception ignored) {}
+
         return s;
     }
 }
