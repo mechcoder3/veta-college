@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="activePage" value="portal"/>
 <c:set var="pageTitle" value="Student Dashboard"/>
 <% boolean sw = "sw".equals(session.getAttribute("lang")); %>
@@ -42,7 +41,7 @@
     <div class="pdsc"><div class="psi">📋</div><div class="psv" style="color:var(--green)">Active</div><div class="psl"><% if(sw){ %>Hali<% } else { %>Status<% } %></div></div>
     <div class="pdsc"><div class="psi">💳</div><div class="psv" style="color:var(--green)">Paid</div><div class="psl"><% if(sw){ %>Ada 2025/26<% } else { %>Fees 2025/26<% } %></div></div>
     <div class="pdsc"><div class="psi">📅</div><div class="psv">Y${student.yearOfStudy}/S${student.semester}</div><div class="psl"><% if(sw){ %>Mwaka/Muhula<% } else { %>Year/Sem<% } %></div></div>
-    <div class="pdsc"><div class="psi">🎓</div><div class="psv">${student.courseName.length() > 12 ? student.courseName.substring(0,12)+'...' : student.courseName}</div><div class="psl"><% if(sw){ %>Programu<% } else { %>Program<% } %></div></div>
+    <div class="pdsc"><div class="psi">🎓</div><div class="psv">${student.courseName.length() > 12 ? student.courseName.substring(0,12).concat('...') : student.courseName}</div><div class="psl"><% if(sw){ %>Programu<% } else { %>Program<% } %></div></div>
   </div>
   </c:if>
 
@@ -101,7 +100,14 @@
           <c:when test="${not empty payments}">
           <div style="overflow-x:auto">
           <table class="dt">
-            <thead><tr><th><% if(sw){ %>Nambari ya Udhibiti<% } else { %>Control No.<% } %></th><th><% if(sw){ %>Maelezo<% } else { %>Description<% } %></th><th><% if(sw){ %>Kiasi<% } else { %>Amount<% } %></th><th><% if(sw){ %>Tarehe<% } else { %>Date<% } %></th><th><% if(sw){ %>Hali<% } else { %>Status<% } %></th><th></th></tr></thead>
+            <thead><tr>
+              <th><% if(sw){ %>Nambari ya Udhibiti<% } else { %>Control No.<% } %></th>
+              <th><% if(sw){ %>Maelezo<% } else { %>Description<% } %></th>
+              <th><% if(sw){ %>Kiasi<% } else { %>Amount<% } %></th>
+              <th><% if(sw){ %>Tarehe<% } else { %>Date<% } %></th>
+              <th><% if(sw){ %>Hali<% } else { %>Status<% } %></th>
+              <th></th>
+            </tr></thead>
             <tbody>
               <c:forEach var="p" items="${payments}">
               <tr>
@@ -117,14 +123,26 @@
           </table>
           </div>
           </c:when>
-          <c:otherwise><p style="color:var(--g400);padding:20px;text-align:center"><% if(sw){ %>Hakuna rekodi za malipo.<% } else { %>No payment records found.<% } %></p></c:otherwise>
+          <c:otherwise>
+            <p style="color:var(--g400);padding:20px;text-align:center">
+              <% if(sw){ %>Hakuna rekodi za malipo.<% } else { %>No payment records found.<% } %>
+            </p>
+          </c:otherwise>
         </c:choose>
       </div>
 
       <%-- Results Tab --%>
       <div id="ptab-results" class="ptbc">
         <table class="dt">
-          <thead><tr><th><% if(sw){ %>Kanuni<% } else { %>Code<% } %></th><th><% if(sw){ %>Somo<% } else { %>Subject<% } %></th><th>CAT</th><th><% if(sw){ %>Mtihani<% } else { %>Exam<% } %></th><th><% if(sw){ %>Jumla<% } else { %>Total<% } %></th><th><% if(sw){ %>Daraja<% } else { %>Grade<% } %></th><th><% if(sw){ %>Mahudhurio<% } else { %>Attend.<% } %></th></tr></thead>
+          <thead><tr>
+            <th><% if(sw){ %>Kanuni<% } else { %>Code<% } %></th>
+            <th><% if(sw){ %>Somo<% } else { %>Subject<% } %></th>
+            <th>CAT</th>
+            <th><% if(sw){ %>Mtihani<% } else { %>Exam<% } %></th>
+            <th><% if(sw){ %>Jumla<% } else { %>Total<% } %></th>
+            <th><% if(sw){ %>Daraja<% } else { %>Grade<% } %></th>
+            <th><% if(sw){ %>Mahudhurio<% } else { %>Attend.<% } %></th>
+          </tr></thead>
           <tbody>
             <tr><td>ICT4101</td><td style="font-size:.82rem">Computer Hardware & Networks</td><td>78</td><td>74</td><td>76</td><td><span class="badge b-green">B+</span></td><td>92%</td></tr>
             <tr><td>ICT4102</td><td style="font-size:.82rem">Programming Fundamentals</td><td>82</td><td>80</td><td>81</td><td><span class="badge b-green">A-</span></td><td>88%</td></tr>
@@ -138,24 +156,36 @@
       <%-- Documents Tab --%>
       <div id="ptab-docs" class="ptbc">
         <div style="display:flex;flex-direction:column;gap:8px">
-          <a href="${pageContext.request.contextPath}/download?type=admission&ref=<c:out value='${student != null ? student.studentNumber : \"\"'}'/>" class="dltb">
-            <span>📄 <% if(sw){ %>Barua ya Udahili<% } else { %>Admission Letter<% } %></span><span style="font-size:.75rem;color:var(--g400)">PDF ↓</span>
+
+          <%-- ✅ Tumia c:set badala ya c:out ndani ya href --%>
+          <c:set var="stuNum" value="${student != null ? student.studentNumber : ''}"/>
+          <a href="${pageContext.request.contextPath}/download?type=admission&ref=${stuNum}" class="dltb">
+            <span>📄 <% if(sw){ %>Barua ya Udahili<% } else { %>Admission Letter<% } %></span>
+            <span style="font-size:.75rem;color:var(--g400)">PDF ↓</span>
           </a>
+
           <c:forEach var="p" items="${payments}">
           <c:if test="${p.status=='PAID'}">
           <a href="${pageContext.request.contextPath}/download?type=receipt&ref=${p.controlNumber}" class="dltb">
-            <span>🧾 <% if(sw){ %>Stakabadhi ya Ada<% } else { %>Fee Receipt<% } %> — ${p.controlNumber}</span><span style="font-size:.75rem;color:var(--g400)">PDF ↓</span>
+            <span>🧾 <% if(sw){ %>Stakabadhi ya Ada<% } else { %>Fee Receipt<% } %> — ${p.controlNumber}</span>
+            <span style="font-size:.75rem;color:var(--g400)">PDF ↓</span>
           </a>
           </c:if>
           </c:forEach>
+
           <button class="dltb" onclick="alert('<% if(sw){ %>Kadi itapatikana ofisini.<% } else { %>ID card available at college office.<% } %>')">
-            <span>🪪 <% if(sw){ %>Kadi ya Kitambulisho<% } else { %>Student ID Card<% } %></span><span style="font-size:.75rem;color:var(--g400)">PDF ↓</span>
+            <span>🪪 <% if(sw){ %>Kadi ya Kitambulisho<% } else { %>Student ID Card<% } %></span>
+            <span style="font-size:.75rem;color:var(--g400)">PDF ↓</span>
           </button>
+
           <button class="dltb" onclick="alert('<% if(sw){ %>Muhtasari unapatikana baada ya mtihani.<% } else { %>Transcript available after exams.<% } %>')">
-            <span>📊 <% if(sw){ %>Muhtasari wa Masomo<% } else { %>Academic Transcript<% } %></span><span style="font-size:.75rem;color:var(--g400)">PDF ↓</span>
+            <span>📊 <% if(sw){ %>Muhtasari wa Masomo<% } else { %>Academic Transcript<% } %></span>
+            <span style="font-size:.75rem;color:var(--g400)">PDF ↓</span>
           </button>
+
         </div>
       </div>
+
     </div>
   </div>
 </div></div>
