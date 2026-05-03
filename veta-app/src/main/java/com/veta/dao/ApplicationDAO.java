@@ -111,17 +111,34 @@ public class ApplicationDAO {
             ps.setString(4, refNumber);
             boolean updated = ps.executeUpdate() > 0;
 
-            // Kama imeidhinishwa - ongeza kwenye students table
+            // ✅ Kama imeidhinishwa - ongeza kwenye students table
             if (updated && "APPROVED".equalsIgnoreCase(newStatus)) {
+
+                // ✅ Pata sequence number
+                int sequence = 1;
+                String seqSql = "SELECT COUNT(*) + 1 FROM students";
+                try (PreparedStatement psSeq = conn.prepareStatement(seqSql);
+                     ResultSet rsSeq = psSeq.executeQuery()) {
+                    if (rsSeq.next()) sequence = rsSeq.getInt(1);
+                }
+
+                // ✅ Tengeneza student number
+                String stuNum = RefGenerator.studentNumber(sequence);
+
+                // ✅ Insert kwenye students - na student_number na enrollment_date
                 String insertStudent =
-                    "INSERT IGNORE INTO students (full_name, nida_number, phone, email, " +
+                    "INSERT IGNORE INTO students (student_number, full_name, nida_number, phone, email, " +
                     "gender, date_of_birth, region_of_origin, residential_address, " +
-                    "course_id, intake_period, status) " +
-                    "SELECT full_name, nida_number, phone, email, gender, date_of_birth, " +
-                    "region_of_origin, residential_address, course_id, intake_period, 'ACTIVE' " +
+                    "course_id, intake_period, enrollment_date, status) " +
+                    "SELECT ?, full_name, nida_number, phone, email, gender, " +
+                    "NULLIF(date_of_birth, '0000-00-00'), " +
+                    "region_of_origin, residential_address, course_id, intake_period, " +
+                    "CURDATE(), 'ACTIVE' " +
                     "FROM applications WHERE ref_number=?";
+
                 try (PreparedStatement ps2 = conn.prepareStatement(insertStudent)) {
-                    ps2.setString(1, refNumber);
+                    ps2.setString(1, stuNum);
+                    ps2.setString(2, refNumber);
                     ps2.executeUpdate();
                 }
             }
@@ -175,8 +192,8 @@ public class ApplicationDAO {
         a.setDocumentPath(rs.getString("document_path"));
         a.setStatus(rs.getString("status"));
         a.setReviewNotes(rs.getString("review_notes"));
-        a.setSubmittedAt(rs.getTimestamp("submitted_at"));
-        a.setUpdatedAt(rs.getTimestamp("updated_at"));
+        try { a.setSubmittedAt(rs.getTimestamp("submitted_at")); } catch (Exception ignored) {}
+        try { a.setUpdatedAt(rs.getTimestamp("updated_at")); } catch (Exception ignored) {}
         return a;
     }
 }
