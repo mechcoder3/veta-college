@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
 
-@WebServlet("/pdf")
+@WebServlet({"/pdf", "/download"})
 public class PdfServlet extends HttpServlet {
 
     private final PaymentDAO     payDAO = new PaymentDAO();
