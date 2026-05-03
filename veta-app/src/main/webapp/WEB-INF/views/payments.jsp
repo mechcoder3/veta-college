@@ -46,8 +46,8 @@
             <div class="fg"><label><% if(sw){ %>Nambari ya Simu<% } else { %>Phone Number<% } %> *</label><input class="fc" name="payerPhone" type="tel" required placeholder="+255 7XX XXX XXX"></div>
             <div class="fg"><label><% if(sw){ %>Aina ya Malipo<% } else { %>Payment Type<% } %></label>
               <select class="fc" name="description" onchange="this.form.amount.value=this.value.split('|')[1]">
-                <option value="Application Fee|20000"><% if(sw){ %>Ada ya Maombi — TZS 20,000<% } else { %>Application Fee — TZS 20,000<% } %></option>
-                <option value="Registration Fee|50000"><% if(sw){ %>Ada ya Usajili — TZS 50,000<% } else { %>Registration Fee — TZS 50,000<% } %></option>
+                <option value="Application Fee|5,000"><% if(sw){ %>Ada ya Maombi — TZS 5,000<% } else { %>Application Fee — TZS 5,000<% } %></option>
+                <option value="Registration Fee|5,000"><% if(sw){ %>Ada ya Usajili — TZS 5,000<% } else { %>Registration Fee — TZS 5,000<% } %></option>
               </select>
             </div>
             <button type="submit" class="btn btn-primary">🔢 <% if(sw){ %>Tengeneza Nambari ya Udhibiti<% } else { %>Generate Control Number<% } %></button>
@@ -68,11 +68,11 @@
             <div class="fg"><label><% if(sw){ %>Simu<% } else { %>Phone<% } %> *</label><input class="fc" name="payerPhone" type="tel" required placeholder="+255 7XX XXX XXX"></div>
             <div class="fg"><label><% if(sw){ %>Programu na Ada<% } else { %>Program & Fee<% } %></label>
               <select class="fc" name="amount">
-                <option value="850000">Electrical Installation — TZS 850,000</option>
-                <option value="780000">Welding & Fabrication — TZS 780,000</option>
-                <option value="920000">Automotive Engineering — TZS 920,000</option>
-                <option value="900000">ICT Studies — TZS 900,000</option>
-                <option value="700000">Tailoring & Garment — TZS 700,000</option>
+                <option value="TZS 60,000-120,000">Electrical Installation — TZS 60,000-120,000</option>
+                <option value="TZS 60,000-120,000">Welding & Fabrication — TZS 60,000-120,000</option>
+                <option value="TZS 60,000-120,000">Automotive courses— TZS 60,000-120,000</option>
+                <option value="TZS 60,000-120,000">ICT Studies — TZS 60,000-120,000</option>
+                <option value="TZS 60,000-120,000">Tailoring & Garment — TZS 60,000-120,000</option>
               </select>
             </div>
             <button type="submit" class="btn btn-primary">🔢 <% if(sw){ %>Tengeneza Nambari ya Udhibiti<% } else { %>Generate Control Number<% } %></button>
@@ -92,12 +92,12 @@
             <div class="fg"><label><% if(sw){ %>Simu<% } else { %>Phone<% } %> *</label><input class="fc" name="payerPhone" type="tel" required placeholder="+255 7XX XXX XXX"></div>
             <div class="fg"><label><% if(sw){ %>Kozi na Ada<% } else { %>Course & Fee<% } %></label>
               <select class="fc" name="amount">
-                <option value="180000">Driving PSV — TZS 180,000</option>
-                <option value="80000">Motorcycle Riding — TZS 80,000</option>
-                <option value="150000">Computer Applications — TZS 150,000</option>
-                <option value="200000">Welding Short — TZS 200,000</option>
-                <option value="175000">Electrical Short — TZS 175,000</option>
-                <option value="160000">Tailoring Short — TZS 160,000</option>
+                <option value="280,000">Driving PSV — TZS 280,000</option>
+                <option value="30,000">Motorcycle Riding — TZS 30,000</option>
+                <option value="375,000">Computer Applications — TZS 375,000</option>
+                <option value="375,000">Welding Short — TZS 375,000</option>
+                <option value="375,000">Electrical Short — TZS 375,000</option>
+                <option value="375,000">Tailoring Short — TZS 375,000</option>
               </select>
             </div>
             <button type="submit" class="btn btn-primary">🔢 <% if(sw){ %>Tengeneza Nambari ya Udhibiti<% } else { %>Generate Control Number<% } %></button>

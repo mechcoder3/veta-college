@@ -29,7 +29,7 @@
         <h4><% if(sw){ %>Programu<% } else { %>Programs<% } %></h4>
         <a href="${pageContext.request.contextPath}/courses?type=long"><% if(sw){ %>Usakinishaji wa Umeme<% } else { %>Electrical Installation<% } %></a>
         <a href="${pageContext.request.contextPath}/courses?type=long"><% if(sw){ %>Uchemshaji na Uundaji<% } else { %>Welding & Fabrication<% } %></a>
-        <a href="${pageContext.request.contextPath}/courses?type=long"><% if(sw){ %>Uhandisi wa Magari<% } else { %>Automotive Engineering<% } %></a>
+        <a href="${pageContext.request.contextPath}/courses?type=long"><% if(sw){ %>Uhandisi wa Magari<% } else { %>Automotive Courses<% } %></a>
         <a href="${pageContext.request.contextPath}/courses?type=long">ICT Studies</a>
         <a href="${pageContext.request.contextPath}/courses?type=long"><% if(sw){ %>Ushonaji na Mavazi<% } else { %>Tailoring & Garment<% } %></a>
         <a href="${pageContext.request.contextPath}/courses?type=short"><% if(sw){ %>Kozi Fupi (20+)<% } else { %>Short Courses (20+)<% } %></a>

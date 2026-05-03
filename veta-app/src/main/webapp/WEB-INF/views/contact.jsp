@@ -21,7 +21,7 @@
       <h2 style="font-size:1.7rem;color:var(--navy);margin-bottom:20px"><% if(sw){ %>Mawasiliano<% } else { %>Get In Touch<% } %></h2>
       <div style="display:flex;gap:14px;margin-bottom:20px">
         <div style="width:50px;height:50px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;border:2px solid rgba(21,101,192,.15)">📍</div>
-        <div><h4 style="font-size:.85rem;font-weight:700;color:var(--g700);margin-bottom:3px"><% if(sw){ %>Anwani ya Mahali<% } else { %>Physical Address<% } %></h4><p style="font-size:.85rem;color:var(--g600)">Plot No. 12, Vocational Training Road<br>Kinondoni, Dar es Salaam, Tanzania</p></div>
+        <div><h4 style="font-size:.85rem;font-weight:700;color:var(--g700);margin-bottom:3px"><% if(sw){ %>Anwani ya Mahali<% } else { %>Physical Address<% } %></h4><p style="font-size:.85rem;color:var(--g600)">Plot No. 12, VETA Road<br>KIGOMA</p></div>
       </div>
       <div style="display:flex;gap:14px;margin-bottom:20px">
         <div style="width:50px;height:50px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;border:2px solid rgba(21,101,192,.15)">📞</div>
