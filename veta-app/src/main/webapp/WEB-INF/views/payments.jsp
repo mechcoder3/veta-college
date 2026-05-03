@@ -132,13 +132,13 @@
             <div class="fg"><label><% if(sw){ %>Simu<% } else { %>Phone<% } %> *</label><input class="fc" name="payerPhone" type="tel" required placeholder="+255 7XX XXX XXX"></div>
             <div class="fg"><label><% if(sw){ %>Aina ya Malipo<% } else { %>Payment Type<% } %></label>
               <select class="fc" name="paymentType" onchange="document.querySelector('[name=amount]').value=this.selectedOptions[0].dataset.amount||''">
-                <option value="EXAM_FEE" data-amount="80000"><% if(sw){ %>Ada ya Mtihani — TZS 80,000<% } else { %>Exam Fee — TZS 80,000<% } %></option>
+                <option value="EXAM_FEE" data-amount="30000"><% if(sw){ %>Ada ya Mtihani — TZS 30,000<% } else { %>Exam Fee — TZS 30,000<% } %></option>
                 <option value="OTHER" data-amount="10000"><% if(sw){ %>Ubadilishaji wa Kadi — TZS 10,000<% } else { %>ID Card Replacement — TZS 10,000<% } %></option>
                 <option value="OTHER" data-amount="30000"><% if(sw){ %>Ubadilishaji wa Cheti — TZS 30,000<% } else { %>Certificate Replacement — TZS 30,000<% } %></option>
                 <option value="OTHER" data-amount="20000"><% if(sw){ %>Muhtasari wa Alama — TZS 20,000<% } else { %>Transcript — TZS 20,000<% } %></option>
               </select>
             </div>
-            <input type="hidden" name="amount" value="80000">
+            <input type="hidden" name="amount" value="30000">
             <button type="submit" class="btn btn-primary">🔢 <% if(sw){ %>Tengeneza Nambari ya Udhibiti<% } else { %>Generate Control Number<% } %></button>
           </form>
         </div>
@@ -175,31 +175,31 @@
           <thead><tr><th colspan="2" style="background:var(--navy);color:#fff;padding:12px 14px;text-align:left"><% if(sw){ %>Ratiba Kamili ya Ada<% } else { %>Complete Fee Schedule<% } %></th></tr></thead>
           <tbody>
             <tr><td colspan="2" style="background:var(--off);font-weight:700;font-size:.73rem;text-transform:uppercase;padding:8px 14px;letter-spacing:.5px"><% if(sw){ %>Kozi Fupi<% } else { %>Short Courses<% } %></td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Driving (PSV/Light)</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 180,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Motorcycle Riding</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 80,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Computer Applications</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 150,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Welding Short</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 200,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Electrical Short</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 175,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Tailoring Short</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 160,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Driving (PSV/Light)</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 275000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Motorcycle Riding</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 30,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Computer Applications</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 35000-375000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Welding Short</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 375000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Electrical Short</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 375,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Tailoring Short</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 375000</td></tr>
             <tr><td colspan="2" style="background:var(--off);font-weight:700;font-size:.73rem;text-transform:uppercase;padding:8px 14px;letter-spacing:.5px"><% if(sw){ %>Kozi Ndefu (kwa mwaka)<% } else { %>Long Courses (per year)<% } %></td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Tailoring & Garment</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 700,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Welding & Fabrication</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 780,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Electrical Installation</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 850,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">ICT Studies</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 900,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Automotive Engineering</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 920,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Tailoring & Garment</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 60,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Welding & Fabrication</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 60,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Electrical Installation</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 60,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">ICT Studies</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 60,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)">Automotive Engineering</td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 60,000</td></tr>
             <tr><td colspan="2" style="background:var(--off);font-weight:700;font-size:.73rem;text-transform:uppercase;padding:8px 14px;letter-spacing:.5px"><% if(sw){ %>Malipo Mengine<% } else { %>Other Charges<% } %></td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)"><% if(sw){ %>Ada ya Maombi<% } else { %>Application Fee<% } %></td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 20,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)"><% if(sw){ %>Usajili (mara moja)<% } else { %>Registration (once)<% } %></td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 50,000</td></tr>
-            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)"><% if(sw){ %>Ada ya Mtihani/mwaka<% } else { %>Exam Fee/year<% } %></td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 80,000</td></tr>
-            <tr><td style="padding:9px 14px"><% if(sw){ %>Hosteli/muhula<% } else { %>Hostel/semester<% } %></td><td style="padding:9px 14px;font-weight:700">TZS 300,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)"><% if(sw){ %>Ada ya Maombi<% } else { %>Application Fee<% } %></td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 5,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)"><% if(sw){ %>Usajili (mara moja)<% } else { %>Registration (once)<% } %></td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 5,000</td></tr>
+            <tr><td style="padding:9px 14px;border-bottom:1px solid var(--g200)"><% if(sw){ %>Ada ya Mtihani/mwaka<% } else { %>Exam Fee/year<% } %></td><td style="padding:9px 14px;border-bottom:1px solid var(--g200);font-weight:700">TZS 30,000</td></tr>
+            <tr><td style="padding:9px 14px"><% if(sw){ %>Hosteli/muhula<% } else { %>Hostel/semester<% } %></td><td style="padding:9px 14px;font-weight:700">TZS 60,000</td></tr>
           </tbody>
         </table>
       </div>
       <div style="background:var(--navy);border-radius:var(--radius);padding:18px;margin-top:14px;color:rgba(255,255,255,.75);font-size:.82rem;line-height:1.7">
         <div style="font-weight:700;color:var(--gold);margin-bottom:7px">⚠️ <% if(sw){ %>Maelezo Muhimu<% } else { %>Important Notes<% } %></div>
         <%= sw ?
-            "Daima tengeneza Nambari ya Udhibiti kabla ya kulipa. Nambari zinaisha baada ya siku 7. Hifadhi stakabadhi yako. Msaada: +255 754 000 222." :
-            "Always generate a Control Number before paying. Numbers expire in 7 days. Keep your receipt. Help: +255 754 000 222." %>
+            "Daima tengeneza Nambari ya Udhibiti kabla ya kulipa. Nambari zinaisha baada ya siku 7. Hifadhi stakabadhi yako. Msaada: +255282804951." :
+            "Always generate a Control Number before paying. Numbers expire in 7 days. Keep your receipt. Help: +255282804951." %>
       </div>
     </div>
   </div>
