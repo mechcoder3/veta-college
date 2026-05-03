@@ -38,7 +38,7 @@
           <form method="post" action="${pageContext.request.contextPath}/payments">
             <input type="hidden" name="action" value="generate">
             <input type="hidden" name="paymentType" value="APPLICATION_FEE">
-            <input type="hidden" name="amount" value="5000">
+            <input type="hidden" name="amount" value="20000">
             <div class="form-row">
               <div class="fg"><label><% if(sw){ %>Nambari ya Kumbukumbu ya Maombi<% } else { %>Application Reference No.<% } %> *</label><input class="fc" name="referenceId" required placeholder="VETA-2025-XXXXX" value="${param.ref}"></div>
               <div class="fg"><label><% if(sw){ %>Jina Kamili la Mwombaji<% } else { %>Applicant Full Name<% } %> *</label><input class="fc" name="payerName" required placeholder="<% if(sw){ %>Jina kamili<% } else { %>Full name<% } %>"></div>
@@ -46,8 +46,8 @@
             <div class="fg"><label><% if(sw){ %>Nambari ya Simu<% } else { %>Phone Number<% } %> *</label><input class="fc" name="payerPhone" type="tel" required placeholder="+255 7XX XXX XXX"></div>
             <div class="fg"><label><% if(sw){ %>Aina ya Malipo<% } else { %>Payment Type<% } %></label>
               <select class="fc" name="description" onchange="this.form.amount.value=this.value.split('|')[1]">
-                <option value="Application Fee|5000"><% if(sw){ %>Ada ya Maombi — TZS 5,000<% } else { %>Application Fee — TZS 5,000<% } %></option>
-                <option value="Registration Fee|5000"><% if(sw){ %>Ada ya Usajili — TZS 5,000<% } else { %>Registration Fee — TZS 5,000<% } %></option>
+                <option value="Application Fee|5,000"><% if(sw){ %>Ada ya Maombi — TZS 5,000<% } else { %>Application Fee — TZS 5,000<% } %></option>
+                <option value="Registration Fee|5,000"><% if(sw){ %>Ada ya Usajili — TZS 5,000<% } else { %>Registration Fee — TZS 5,000<% } %></option>
               </select>
             </div>
             <button type="submit" class="btn btn-primary">🔢 <% if(sw){ %>Tengeneza Nambari ya Udhibiti<% } else { %>Generate Control Number<% } %></button>
@@ -68,13 +68,11 @@
             <div class="fg"><label><% if(sw){ %>Simu<% } else { %>Phone<% } %> *</label><input class="fc" name="payerPhone" type="tel" required placeholder="+255 7XX XXX XXX"></div>
             <div class="fg"><label><% if(sw){ %>Programu na Ada<% } else { %>Program & Fee<% } %></label>
               <select class="fc" name="amount">
-               <select class="fc" name="amount">
-    <option value="60000">Electrical Installation — TZS 60,000</option>
-    <option value="60000">Welding & Fabrication — TZS 60,000</option>
-    <option value="60000">Automotive courses — TZS 60,000</option>
-    <option value="60000">ICT Studies — TZS 60,000</option>
-    <option value="60000">Tailoring & Garment — TZS 60,000</option>
-</select>
+                <option value="60000">Electrical Installation — TZS 60,000-120,000</option>
+                <option value="60000">Welding & Fabrication — TZS 60,000-120,000</option>
+                <option value="60000">Automotive courses— TZS 60,000-120,000</option>
+                <option value="60000">ICT Studies — TZS 60,000-120,000</option>
+                <option value="60000">Tailoring & Garment — TZS 60,000-120,000</option>
               </select>
             </div>
             <button type="submit" class="btn btn-primary">🔢 <% if(sw){ %>Tengeneza Nambari ya Udhibiti<% } else { %>Generate Control Number<% } %></button>
