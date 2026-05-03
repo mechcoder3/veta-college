@@ -8,12 +8,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * ApplicationDAO — all database operations for the applications table.
- */
 public class ApplicationDAO {
 
-    /** Insert a new application. Returns the generated ref_number. */
     public String insertApplication(Application app) throws SQLException {
         String ref = RefGenerator.applicationRef();
         String sql = "INSERT INTO applications " +
@@ -42,7 +38,6 @@ public class ApplicationDAO {
         return ref;
     }
 
-    /** Find an application by its reference number. */
     public Application findByRef(String refNumber) throws SQLException {
         String sql = "SELECT a.*, c.name_en AS course_name " +
                      "FROM applications a " +
@@ -58,7 +53,6 @@ public class ApplicationDAO {
         return null;
     }
 
-    /** Find by NIDA number — for checking duplicate applications. */
     public Application findByNida(String nida) throws SQLException {
         String sql = "SELECT a.*, c.name_en AS course_name FROM applications a " +
                      "JOIN courses c ON a.course_id = c.id WHERE a.nida_number = ? " +
@@ -73,7 +67,6 @@ public class ApplicationDAO {
         return null;
     }
 
-    /** All applications with optional status filter. */
     public List<Application> findAll(String statusFilter) throws SQLException {
         String sql = "SELECT a.*, c.name_en AS course_name FROM applications a " +
                      "JOIN courses c ON a.course_id = c.id ";
@@ -95,7 +88,6 @@ public class ApplicationDAO {
         return list;
     }
 
-    /** Count by status — used for admin dashboard stats. */
     public int countByStatus(String status) throws SQLException {
         String sql = "SELECT COUNT(*) FROM applications WHERE status = ?";
         try (Connection conn = DBConnection.getConnection();
@@ -108,7 +100,6 @@ public class ApplicationDAO {
         return 0;
     }
 
-    /** Update application status (approve/reject). */
     public boolean updateStatus(String refNumber, String newStatus, String notes, int reviewedBy) throws SQLException {
         String sql = "UPDATE applications SET status=?, review_notes=?, reviewed_by=?, reviewed_at=NOW() " +
                      "WHERE ref_number=?";
@@ -118,11 +109,26 @@ public class ApplicationDAO {
             ps.setString(2, notes);
             ps.setInt(3, reviewedBy);
             ps.setString(4, refNumber);
-            return ps.executeUpdate() > 0;
+            boolean updated = ps.executeUpdate() > 0;
+
+            // Kama imeidhinishwa - ongeza kwenye students table
+            if (updated && "APPROVED".equalsIgnoreCase(newStatus)) {
+                String insertStudent =
+                    "INSERT IGNORE INTO students (full_name, nida_number, phone, email, " +
+                    "gender, date_of_birth, region_of_origin, residential_address, " +
+                    "course_id, intake_period, status) " +
+                    "SELECT full_name, nida_number, phone, email, gender, date_of_birth, " +
+                    "region_of_origin, residential_address, course_id, intake_period, 'ACTIVE' " +
+                    "FROM applications WHERE ref_number=?";
+                try (PreparedStatement ps2 = conn.prepareStatement(insertStudent)) {
+                    ps2.setString(1, refNumber);
+                    ps2.executeUpdate();
+                }
+            }
+            return updated;
         }
     }
 
-    /** Save uploaded document path. */
     public boolean updateDocumentPath(String refNumber, String path) throws SQLException {
         String sql = "UPDATE applications SET document_path=? WHERE ref_number=?";
         try (Connection conn = DBConnection.getConnection();
@@ -133,7 +139,6 @@ public class ApplicationDAO {
         }
     }
 
-    /** Search applications by name or ref. */
     public List<Application> search(String query) throws SQLException {
         String sql = "SELECT a.*, c.name_en AS course_name FROM applications a " +
                      "JOIN courses c ON a.course_id = c.id " +
