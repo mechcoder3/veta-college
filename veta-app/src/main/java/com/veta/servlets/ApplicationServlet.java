@@ -1,4 +1,3 @@
-// ── ApplicationServlet.java ───────────────────────────────────
 package com.veta.servlets;
 
 import com.veta.dao.ApplicationDAO;
@@ -27,7 +26,6 @@ public class ApplicationServlet extends HttpServlet {
 
         String action = req.getParameter("action");
         if ("status".equals(action)) {
-            // Track application status
             String ref = req.getParameter("ref");
             if (ref != null && !ref.trim().isEmpty()) {
                 try {
@@ -42,7 +40,6 @@ public class ApplicationServlet extends HttpServlet {
             return;
         }
 
-        // Load courses for the application form dropdown
         try {
             List<Course> courses = courseDAO.findAll(true);
             req.setAttribute("courses", courses);
@@ -70,7 +67,6 @@ public class ApplicationServlet extends HttpServlet {
         app.setEducationLevel(req.getParameter("educationLevel"));
         app.setIntakePeriod(req.getParameter("intakePeriod"));
 
-        // Validate
         if (app.getFullName() == null || app.getFullName().trim().isEmpty() ||
             app.getNidaNumber() == null || app.getNidaNumber().trim().isEmpty() ||
             app.getPhone() == null || app.getPhone().trim().isEmpty()) {
@@ -93,7 +89,7 @@ public class ApplicationServlet extends HttpServlet {
         // Handle file upload
         Part filePart = req.getPart("document");
         if (filePart != null && filePart.getSize() > 0) {
-            String uploadDir = getServletContext().getRealPath("") + File.separator + "uploads";
+            String uploadDir = System.getProperty("java.io.tmpdir") + File.separator + "veta_uploads";
             Files.createDirectories(Paths.get(uploadDir));
             String fileName = System.currentTimeMillis() + "_" + Paths.get(filePart.getSubmittedFileName()).getFileName();
             filePart.write(uploadDir + File.separator + fileName);
