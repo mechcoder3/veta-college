@@ -31,10 +31,14 @@
 </c:when>
             <c:otherwise><span class="photo-icon">👨‍💼</span></c:otherwise>
           </c:choose>
-          <div class="photo-ribbon">
-            <div class="ribbon-name">${principal.displayName}</div>
-            <div class="ribbon-role"><% if(sw){ %>Mkuu wa Chuo<% } else { %>College Principal<% } %></div>
-          </div>
+         <div class="photo-ribbon" style="background: rgba(6, 24, 64, 0.9); border-left: 4px solid var(--gold); padding: 10px 15px;">
+    <div class="ribbon-name" style="color: #ffffff; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+        ${principal.displayName}
+    </div>
+    <div class="ribbon-role" style="color: var(--gold); font-size: 0.8rem; font-weight: 800; letter-spacing: 1.5px;">
+        <% if(sw){ %>Mkuu wa Chuo<% } else { %>Center Principal<% } %>
+    </div>
+</div>
         </div>
       </div>
       <div class="principal-info">

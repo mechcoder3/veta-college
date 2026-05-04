@@ -599,19 +599,28 @@ button { cursor: pointer; font-family: var(--fb); transition: all var(--tr); }
     border-color: var(--gold);
 }
 
-/* TUMEONGEZA SIZE HAPA (Kutoka 80px hadi 140px) */
+/* Duara la picha - Tumeongeza size iwe kubwa zaidi (150px) */
 .staff-avatar {
-    width: 140px; 
-    height: 140px;
+    width: 150px; 
+    height: 150px;
     border-radius: 50%;
     margin: 0 auto 15px;
     background: rgba(255, 255, 255, .1);
-    border: 2.5px solid var(--gold); /* Tumeongeza unene kidogo */
-    overflow: hidden;
+    border: 3px solid var(--gold);
+    overflow: hidden; /* Hii ni muhimu ili picha isitoke nje ya duara */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.staff-avatar img { width: 100%; height: 100%; object-fit: cover; }
-
+/* Picha yenyewe - Hii ndiyo siri ya picha kukaa vizuri automatic */
+.staff-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Inafanya picha ijaze duara bila kuvutwa vibaya */
+    object-position: center; /* Inahakikisha katikati ya picha ndiyo inaonekana */
+    display: block;
+}
 /* SIZE NA MNG'AO HAPA */
 .staff-name { 
     font-family: var(--fh); 
