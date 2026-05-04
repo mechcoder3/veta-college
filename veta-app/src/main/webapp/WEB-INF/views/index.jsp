@@ -86,7 +86,7 @@
   <div class="hero-bg"><div class="hb hb1"></div><div class="hb hb2"></div></div>
   <div class="wrap">
     <div class="hero-content">
-      <div class="hero-badge">🇹🇿 <% if(sw){ %>Imethibitishwa na Serikali · Ngazi ya NTA 2–6 · Est. 1999<% } else { %>Government Accredited · NTA Level 2–6 · Est. 1999<% } %></div>
+      <div class="hero-badge">🇹🇿 <% if(sw){ %>Imethibitishwa na Serikali · Ngazi ya NVA 1–3 · Est. 2005<% } else { %>Government Accredited · NVA Level 1–3 · Est. 2005<% } %></div>
       <h1 class="hero-title"><% if(sw){ %>Kujenga Nguvu Kazi Yenye Ujuzi wa Tanzania<% } else { %>Building Tanzania's Skilled Workforce<% } %></h1>
       <p class="hero-desc"><%= sw?
           "Mafunzo ya ufundi ya kiwango cha dunia katika uhandisi, TEHAMA, magari, ujenzi na zaidi." :
