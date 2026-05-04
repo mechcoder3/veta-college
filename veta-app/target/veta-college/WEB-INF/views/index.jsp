@@ -31,10 +31,14 @@
 </c:when>
             <c:otherwise><span class="photo-icon">👨‍💼</span></c:otherwise>
           </c:choose>
-          <div class="photo-ribbon">
-            <div class="ribbon-name">${principal.displayName}</div>
-            <div class="ribbon-role"><% if(sw){ %>Mkuu wa Chuo<% } else { %>College Principal<% } %></div>
-          </div>
+         <div class="photo-ribbon">
+    <div class="ribbon-name" style="color: #ffffff; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+        ${principal.displayName}
+    </div>
+    <div class="ribbon-role" style="color: var(--gold); font-size: 0.8rem; font-weight: 800; letter-spacing: 1.5px;">
+        <% if(sw){ %>Mkuu wa Chuo<% } else { %>Center Principal<% } %>
+    </div>
+</div>
         </div>
       </div>
       <div class="principal-info">
@@ -65,14 +69,19 @@
       <%-- Marekebisho: Imeongezwa begin="0" na end="2" ili kudhibiti idadi ya viongozi iwe 3 pekee --%>
       <c:forEach var="s" items="${staffList}" begin="0" end="2">
       <div class="staff-card">
-        <div class="staff-avatar">
-          <c:choose>
-            <c:when test="${not empty s.photoPath}">
-              <img src="${pageContext.request.contextPath}/${s.photoPath}" alt="${s.fullName}">
-            </c:when>
-            <c:otherwise><span>👤</span></c:otherwise>
-          </c:choose>
-        </div>
+        <div class="staff-avatar" style="width: 140px !important; height: 140px !important; border-radius: 50%; border: 3px solid var(--gold); overflow: hidden; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+    <c:choose>
+        <c:when test="${not empty s.photoPath}">
+            <%-- JARIBU HII PATH: Hakikisha folda la Images linaanza na herufi kubwa kama kwenye Principal --%>
+            <img src="${pageContext.request.contextPath}/Images/${s.photoPath}" 
+                 style="width: 100%; height: 100%; object-fit: cover; display: block;" 
+                 alt="${s.fullName}">
+        </c:when>
+        <c:otherwise>
+            <span style="font-size: 60px;">👤</span>
+        </c:otherwise>
+    </c:choose>
+</div>
         <div class="staff-name">${s.displayName}</div>
         <div class="staff-role">${s.roleTitle}</div>
         <div class="staff-desc">${s.qualifications}</div>
@@ -86,7 +95,7 @@
   <div class="hero-bg"><div class="hb hb1"></div><div class="hb hb2"></div></div>
   <div class="wrap">
     <div class="hero-content">
-      <div class="hero-badge">🇹🇿 <% if(sw){ %>Imethibitishwa na Serikali · Ngazi ya NTA 2–6 · Est. 1999<% } else { %>Government Accredited · NTA Level 2–6 · Est. 1999<% } %></div>
+      <div class="hero-badge">🇹🇿 <% if(sw){ %>Imethibitishwa na Serikali · Ngazi ya NVA 1–3 · Est. 2005<% } else { %>Government Accredited · NVA Level 1–3 · Est. 2005<% } %></div>
       <h1 class="hero-title"><% if(sw){ %>Kujenga Nguvu Kazi Yenye Ujuzi wa Tanzania<% } else { %>Building Tanzania's Skilled Workforce<% } %></h1>
       <p class="hero-desc"><%= sw?
           "Mafunzo ya ufundi ya kiwango cha dunia katika uhandisi, TEHAMA, magari, ujenzi na zaidi." :
@@ -116,8 +125,8 @@
     <span class="a-label">📢 <% if(sw){ %>TANGAZO<% } else { %>NOTICE<% } %></span>
     <span class="a-text" id="announceTxt">
       <%= sw?
-          "Udahili wa Januari 2026 Umefunguliwa — Omba Mtandaoni Leo! Mwisho: Novemba 30, 2025" :
-          "January 2026 Intake Now Open — Apply Online Today! Deadline: 30 November 2025" %>
+          "Udahili wa APRIL 2026 Umefunguliwa Wa ngazi ya 3— Omba Mtandaoni Leo! Mwisho: JULAI 30, 2026" :
+          "APRIL 2026 Intake Now Open level 3 — Apply Online Today! Deadline: 30 JULY 2026" %>
     </span>
   </div>
 </div>
@@ -251,7 +260,7 @@
         <div style="text-align:center;margin-bottom:20px">
           <div class="principal-modal-avatar">👨‍💼</div>
           <h3>${principal.displayName}</h3>
-          <p style="color:var(--g400);font-size:.85rem">${principal.roleTitle}</p>
+          <p style="color:var(--gold);font-size:.85rem">${principal.roleTitle}</p>
         </div>
         <div class="modal-quote">${principal.welcomeMessage}</div>
       </c:if>
