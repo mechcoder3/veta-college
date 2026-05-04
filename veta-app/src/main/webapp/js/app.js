@@ -106,23 +106,49 @@ function showToast(msg, type, ms) {
     }, ms);
 }
 
-// ── ANNOUNCEMENT BAR ROTATION ────────────────────────────────
+// ── ANNOUNCEMENT BAR ROTATION (BILINGUAL SUPPORT) ───────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-    const msgs = [
-        'January 2026 Intake Now Open — Apply Online Today! Deadline: 30 November 2025',
-        'Pay Fees via M-Pesa, Tigo Pesa, Airtel Money or Bank using Government Control Number',
-        'VETA College Wins Gold Medal — Nane Nane National Exhibition 2025',
-        'New Short Course: Solar Panel Installation — Starting January 2026',
-        'Admissions Hotline: +255282804951 | Mon–Fri 7:30AM–5PM',
-    ];
+    // 1. Dictionary ya ujumbe katika lugha mbili
+    const translations = {
+        en: [
+            'JULY 2026 Intake Now Open — Apply Online Today! Deadline: 30 AUGUST 2026',
+            'Pay Fees via M-Pesa, Tigo Pesa, Airtel Money or Bank using Government Control Number',
+            'New Short Course: Solar Panel Installation — Starting July 2026',
+            'Admissions Hotline: +255282804951 | Mon–Fri 7:30AM–4PM',
+        ],
+        sw: [
+            'Nafasi za Masomo Julai 2026 Zipo Wazi — Omba Mtandaoni Leo! Mwisho: 30 Agosti 2025',
+            'Lipa Ada kupitia M-Pesa, Tigo Pesa, Airtel Money au Benki ukitumia Namba ya Kumbukumbu ya Serikali (Control Number)',
+            'Kozi Mpya: Ufungaji wa Mifumo ya Umeme wa Jua — Inaanza Julai 2026',
+            'Huduma kwa Wateja (Admissions): +255282804951 | Jtatu–Ijumaa Saa 7:30 Asubuhi–10:00 Jioni',
+        ]
+    };
+
+    // 2. Tambua lugha iliyopo (Inasoma lang="sw" au lang="en" kwenye <html> tag)
+    const currentLang = document.documentElement.lang || 'en';
+    
+    // 3. Chagua array ya ujumbe kulingana na lugha (Default ni English)
+    const msgs = translations[currentLang] || translations['en'];
+
     let idx = 0;
     const el = document.getElementById('announceTxt');
+    
     if (el) {
-        setInterval(() => { el.textContent = msgs[idx++ % msgs.length]; }, 7000);
+        // Weka ujumbe wa kwanza mara moja (isitungoje sekunde 7 kupita)
+        el.textContent = msgs[0];
+        
+        setInterval(() => { 
+            idx++;
+            el.textContent = msgs[idx % msgs.length]; 
+        }, 7000);
     }
 
-    // Auto-dismiss alerts after 6s
+    // ── AUTO-DISMISS ALERTS ──────────────────────────────────────────────────
     document.querySelectorAll('.alert-error').forEach(a => {
-        setTimeout(() => { a.style.opacity='0'; setTimeout(()=>a.remove(),400); }, 6000);
+        setTimeout(() => { 
+            a.style.transition = 'opacity 0.4s ease';
+            a.style.opacity = '0'; 
+            setTimeout(() => a.remove(), 400); 
+        }, 6000);
     });
 });

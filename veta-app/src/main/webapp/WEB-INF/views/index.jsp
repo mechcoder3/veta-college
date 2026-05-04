@@ -64,7 +64,7 @@
     </c:if>
 
     <%-- STAFF GRID (MANAGEMENT COMMITTEE) --%>
-    <p class="staff-section-title"><% if(sw){ %>KAMATI YA USIMAMIZI WA CHUO<% } else { %>COLLEGE MANAGEMENT COMMITTEE<% } %></p>
+    <p class="staff-section-title"><% if(sw){ %>KAMATI YA USIMAMIZI WA CHUO<% } else { %>CENTER MANAGEMENT COMMITTEE<% } %></p>
     <div class="staff-grid">
       <%-- Marekebisho: Imeongezwa begin="0" na end="2" ili kudhibiti idadi ya viongozi iwe 3 pekee --%>
       <c:forEach var="s" items="${staffList}" begin="0" end="2">
