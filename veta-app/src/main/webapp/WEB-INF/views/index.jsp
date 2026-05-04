@@ -116,8 +116,8 @@
     <span class="a-label">📢 <% if(sw){ %>TANGAZO<% } else { %>NOTICE<% } %></span>
     <span class="a-text" id="announceTxt">
       <%= sw?
-          "Udahili wa Januari 2026 Umefunguliwa — Omba Mtandaoni Leo! Mwisho: Novemba 30, 2025" :
-          "January 2026 Intake Now Open — Apply Online Today! Deadline: 30 November 2025" %>
+          "Udahili wa APRIL 2026 Umefunguliwa Wa ngazi ya 3— Omba Mtandaoni Leo! Mwisho: JULAI 30, 2026" :
+          "APRIL 2026 Intake Now Open level 3 — Apply Online Today! Deadline: 30 JULY 2026" %>
     </span>
   </div>
 </div>
