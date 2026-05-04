@@ -69,14 +69,19 @@
       <%-- Marekebisho: Imeongezwa begin="0" na end="2" ili kudhibiti idadi ya viongozi iwe 3 pekee --%>
       <c:forEach var="s" items="${staffList}" begin="0" end="2">
       <div class="staff-card">
-        <div class="staff-avatar">
-          <c:choose>
-            <c:when test="${not empty s.photoPath}">
-              <img src="${pageContext.request.contextPath}/${s.photoPath}" alt="${s.fullName}">
-            </c:when>
-            <c:otherwise><span>👤</span></c:otherwise>
-          </c:choose>
-        </div>
+        <div class="staff-avatar" style="width: 140px !important; height: 140px !important; border-radius: 50%; border: 3px solid var(--gold); overflow: hidden; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+    <c:choose>
+        <c:when test="${not empty s.photoPath}">
+            <%-- JARIBU HII PATH: Hakikisha folda la Images linaanza na herufi kubwa kama kwenye Principal --%>
+            <img src="${pageContext.request.contextPath}/Images/${s.photoPath}" 
+                 style="width: 100%; height: 100%; object-fit: cover; display: block;" 
+                 alt="${s.fullName}">
+        </c:when>
+        <c:otherwise>
+            <span style="font-size: 60px;">👤</span>
+        </c:otherwise>
+    </c:choose>
+</div>
         <div class="staff-name">${s.displayName}</div>
         <div class="staff-role">${s.roleTitle}</div>
         <div class="staff-desc">${s.qualifications}</div>
