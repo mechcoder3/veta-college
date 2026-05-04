@@ -23,7 +23,7 @@
     </div>
     <div class="slide">
         <img src="${pageContext.request.contextPath}/Images/bestworker.jpeg" alt="Event 4">
-        <div class="slide-caption">picha ya pamoja ya mfanyakazi hodari msajiri,katibu RAAWUU tawi na mwenyekiti wa kina mama raawuu tawi</div>
+        <div class="slide-caption">picha ya pamoja ya mfanyakazi hodari msajiri,katibu RAAWUU tawi</div>
     </div>
     <div class="slide">
         <img src="${pageContext.request.contextPath}/Images/chakula.jpeg" alt="Event 5">
