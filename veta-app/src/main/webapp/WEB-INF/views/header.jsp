@@ -28,8 +28,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%); /* Inaiweka logo katikati kabisa */
-        width: 80%;  /* Inachukua 80% ya upana wa skrini */
-        height: 80%;
+        width: 90%;  /* Inachukua 80% ya upana wa skrini */
+        height: 90%;
         
         /* Path ya picha yako ya best.jpeg */
         background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
@@ -38,7 +38,7 @@
         background-size: contain;
         
         /* Uwazi: 0.05 (5%) - logo itakuwa kama kivuli kwa mbali sana */
-        opacity: 0.05; 
+        opacity: 0.15; 
         z-index: -1; /* Inakaa nyuma ya maandishi na kadi zote */
         pointer-events: none; /* Inahakikisha background haizuii ku-click vitu */
     }
