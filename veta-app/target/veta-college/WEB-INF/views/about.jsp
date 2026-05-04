@@ -14,15 +14,15 @@
         <div class="slide-caption">Katika siku ya wafanyakazi duniani mfanyakazi bora akiwa anakabidhiwa cheti chake cha mfanyakazi bora wa mwaka 2025/2026</div>
     </div>
     <div class="slide">
-        <img src="${pageContext.request.contextPath}/Images/best1.jpeg" alt="Event 2">
+        <img src="${pageContext.request.contextPath}/Images/best1.jpg" alt="Event 2">
         <div class="slide-caption">picha ya pamoja ya mfanyakazi hodari</div>
     </div>
     <div class="slide">
-        <img src="${pageContext.request.contextPath}/Images/bestmoney.jpeg" alt="Event 3">
+        <img src="${pageContext.request.contextPath}/Images/bestmoney.jpg" alt="Event 3">
         <div class="slide-caption">mfanyakazi bora akipatiwa kitita cha fedha kama zawadi ya ufanyakazi hodari</div>
     </div>
     <div class="slide">
-        <img src="${pageContext.request.contextPath}/Images/bestworker.jpeg" alt="Event 4">
+        <img src="${pageContext.request.contextPath}/Images/BESTWORKER.png" alt="Event 4">
         <div class="slide-caption">picha ya pamoja ya mfanyakazi hodari msajiri,katibu RAAWUU tawi</div>
     </div>
     <div class="slide">
@@ -30,7 +30,7 @@
         <div class="slide-caption">wafanyakazi wa VETA kigoma wakipata chakula cha pamoja</div>
     </div>
     <div class="slide">
-        <img src="${pageContext.request.contextPath}/Images/dg.jpeg" alt="Event 6">
+        <img src="${pageContext.request.contextPath}/Images/dg.png" alt="Event 6">
         <div class="slide-caption">mkurugenzi mkuu akiongea na mwenyekiti dawati la jinsia veta KIGOMA </div>
     </div>
     <div class="slide">
@@ -54,7 +54,7 @@
         <div class="slide-caption">Wanafunzi wa fani ya ufundi bomba wakiwa katika matembezi ya masomo</div>
     </div>
     <div class="slide">
-        <img src="${pageContext.request.contextPath}/Images/uvinza.jpeg" alt="Event 12">
+        <img src="${pageContext.request.contextPath}/Images/uvinza.png" alt="Event 12">
         <div class="slide-caption">wafanyakazi wa veta kigoma wakiwa safarini kuelekea uvinza kwa ajiri ya sikukuu ya wafanyakizi </div>
     </div>
 </div>

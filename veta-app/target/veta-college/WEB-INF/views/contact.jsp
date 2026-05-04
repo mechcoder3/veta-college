@@ -46,9 +46,17 @@
           <p style="font-size:.85rem;color:var(--g600)"><% if(sw){ %>Jumatatu–Ijumaa: 7:30 AM – 5:00 PM<% } else { %>Mon–Fri: 7:30 AM – 4:00 PM<% } %><br><% if(sw){ %>Jumamosi na Jumapili: Imefungwa<% } else { %>Saturday and Sunday: Closed<% } %></p>
         </div>
       </div>
-      <div style="background:#E3F2FD;border-radius:var(--r12);border:2px dashed var(--g300);height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;font-size:2.8rem;color:var(--blue);margin-bottom:18px">
-        🗺️<span style="font-size:.82rem;font-weight:600;color:var(--navy)">KIGOMA RVTSC — Kigoma</span>
-      </div>
+      <div style="border-radius:var(--r12);overflow:hidden;height:220px;margin-bottom:18px">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.4194240652814!2d29.63945377400725!3d-4.869186050037099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19bf1b604f11f1a7%3A0xf616de04dee9d624!2sVETA%2C%20Kigoma!5e0!3m2!1sen!2sdz!4v1777930277495!5m2!1sen!2sdz"
+        width="100%"
+        height="220"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
       <div style="display:flex;gap:8px">
         <div class="soc">f</div><div class="soc">𝕏</div><div class="soc">in</div><div class="soc">W</div>
       </div>

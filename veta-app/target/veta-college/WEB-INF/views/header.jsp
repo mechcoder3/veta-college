@@ -13,6 +13,38 @@
 <title><c:out value="${pageTitle != null ? pageTitle : 'KIGOMA RVTSC'}"/> | KIGOMA RVTSC</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+
+<%-- ── ONGEZA HII STYLE KWA AJILI YA WATERMARK ── --%>
+<style>
+    body {
+        position: relative;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Inaiweka logo katikati kabisa */
+        width: 90%;  /* Inachukua 80% ya upana wa skrini */
+        height: 90%;
+        
+        /* Path ya picha yako ya best.jpeg */
+        background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        
+        /* Uwazi: 0.05 (5%) - logo itakuwa kama kivuli kwa mbali sana */
+        opacity: 0.15; 
+        z-index: -1; /* Inakaa nyuma ya maandishi na kadi zote */
+        pointer-events: none; /* Inahakikisha background haizuii ku-click vitu */
+    }
+</style>
+<%-- ────────────────────────────────────────── --%>
+
 </head>
 <body>
 
@@ -49,18 +81,13 @@
       </div>
     </div>
 
-    <%-- 2. NAVBAR YENYE MUUNDO MPYA --%>
+    <%-- 2. NAVBAR --%>
     <header id="nav-header" style="background-image: url('${pageContext.request.contextPath}/Images/bendera.PNG');">
         <div class="nav-header-inner">
-            <%-- Logo ya Kushoto --%>
             <div class="logo-box">
                 <img src="${pageContext.request.contextPath}/Images/emblo.png" alt="Coat of Arms">
             </div>
-
-            <%-- Jina la Chuo (PEMBENI) --%>
             <div class="college-name-left">KIGOMA RVTSC</div>
-
-            <%-- Maandishi ya Kati (SERIKALI) --%>
             <div class="government-titles-center">
                 <div class="title-country">
                     <%= sw ? "JAMHURI YA MUUNGANO WA TANZANIA" : "THE UNITED REPUBLIC OF TANZANIA" %>
@@ -72,8 +99,6 @@
                     <%= sw ? "MAMLAKA YA ELIMU NA MAFUNZO YA UFUNDI" : "VOCATIONAL EDUCATION AND TRAINING AUTHORITY" %>
                 </div>
             </div>
-
-            <%-- Logo ya Kulia --%>
             <div class="logo-box">
                 <img src="${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png" alt="VETA Logo">
             </div>
@@ -99,22 +124,4 @@
         <button class="menu-toggle" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
       </div>
     </div>
-
-</div>
-
-<%-- 4. MOBILE MENU --%>
-<div id="mobileNav">
-  <div class="mobile-inner">
-    <a href="${pageContext.request.contextPath}/home">🏠 <% if(sw){ %>Nyumbani<% } else { %>Home<% } %></a>
-    <a href="${pageContext.request.contextPath}/about">ℹ️ <% if(sw){ %>Kuhusu Sisi<% } else { %>About Us<% } %></a>
-    <a href="${pageContext.request.contextPath}/courses?type=short">⚡ <% if(sw){ %>Kozi Fupi<% } else { %>Short Courses<% } %></a>
-    <a href="${pageContext.request.contextPath}/courses?type=long">🎓 <% if(sw){ %>Kozi Ndefu<% } else { %>Long Courses<% } %></a>
-    <a href="${pageContext.request.contextPath}/admissions">📝 <% if(sw){ %>Maombi<% } else { %>Admissions<% } %></a>
-    <a href="${pageContext.request.contextPath}/production">🔨 <% if(sw){ %>Uzalishaji<% } else { %>Production<% } %></a>
-    <a href="${pageContext.request.contextPath}/payments">💳 <% if(sw){ %>Malipo<% } else { %>Payments<% } %></a>
-    <a href="${pageContext.request.contextPath}/news">📰 <% if(sw){ %>Habari<% } else { %>News<% } %></a>
-    <a href="${pageContext.request.contextPath}/portal">🖥️ <% if(sw){ %>Tovuti ya Wanafunzi<% } else { %>Student Portal<% } %></a>
-    <a href="${pageContext.request.contextPath}/contact">📞 <% if(sw){ %>Wasiliana<% } else { %>Contact<% } %></a>
-    <a href="${pageContext.request.contextPath}/admin">🔐 <% if(sw){ %>Msimamizi<% } else { %>Admin Login<% } %></a>
-  </div>
 </div>

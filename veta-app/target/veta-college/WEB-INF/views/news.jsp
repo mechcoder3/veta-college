@@ -12,7 +12,7 @@
   <div class="wrap">
     <div class="breadcrumb"><a href="${pageContext.request.contextPath}/home"><% if(sw){ %>Nyumbani<% } else { %>Home<% } %></a><span class="bcs">›</span><span><% if(sw){ %>Habari & Matukio<% } else { %>News & Events<% } %></span></div>
     <h1><% if(sw){ %>Habari na Matukio<% } else { %>News & Events<% } %></h1>
-    <p><% if(sw){ %>Habari za hivi karibuni, matangazo na matukio kutoka Chuo cha VETA Tanzania.<% } else { %>Latest news, announcements and events from VETA College Tanzania.<% } %></p>
+    <p><% if(sw){ %>Habari za hivi karibuni, matangazo na matukio kutoka Chuo cha VETA KIGOMA.<% } else { %>Latest news, announcements and events from KIGOMA RVTSC.<% } %></p>
   </div>
 </div>
 
