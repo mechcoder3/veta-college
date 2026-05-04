@@ -251,7 +251,7 @@
         <div style="text-align:center;margin-bottom:20px">
           <div class="principal-modal-avatar">👨‍💼</div>
           <h3>${principal.displayName}</h3>
-          <p style="color:var(--g400);font-size:.85rem">${principal.roleTitle}</p>
+          <p style="color:var(--gold);font-size:.85rem">${principal.roleTitle}</p>
         </div>
         <div class="modal-quote">${principal.welcomeMessage}</div>
       </c:if>
