@@ -31,7 +31,7 @@
 </c:when>
             <c:otherwise><span class="photo-icon">👨‍💼</span></c:otherwise>
           </c:choose>
-         <div class="photo-ribbon" style="background: rgba(6, 24, 64, 0.9); border-left: 4px solid var(--gold); padding: 10px 15px;">
+         <div class="photo-ribbon">
     <div class="ribbon-name" style="color: #ffffff; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
         ${principal.displayName}
     </div>
