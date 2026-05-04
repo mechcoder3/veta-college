@@ -10,9 +10,9 @@
 
 <div class="page-hero">
   <div class="wrap">
-    <div class="breadcrumb"><a href="${pageContext.request.contextPath}/home"><%= sw?"Nyumbani":"Home" %></a><span class="bcs">›</span><span><%= sw?"Habari & Matukio":"News & Events" %></span></div>
-    <h1><%= sw?"Habari na Matukio":"News & Events" %></h1>
-    <p><%= sw?"Habari za hivi karibuni, matangazo na matukio kutoka Chuo cha VETA Tanzania.":"Latest news, announcements and events from VETA College Tanzania." %></p>
+    <div class="breadcrumb"><a href="${pageContext.request.contextPath}/home"><% if(sw){ %>Nyumbani<% } else { %>Home<% } %></a><span class="bcs">›</span><span><% if(sw){ %>Habari & Matukio<% } else { %>News & Events<% } %></span></div>
+    <h1><% if(sw){ %>Habari na Matukio<% } else { %>News & Events<% } %></h1>
+    <p><% if(sw){ %>Habari za hivi karibuni, matangazo na matukio kutoka Chuo cha VETA Tanzania.<% } else { %>Latest news, announcements and events from VETA College Tanzania.<% } %></p>
   </div>
 </div>
 
@@ -40,7 +40,7 @@
         <c:otherwise>
           <div style="text-align:center;padding:48px;color:var(--g400)">
             <div style="font-size:3rem;margin-bottom:12px">📰</div>
-            <p><%= sw?"Hakuna habari za sasa. Angalia tena baadaye.":"No news available. Check back soon." %></p>
+            <p><% if(sw){ %>Hakuna habari za sasa. Angalia tena baadaye.<% } else { %>No news available. Check back soon.<% } %></p>
           </div>
         </c:otherwise>
       </c:choose>
@@ -49,30 +49,30 @@
     <%-- Sidebar: Upcoming Events --%>
     <div>
       <div style="background:#fff;border-radius:var(--r12);box-shadow:var(--s2);padding:20px">
-        <h4 style="font-size:.9rem;color:var(--navy);margin-bottom:14px;border-bottom:2px solid var(--blue);padding-bottom:8px">📅 <%= sw?"Matukio Yajayo":"Upcoming Events" %></h4>
+        <h4 style="font-size:.9rem;color:var(--navy);margin-bottom:14px;border-bottom:2px solid var(--blue);padding-bottom:8px">📅 <% if(sw){ %>Matukio Yajayo<% } else { %>Upcoming Events<% } %></h4>
         <div style="padding:12px 0;border-bottom:1px solid var(--g100);display:flex;gap:12px;align-items:flex-start">
           <div style="background:var(--navy);color:#fff;border-radius:8px;padding:7px 9px;text-align:center;min-width:46px"><div style="font-family:var(--fh);font-size:1.15rem;color:var(--gold);line-height:1">30</div><div style="font-size:.6rem;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.62)">NOV</div></div>
-          <div><div style="font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:2px"><%= sw?"Mwisho wa Maombi — Jan 2026":"Application Deadline — Jan 2026" %></div><div style="font-size:.75rem;color:var(--g400)"><%= sw?"Omba mtandaoni au ofisini":"Apply online or at office" %></div></div>
+          <div><div style="font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:2px"><% if(sw){ %>Mwisho wa Maombi — Jan 2026<% } else { %>Application Deadline — Jan 2026<% } %></div><div style="font-size:.75rem;color:var(--g400)"><% if(sw){ %>Omba mtandaoni au ofisini<% } else { %>Apply online or at office<% } %></div></div>
         </div>
         <div style="padding:12px 0;border-bottom:1px solid var(--g100);display:flex;gap:12px;align-items:flex-start">
           <div style="background:var(--navy);color:#fff;border-radius:8px;padding:7px 9px;text-align:center;min-width:46px"><div style="font-family:var(--fh);font-size:1.15rem;color:var(--gold);line-height:1">15</div><div style="font-size:.6rem;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.62)">DEC</div></div>
-          <div><div style="font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:2px"><%= sw?"Matokeo ya Udahili":"Admission Results Published" %></div><div style="font-size:.75rem;color:var(--g400)"><%= sw?"Orodha za udahili wa Jan 2026":"January 2026 admission lists" %></div></div>
+          <div><div style="font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:2px"><% if(sw){ %>Matokeo ya Udahili<% } else { %>Admission Results Published<% } %></div><div style="font-size:.75rem;color:var(--g400)"><% if(sw){ %>Orodha za udahili wa Jan 2026<% } else { %>January 2026 admission lists<% } %></div></div>
         </div>
         <div style="padding:12px 0;border-bottom:1px solid var(--g100);display:flex;gap:12px;align-items:flex-start">
           <div style="background:var(--navy);color:#fff;border-radius:8px;padding:7px 9px;text-align:center;min-width:46px"><div style="font-family:var(--fh);font-size:1.15rem;color:var(--gold);line-height:1">06</div><div style="font-size:.6rem;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.62)">JAN</div></div>
-          <div><div style="font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:2px"><%= sw?"Wiki ya Usajili na Mwelekeo":"Registration & Orientation" %></div><div style="font-size:.75rem;color:var(--g400)"><%= sw?"Wanafunzi wapya 2026":"New students 2026" %></div></div>
+          <div><div style="font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:2px"><% if(sw){ %>Wiki ya Usajili na Mwelekeo<% } else { %>Registration & Orientation<% } %></div><div style="font-size:.75rem;color:var(--g400)"><% if(sw){ %>Wanafunzi wapya 2026<% } else { %>New students 2026<% } %></div></div>
         </div>
         <div style="padding:12px 0;display:flex;gap:12px;align-items:flex-start">
           <div style="background:var(--navy);color:#fff;border-radius:8px;padding:7px 9px;text-align:center;min-width:46px"><div style="font-family:var(--fh);font-size:1.15rem;color:var(--gold);line-height:1">13</div><div style="font-size:.6rem;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.62)">JAN</div></div>
-          <div><div style="font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:2px"><%= sw?"Masomo Yanaanza — 2026":"Classes Begin — 2026" %></div><div style="font-size:.75rem;color:var(--g400)"><%= sw?"Mihadhara ya kwanza":"First day of lectures" %></div></div>
+          <div><div style="font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:2px"><% if(sw){ %>Masomo Yanaanza — 2026<% } else { %>Classes Begin — 2026<% } %></div><div style="font-size:.75rem;color:var(--g400)"><% if(sw){ %>Mihadhara ya kwanza<% } else { %>First day of lectures<% } %></div></div>
         </div>
       </div>
 
       <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:var(--r12);padding:20px;margin-top:16px;text-align:center">
         <div style="font-size:2rem;margin-bottom:10px">📢</div>
-        <h4 style="color:#fff;font-size:.95rem;margin-bottom:8px"><%= sw?"Matangazo ya Udahili":"Intake Announcements" %></h4>
-        <p style="color:rgba(255,255,255,.72);font-size:.8rem;margin-bottom:14px"><%= sw?"Jiunge na orodha yetu ya barua pepe kupata matangazo.":"Join our mailing list for announcements." %></p>
-        <a href="${pageContext.request.contextPath}/contact" class="btn btn-gold btn-sm"><%= sw?"Wasiliana Nasi":"Contact Us" %></a>
+        <h4 style="color:#fff;font-size:.95rem;margin-bottom:8px"><% if(sw){ %>Matangazo ya Udahili<% } else { %>Intake Announcements<% } %></h4>
+        <p style="color:rgba(255,255,255,.72);font-size:.8rem;margin-bottom:14px"><% if(sw){ %>Jiunge na orodha yetu ya barua pepe kupata matangazo.<% } else { %>Join our mailing list for announcements.<% } %></p>
+        <a href="${pageContext.request.contextPath}/contact" class="btn btn-gold btn-sm"><% if(sw){ %>Wasiliana Nasi<% } else { %>Contact Us<% } %></a>
       </div>
     </div>
   </div>

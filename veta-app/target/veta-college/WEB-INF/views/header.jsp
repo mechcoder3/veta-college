@@ -43,7 +43,7 @@
           <form method="post" action="${pageContext.request.contextPath}/setlang" style="display:inline">
             <input type="hidden" name="lang" value="sw">
             <input type="hidden" name="redirect" value="${requestScope['javax.servlet.forward.request_uri']}">
-            <button type="submit" class="lb <%= sw?"active":"" %>">SW</button>
+            <button type="submit" class="lb <% if(sw){ %>active<% } else { %><% } %>">SW</button>
           </form>
         </div>
       </div>
@@ -84,17 +84,17 @@
     <div id="nav-links-bar">
       <div class="wrap">
         <div class="nav-links">
-            <a href="${pageContext.request.contextPath}/home"               class="${activePage=='home'?'active':''}"       ><%= sw?"Nyumbani":"Home" %></a>
-            <a href="${pageContext.request.contextPath}/about"              class="${activePage=='about'?'active':''}"      ><%= sw?"Kuhusu":"About Us" %></a>
-            <a href="${pageContext.request.contextPath}/courses?type=short" class="${activePage=='short'?'active':''}"      ><%= sw?"Kozi Fupi":"Short Courses" %></a>
-            <a href="${pageContext.request.contextPath}/courses?type=long"  class="${activePage=='long'?'active':''}"       ><%= sw?"Kozi Ndefu":"Long Courses" %></a>
-            <a href="${pageContext.request.contextPath}/admissions"         class="${activePage=='admissions'?'active':''}" ><%= sw?"Maombi":"Admissions" %></a>
-            <a href="${pageContext.request.contextPath}/production"         class="${activePage=='production'?'active':''}" ><%= sw?"Uzalishaji":"Production" %></a>
-            <a href="${pageContext.request.contextPath}/payments"           class="${activePage=='payments'?'active':''}"   ><%= sw?"Malipo":"Payments" %></a>
-            <a href="${pageContext.request.contextPath}/news"               class="${activePage=='news'?'active':''}"       ><%= sw?"Habari":"News" %></a>
-            <a href="${pageContext.request.contextPath}/portal"             class="nav-portal ${activePage=='portal'?'active':''}" ><%= sw?"Tovuti":"Student Portal" %></a>
-            <a href="${pageContext.request.contextPath}/contact"            class="${activePage=='contact'?'active':''}"    ><%= sw?"Wasiliana":"Contact" %></a>
-            <a href="${pageContext.request.contextPath}/admin"              class="nav-admin"                               ><%= sw?"Msimamizi":"Admin Login" %></a>
+            <a href="${pageContext.request.contextPath}/home"               class="${activePage=='home'?'active':''}"       ><% if(sw){ %>Nyumbani<% } else { %>Home<% } %></a>
+            <a href="${pageContext.request.contextPath}/about"              class="${activePage=='about'?'active':''}"      ><% if(sw){ %>Kuhusu<% } else { %>About Us<% } %></a>
+            <a href="${pageContext.request.contextPath}/courses?type=short" class="${activePage=='short'?'active':''}"      ><% if(sw){ %>Kozi Fupi<% } else { %>Short Courses<% } %></a>
+            <a href="${pageContext.request.contextPath}/courses?type=long"  class="${activePage=='long'?'active':''}"       ><% if(sw){ %>Kozi Ndefu<% } else { %>Long Courses<% } %></a>
+            <a href="${pageContext.request.contextPath}/admissions"         class="${activePage=='admissions'?'active':''}" ><% if(sw){ %>Maombi<% } else { %>Admissions<% } %></a>
+            <a href="${pageContext.request.contextPath}/production"         class="${activePage=='production'?'active':''}" ><% if(sw){ %>Uzalishaji<% } else { %>Production<% } %></a>
+            <a href="${pageContext.request.contextPath}/payments"           class="${activePage=='payments'?'active':''}"   ><% if(sw){ %>Malipo<% } else { %>Payments<% } %></a>
+            <a href="${pageContext.request.contextPath}/news"               class="${activePage=='news'?'active':''}"       ><% if(sw){ %>Habari<% } else { %>News<% } %></a>
+            <a href="${pageContext.request.contextPath}/portal"             class="nav-portal ${activePage=='portal'?'active':''}" ><% if(sw){ %>Tovuti<% } else { %>Student Portal<% } %></a>
+            <a href="${pageContext.request.contextPath}/contact"            class="${activePage=='contact'?'active':''}"    ><% if(sw){ %>Wasiliana<% } else { %>Contact<% } %></a>
+            <a href="${pageContext.request.contextPath}/admin"              class="nav-admin"                               ><% if(sw){ %>Msimamizi<% } else { %>Admin Login<% } %></a>
         </div>
         <button class="menu-toggle" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
       </div>
@@ -105,16 +105,16 @@
 <%-- 4. MOBILE MENU --%>
 <div id="mobileNav">
   <div class="mobile-inner">
-    <a href="${pageContext.request.contextPath}/home">🏠 <%= sw?"Nyumbani":"Home" %></a>
-    <a href="${pageContext.request.contextPath}/about">ℹ️ <%= sw?"Kuhusu Sisi":"About Us" %></a>
-    <a href="${pageContext.request.contextPath}/courses?type=short">⚡ <%= sw?"Kozi Fupi":"Short Courses" %></a>
-    <a href="${pageContext.request.contextPath}/courses?type=long">🎓 <%= sw?"Kozi Ndefu":"Long Courses" %></a>
-    <a href="${pageContext.request.contextPath}/admissions">📝 <%= sw?"Maombi":"Admissions" %></a>
-    <a href="${pageContext.request.contextPath}/production">🔨 <%= sw?"Uzalishaji":"Production" %></a>
-    <a href="${pageContext.request.contextPath}/payments">💳 <%= sw?"Malipo":"Payments" %></a>
-    <a href="${pageContext.request.contextPath}/news">📰 <%= sw?"Habari":"News" %></a>
-    <a href="${pageContext.request.contextPath}/portal">🖥️ <%= sw?"Tovuti ya Wanafunzi":"Student Portal" %></a>
-    <a href="${pageContext.request.contextPath}/contact">📞 <%= sw?"Wasiliana":"Contact" %></a>
-    <a href="${pageContext.request.contextPath}/admin">🔐 <%= sw?"Msimamizi":"Admin Login" %></a>
+    <a href="${pageContext.request.contextPath}/home">🏠 <% if(sw){ %>Nyumbani<% } else { %>Home<% } %></a>
+    <a href="${pageContext.request.contextPath}/about">ℹ️ <% if(sw){ %>Kuhusu Sisi<% } else { %>About Us<% } %></a>
+    <a href="${pageContext.request.contextPath}/courses?type=short">⚡ <% if(sw){ %>Kozi Fupi<% } else { %>Short Courses<% } %></a>
+    <a href="${pageContext.request.contextPath}/courses?type=long">🎓 <% if(sw){ %>Kozi Ndefu<% } else { %>Long Courses<% } %></a>
+    <a href="${pageContext.request.contextPath}/admissions">📝 <% if(sw){ %>Maombi<% } else { %>Admissions<% } %></a>
+    <a href="${pageContext.request.contextPath}/production">🔨 <% if(sw){ %>Uzalishaji<% } else { %>Production<% } %></a>
+    <a href="${pageContext.request.contextPath}/payments">💳 <% if(sw){ %>Malipo<% } else { %>Payments<% } %></a>
+    <a href="${pageContext.request.contextPath}/news">📰 <% if(sw){ %>Habari<% } else { %>News<% } %></a>
+    <a href="${pageContext.request.contextPath}/portal">🖥️ <% if(sw){ %>Tovuti ya Wanafunzi<% } else { %>Student Portal<% } %></a>
+    <a href="${pageContext.request.contextPath}/contact">📞 <% if(sw){ %>Wasiliana<% } else { %>Contact<% } %></a>
+    <a href="${pageContext.request.contextPath}/admin">🔐 <% if(sw){ %>Msimamizi<% } else { %>Admin Login<% } %></a>
   </div>
 </div>

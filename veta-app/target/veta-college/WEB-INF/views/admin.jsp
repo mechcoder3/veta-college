@@ -24,20 +24,20 @@
       </div>
     </div>
     <div class="asnav">
-      <div class="asnl"><%= sw?"Kuu":"Main" %></div>
-      <a href="${pageContext.request.contextPath}/admin?tab=overview" class="asni ${activeTab=='overview'?'active':''}">📊 <%= sw?"Dashibodi":"Dashboard" %></a>
-      <a href="${pageContext.request.contextPath}/admin?tab=leadership" class="asni ${activeTab=='leadership'?'active':''}">👥 <%= sw?"Uongozi":"Leadership" %></a>
-      <div class="asnl"><%= sw?"Masomo":"Academic" %></div>
-      <a href="${pageContext.request.contextPath}/admin?tab=applications" class="asni ${activeTab=='applications'?'active':''}">📋 <%= sw?"Maombi":"Applications" %> <span class="asnib">${pendingApps > 0 ? pendingApps : ''}</span></a>
-      <a href="${pageContext.request.contextPath}/admin?tab=students"    class="asni ${activeTab=='students'?'active':''}">🎓 <%= sw?"Wanafunzi":"Students" %></a>
-      <a href="${pageContext.request.contextPath}/admin?tab=courses"     class="asni ${activeTab=='courses'?'active':''}">📚 <%= sw?"Kozi":"Courses" %></a>
-      <div class="asnl"><%= sw?"Fedha":"Finance" %></div>
-      <a href="${pageContext.request.contextPath}/admin?tab=payments"    class="asni ${activeTab=='payments'?'active':''}">💰 <%= sw?"Malipo":"Payments" %> <span class="asnib">${pendingPayments > 0 ? pendingPayments : ''}</span></a>
-      <div class="asnl"><%= sw?"Uendeshaji":"Operations" %></div>
-      <a href="${pageContext.request.contextPath}/admin?tab=production"  class="asni ${activeTab=='production'?'active':''}">🔨 <%= sw?"Maagizo":"Production" %></a>
-      <a href="${pageContext.request.contextPath}/admin?tab=news"        class="asni ${activeTab=='news'?'active':''}">📰 <%= sw?"Habari":"News" %></a>
+      <div class="asnl"><% if(sw){ %>Kuu<% } else { %>Main<% } %></div>
+      <a href="${pageContext.request.contextPath}/admin?tab=overview" class="asni ${activeTab=='overview'?'active':''}">📊 <% if(sw){ %>Dashibodi<% } else { %>Dashboard<% } %></a>
+      <a href="${pageContext.request.contextPath}/admin?tab=leadership" class="asni ${activeTab=='leadership'?'active':''}">👥 <% if(sw){ %>Uongozi<% } else { %>Leadership<% } %></a>
+      <div class="asnl"><% if(sw){ %>Masomo<% } else { %>Academic<% } %></div>
+      <a href="${pageContext.request.contextPath}/admin?tab=applications" class="asni ${activeTab=='applications'?'active':''}">📋 <% if(sw){ %>Maombi<% } else { %>Applications<% } %> <span class="asnib">${pendingApps > 0 ? pendingApps : ''}</span></a>
+      <a href="${pageContext.request.contextPath}/admin?tab=students"    class="asni ${activeTab=='students'?'active':''}">🎓 <% if(sw){ %>Wanafunzi<% } else { %>Students<% } %></a>
+      <a href="${pageContext.request.contextPath}/admin?tab=courses"     class="asni ${activeTab=='courses'?'active':''}">📚 <% if(sw){ %>Kozi<% } else { %>Courses<% } %></a>
+      <div class="asnl"><% if(sw){ %>Fedha<% } else { %>Finance<% } %></div>
+      <a href="${pageContext.request.contextPath}/admin?tab=payments"    class="asni ${activeTab=='payments'?'active':''}">💰 <% if(sw){ %>Malipo<% } else { %>Payments<% } %> <span class="asnib">${pendingPayments > 0 ? pendingPayments : ''}</span></a>
+      <div class="asnl"><% if(sw){ %>Uendeshaji<% } else { %>Operations<% } %></div>
+      <a href="${pageContext.request.contextPath}/admin?tab=production"  class="asni ${activeTab=='production'?'active':''}">🔨 <% if(sw){ %>Maagizo<% } else { %>Production<% } %></a>
+      <a href="${pageContext.request.contextPath}/admin?tab=news"        class="asni ${activeTab=='news'?'active':''}">📰 <% if(sw){ %>Habari<% } else { %>News<% } %></a>
       <hr style="border-color:rgba(255,255,255,.08);margin:8px 16px">
-      <a href="${pageContext.request.contextPath}/logout" class="asni" style="color:rgba(220,80,80,.8)">🚪 <%= sw?"Toka":"Logout" %></a>
+      <a href="${pageContext.request.contextPath}/logout" class="asni" style="color:rgba(220,80,80,.8)">🚪 <% if(sw){ %>Toka<% } else { %>Logout<% } %></a>
     </div>
   </div>
 
@@ -50,20 +50,20 @@
     <%-- ══ DASHBOARD OVERVIEW ══ --%>
     <c:if test="${activeTab == 'overview'}">
     <div class="amc">
-      <div class="atop"><h2><%= sw?"Muhtasari wa Dashibodi":"Dashboard Overview" %></h2><span style="font-size:.78rem;color:var(--g400)"><%= new java.util.Date() %></span></div>
+      <div class="atop"><h2><% if(sw){ %>Muhtasari wa Dashibodi<% } else { %>Dashboard Overview<% } %></h2><span style="font-size:.78rem;color:var(--g400)"><%= new java.util.Date() %></span></div>
       <div class="sc2">
-        <div class="scc" style="background:linear-gradient(135deg,var(--navy),var(--blue))" data-icon="🎓"><div class="scn">${totalStudents}</div><div class="scl"><%= sw?"Wanafunzi Wote":"Total Students" %></div></div>
-        <div class="scc" style="background:linear-gradient(135deg,#1B5E20,#388E3C)" data-icon="📋"><div class="scn">${pendingApps}</div><div class="scl"><%= sw?"Maombi Mapya":"New Applications" %></div></div>
-        <div class="scc" style="background:linear-gradient(135deg,#E65100,#F4511E)" data-icon="💳"><div class="scn">${pendingPayments}</div><div class="scl"><%= sw?"Malipo Yanayosubiri":"Pending Payments" %></div></div>
-        <div class="scc" style="background:linear-gradient(135deg,#4A148C,#7B1FA2)" data-icon="🔨"><div class="scn">${activeOrders}</div><div class="scl"><%= sw?"Maagizo Yanayoendelea":"Active Orders" %></div></div>
+        <div class="scc" style="background:linear-gradient(135deg,var(--navy),var(--blue))" data-icon="🎓"><div class="scn">${totalStudents}</div><div class="scl"><% if(sw){ %>Wanafunzi Wote<% } else { %>Total Students<% } %></div></div>
+        <div class="scc" style="background:linear-gradient(135deg,#1B5E20,#388E3C)" data-icon="📋"><div class="scn">${pendingApps}</div><div class="scl"><% if(sw){ %>Maombi Mapya<% } else { %>New Applications<% } %></div></div>
+        <div class="scc" style="background:linear-gradient(135deg,#E65100,#F4511E)" data-icon="💳"><div class="scn">${pendingPayments}</div><div class="scl"><% if(sw){ %>Malipo Yanayosubiri<% } else { %>Pending Payments<% } %></div></div>
+        <div class="scc" style="background:linear-gradient(135deg,#4A148C,#7B1FA2)" data-icon="🔨"><div class="scn">${activeOrders}</div><div class="scl"><% if(sw){ %>Maagizo Yanayoendelea<% } else { %>Active Orders<% } %></div></div>
       </div>
     </div>
     <div class="amc">
-      <div class="atop"><h2><%= sw?"Maombi ya Hivi Karibuni":"Recent Applications" %></h2>
-        <a href="${pageContext.request.contextPath}/admin?tab=applications" class="btn btn-primary btn-sm"><%= sw?"Angalia Zote":"View All" %></a>
+      <div class="atop"><h2><% if(sw){ %>Maombi ya Hivi Karibuni<% } else { %>Recent Applications<% } %></h2>
+        <a href="${pageContext.request.contextPath}/admin?tab=applications" class="btn btn-primary btn-sm"><% if(sw){ %>Angalia Zote<% } else { %>View All<% } %></a>
       </div>
       <div class="tw"><table class="at2">
-        <thead><tr><th>Ref</th><th><%= sw?"Jina":"Name" %></th><th><%= sw?"Kozi":"Course" %></th><th><%= sw?"Tarehe":"Date" %></th><th><%= sw?"Hali":"Status" %></th><th></th></tr></thead>
+        <thead><tr><th>Ref</th><th><% if(sw){ %>Jina<% } else { %>Name<% } %></th><th><% if(sw){ %>Kozi<% } else { %>Course<% } %></th><th><% if(sw){ %>Tarehe<% } else { %>Date<% } %></th><th><% if(sw){ %>Hali<% } else { %>Status<% } %></th><th></th></tr></thead>
         <tbody>
           <c:forEach var="a" items="${recentApps}">
           <tr>
@@ -84,7 +84,7 @@
     <c:if test="${activeTab == 'applications'}">
     <div class="amc">
       <div class="atop">
-        <h2><%= sw?"Usimamizi wa Maombi":"Application Management" %></h2>
+        <h2><% if(sw){ %>Usimamizi wa Maombi<% } else { %>Application Management<% } %></h2>
         <div style="display:flex;gap:7px;flex-wrap:wrap">
           <a href="?tab=applications" class="btn btn-ghost btn-sm">All</a>
           <a href="?tab=applications&status=PENDING" class="btn btn-ghost btn-sm">Pending</a>
@@ -93,7 +93,7 @@
         </div>
       </div>
       <div class="tw"><table class="at2">
-        <thead><tr><th>Ref</th><th><%= sw?"Jina":"Name" %></th><th>NIDA</th><th><%= sw?"Kozi":"Course" %></th><th><%= sw?"Tarehe":"Date" %></th><th><%= sw?"Hali":"Status" %></th><th><%= sw?"Hatua":"Actions" %></th></tr></thead>
+        <thead><tr><th>Ref</th><th><% if(sw){ %>Jina<% } else { %>Name<% } %></th><th>NIDA</th><th><% if(sw){ %>Kozi<% } else { %>Course<% } %></th><th><% if(sw){ %>Tarehe<% } else { %>Date<% } %></th><th><% if(sw){ %>Hali<% } else { %>Status<% } %></th><th><% if(sw){ %>Hatua<% } else { %>Actions<% } %></th></tr></thead>
         <tbody>
           <c:forEach var="a" items="${applications}">
           <tr>
@@ -127,7 +127,7 @@
     <c:if test="${activeTab == 'payments'}">
     <div class="amc">
       <div class="atop">
-        <h2><%= sw?"Uthibitisho wa Malipo":"Payment Verification" %></h2>
+        <h2><% if(sw){ %>Uthibitisho wa Malipo<% } else { %>Payment Verification<% } %></h2>
         <div style="display:flex;gap:7px">
           <a href="?tab=payments" class="btn btn-ghost btn-sm">All</a>
           <a href="?tab=payments&status=PENDING" class="btn btn-ghost btn-sm">Pending</a>
@@ -135,7 +135,7 @@
         </div>
       </div>
       <div class="tw"><table class="at2">
-        <thead><tr><th><%= sw?"Nambari ya Udhibiti":"Control No." %></th><th><%= sw?"Mlipaji":"Payer" %></th><th><%= sw?"Aina":"Type" %></th><th><%= sw?"Kiasi":"Amount" %></th><th><%= sw?"Tarehe":"Date" %></th><th><%= sw?"Hali":"Status" %></th><th><%= sw?"Hatua":"Actions" %></th></tr></thead>
+        <thead><tr><th><% if(sw){ %>Nambari ya Udhibiti<% } else { %>Control No.<% } %></th><th><% if(sw){ %>Mlipaji<% } else { %>Payer<% } %></th><th><% if(sw){ %>Aina<% } else { %>Type<% } %></th><th><% if(sw){ %>Kiasi<% } else { %>Amount<% } %></th><th><% if(sw){ %>Tarehe<% } else { %>Date<% } %></th><th><% if(sw){ %>Hali<% } else { %>Status<% } %></th><th><% if(sw){ %>Hatua<% } else { %>Actions<% } %></th></tr></thead>
         <tbody>
           <c:forEach var="p" items="${payments}">
           <tr>
@@ -166,14 +166,14 @@
     <%-- ══ STUDENTS ══ --%>
     <c:if test="${activeTab == 'students'}">
     <div class="amc">
-      <div class="atop"><h2><%= sw?"Usimamizi wa Wanafunzi":"Student Management" %></h2>
+      <div class="atop"><h2><% if(sw){ %>Usimamizi wa Wanafunzi<% } else { %>Student Management<% } %></h2>
         <div style="display:flex;gap:7px">
           <a href="?tab=students" class="btn btn-ghost btn-sm">All</a>
           <a href="?tab=students&status=ACTIVE" class="btn btn-ghost btn-sm">Active</a>
         </div>
       </div>
       <div class="tw"><table class="at2">
-        <thead><tr><th>ID</th><th><%= sw?"Jina Kamili":"Full Name" %></th><th><%= sw?"Programu":"Program" %></th><th>Y/S</th><th><%= sw?"Simu":"Phone" %></th><th><%= sw?"Hali":"Status" %></th><th><%= sw?"Hatua":"Actions" %></th></tr></thead>
+        <thead><tr><th>ID</th><th><% if(sw){ %>Jina Kamili<% } else { %>Full Name<% } %></th><th><% if(sw){ %>Programu<% } else { %>Program<% } %></th><th>Y/S</th><th><% if(sw){ %>Simu<% } else { %>Phone<% } %></th><th><% if(sw){ %>Hali<% } else { %>Status<% } %></th><th><% if(sw){ %>Hatua<% } else { %>Actions<% } %></th></tr></thead>
         <tbody>
           <c:forEach var="s" items="${students}">
           <tr>
@@ -194,9 +194,9 @@
     <%-- ══ COURSES ══ --%>
     <c:if test="${activeTab == 'courses'}">
     <div class="amc">
-      <div class="atop"><h2><%= sw?"Usimamizi wa Kozi":"Course Management" %></h2></div>
+      <div class="atop"><h2><% if(sw){ %>Usimamizi wa Kozi<% } else { %>Course Management<% } %></h2></div>
       <div class="tw"><table class="at2">
-        <thead><tr><th><%= sw?"Jina la Kozi":"Course Name" %></th><th><%= sw?"Aina":"Type" %></th><th><%= sw?"Muda":"Duration" %></th><th><%= sw?"Ada/Mwaka":"Fee/yr" %></th><th>NTA</th><th><%= sw?"Waliandikishwa":"Enrolled" %></th><th><%= sw?"Hali":"Status" %></th></tr></thead>
+        <thead><tr><th><% if(sw){ %>Jina la Kozi<% } else { %>Course Name<% } %></th><th><% if(sw){ %>Aina<% } else { %>Type<% } %></th><th><% if(sw){ %>Muda<% } else { %>Duration<% } %></th><th><% if(sw){ %>Ada/Mwaka<% } else { %>Fee/yr<% } %></th><th>NTA</th><th><% if(sw){ %>Waliandikishwa<% } else { %>Enrolled<% } %></th><th><% if(sw){ %>Hali<% } else { %>Status<% } %></th></tr></thead>
         <tbody>
           <c:forEach var="c" items="${courses}">
           <tr>
@@ -217,9 +217,9 @@
     <%-- ══ LEADERSHIP ══ --%>
     <c:if test="${activeTab == 'leadership'}">
     <div class="amc">
-      <div class="atop"><h2><%= sw?"Usimamizi wa Uongozi":"Leadership Management" %></h2></div>
+      <div class="atop"><h2><% if(sw){ %>Usimamizi wa Uongozi<% } else { %>Leadership Management<% } %></h2></div>
       <div class="tw"><table class="at2">
-        <thead><tr><th><%= sw?"Jina":"Name" %></th><th><%= sw?"Cheo":"Title" %></th><th><%= sw?"Idara":"Dept." %></th><th><%= sw?"Mkuu":"Principal" %></th><th><%= sw?"Inaonekana":"Visible" %></th><th><%= sw?"Hatua":"Actions" %></th></tr></thead>
+        <thead><tr><th><% if(sw){ %>Jina<% } else { %>Name<% } %></th><th><% if(sw){ %>Cheo<% } else { %>Title<% } %></th><th><% if(sw){ %>Idara<% } else { %>Dept.<% } %></th><th><% if(sw){ %>Mkuu<% } else { %>Principal<% } %></th><th><% if(sw){ %>Inaonekana<% } else { %>Visible<% } %></th><th><% if(sw){ %>Hatua<% } else { %>Actions<% } %></th></tr></thead>
         <tbody>
           <c:forEach var="s" items="${staffList}">
           <tr>
@@ -239,7 +239,7 @@
     <%-- ══ PRODUCTION ══ --%>
     <c:if test="${activeTab == 'production'}">
     <div class="amc">
-      <div class="atop"><h2><%= sw?"Maagizo ya Uzalishaji":"Production Orders" %></h2>
+      <div class="atop"><h2><% if(sw){ %>Maagizo ya Uzalishaji<% } else { %>Production Orders<% } %></h2>
         <div style="display:flex;gap:7px">
           <a href="?tab=production" class="btn btn-ghost btn-sm">All</a>
           <a href="?tab=production&status=PENDING" class="btn btn-ghost btn-sm">Pending</a>
@@ -248,7 +248,7 @@
         </div>
       </div>
       <div class="tw"><table class="at2">
-        <thead><tr><th>Order #</th><th><%= sw?"Mteja":"Client" %></th><th><%= sw?"Bidhaa":"Product" %></th><th><%= sw?"Bajeti":"Budget" %></th><th><%= sw?"Tarehe":"Date" %></th><th><%= sw?"Hali":"Status" %></th><th><%= sw?"Hatua":"Actions" %></th></tr></thead>
+        <thead><tr><th>Order #</th><th><% if(sw){ %>Mteja<% } else { %>Client<% } %></th><th><% if(sw){ %>Bidhaa<% } else { %>Product<% } %></th><th><% if(sw){ %>Bajeti<% } else { %>Budget<% } %></th><th><% if(sw){ %>Tarehe<% } else { %>Date<% } %></th><th><% if(sw){ %>Hali<% } else { %>Status<% } %></th><th><% if(sw){ %>Hatua<% } else { %>Actions<% } %></th></tr></thead>
         <tbody>
           <c:forEach var="o" items="${orders}">
           <tr>
@@ -286,8 +286,8 @@
     <%-- ══ NEWS & EVENTS ══ --%>
     <c:if test="${activeTab == 'news'}">
     <div class="amc">
-      <div class="atop"><h2><%= sw?"Usimamizi wa Habari":"News & Events Management" %></h2>
-        <button class="btn btn-primary btn-sm" onclick="document.getElementById('addNewsForm').classList.toggle('hidden')">+ <%= sw?"Ongeza Habari":"Add News" %></button>
+      <div class="atop"><h2><% if(sw){ %>Usimamizi wa Habari<% } else { %>News & Events Management<% } %></h2>
+        <button class="btn btn-primary btn-sm" onclick="document.getElementById('addNewsForm').classList.toggle('hidden')">+ <% if(sw){ %>Ongeza Habari<% } else { %>Add News<% } %></button>
       </div>
       <%-- Add Form --%>
       <div id="addNewsForm" class="hidden" style="background:var(--off);border-radius:8px;padding:20px;margin-bottom:20px">
@@ -316,11 +316,11 @@
               <select class="fc" name="published"><option value="1">Yes — Publish immediately</option><option value="0">No — Save as draft</option></select>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">📰 <%= sw?"Chapisha Tukio":"Publish Event" %></button>
+          <button type="submit" class="btn btn-primary">📰 <% if(sw){ %>Chapisha Tukio<% } else { %>Publish Event<% } %></button>
         </form>
       </div>
       <div class="tw"><table class="at2">
-        <thead><tr><th></th><th><%= sw?"Kichwa":"Title" %></th><th><%= sw?"Kategoria":"Category" %></th><th><%= sw?"Tarehe":"Date" %></th><th><%= sw?"Hali":"Status" %></th><th><%= sw?"Hatua":"Actions" %></th></tr></thead>
+        <thead><tr><th></th><th><% if(sw){ %>Kichwa<% } else { %>Title<% } %></th><th><% if(sw){ %>Kategoria<% } else { %>Category<% } %></th><th><% if(sw){ %>Tarehe<% } else { %>Date<% } %></th><th><% if(sw){ %>Hali<% } else { %>Status<% } %></th><th><% if(sw){ %>Hatua<% } else { %>Actions<% } %></th></tr></thead>
         <tbody>
           <c:forEach var="n" items="${newsList}">
           <tr>

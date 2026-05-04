@@ -20,6 +20,7 @@ C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta
 C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\utils\DBConnection.java
 C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\dao\PaymentDAO.java
 C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\models\NewsEvent.java
+C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\servlets\AboutServlet.java
 C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\models\Payment.java
 C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\servlets\NewsServlet.java
 C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\dao\ProductionDAO.java
@@ -30,4 +31,5 @@ C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta
 C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\servlets\ProductionServlet.java
 C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\filters\AuthFilter.java
 C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\dao\CourseDAO.java
+C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\WebConfig.java
 C:\Users\PC\Downloads\VETA_College_Java_Complete\veta-app\src\main\java\com\veta\dao\NewsDAO.java

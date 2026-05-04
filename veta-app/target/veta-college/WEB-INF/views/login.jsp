@@ -26,22 +26,22 @@
     <form method="post" action="${pageContext.request.contextPath}/login">
       <input type="hidden" name="loginType" value="<%= loginType %>">
       <div class="fg">
-        <label><%= sw?"Jina la Mtumiaji / Barua Pepe":"Username / Email" %> *</label>
+        <label><% if(sw){ %>Jina la Mtumiaji / Barua Pepe<% } else { %>Username / Email<% } %> *</label>
         <input class="fc" name="username" required placeholder="<%= "admin".equals(loginType)?"admin@vetacollege.ac.tz":"VETA/STU/2025/XXXX" %>" autofocus>
       </div>
       <div class="fg">
-        <label><%= sw?"Nenosiri":"Password" %> *</label>
+        <label><% if(sw){ %>Nenosiri<% } else { %>Password<% } %> *</label>
         <input class="fc" name="password" type="password" required placeholder="••••••••">
       </div>
       <button type="submit" class="btn btn-primary btn-block btn-lg">
-        🔐 <%= sw?"Ingia":"Login" %>
+        🔐 <% if(sw){ %>Ingia<% } else { %>Login<% } %>
       </button>
     </form>
 
     <% if (!"admin".equals(loginType)) { %>
     <div style="text-align:center;margin-top:14px;font-size:.82rem">
       <a href="${pageContext.request.contextPath}/admissions" style="color:var(--blue)">
-        <%= sw?"Bado hujaomba? Omba sasa →":"Not applied yet? Apply now →" %>
+        <% if(sw){ %>Bado hujaomba? Omba sasa →<% } else { %>Not applied yet? Apply now →<% } %>
       </a>
     </div>
     <% } %>
