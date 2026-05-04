@@ -117,24 +117,20 @@ document.addEventListener('DOMContentLoaded', () => {
             'Admissions Hotline: +255282804951 | Mon–Fri 7:30AM–4PM',
         ],
         sw: [
-            'Nafasi za Masomo Julai 2026 Zipo Wazi — Omba Mtandaoni Leo! Mwisho: 30 Agosti 2025',
+            'Nafasi za Masomo Julai 2026 Zipo Wazi — Omba Mtandaoni Leo! Mwisho: 30 Agosti 2026',
             'Lipa Ada kupitia M-Pesa, Tigo Pesa, Airtel Money au Benki ukitumia Namba ya Kumbukumbu ya Serikali (Control Number)',
             'Kozi Mpya: Ufungaji wa Mifumo ya Umeme wa Jua — Inaanza Julai 2026',
             'Huduma kwa Wateja (Admissions): +255282804951 | Jtatu–Ijumaa Saa 7:30 Asubuhi–10:00 Jioni',
         ]
     };
-
-    // 2. Tambua lugha iliyopo (Inasoma lang="sw" au lang="en" kwenye <html> tag)
     const currentLang = document.documentElement.lang || 'en';
-    
-    // 3. Chagua array ya ujumbe kulingana na lugha (Default ni English)
+   
     const msgs = translations[currentLang] || translations['en'];
 
     let idx = 0;
     const el = document.getElementById('announceTxt');
     
     if (el) {
-        // Weka ujumbe wa kwanza mara moja (isitungoje sekunde 7 kupita)
         el.textContent = msgs[0];
         
         setInterval(() => { 
