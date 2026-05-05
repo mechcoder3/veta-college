@@ -7,7 +7,13 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
-          <div class="logo-emblem">V</div>
+        <div class="logo-emblem" style="background:#1a3a6b;padding:4px;overflow:hidden;border-radius:50%;">
+    <img 
+        src="${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png" 
+        alt="VETA Logo"
+        style="width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1);"
+    />
+</div>
           <div>
             <div class="footer-name"><% if(sw){ %>Chuo cha VETA kigoma<% } else { %>Kigoma rvtsc<% } %></div>
             <div class="footer-sub"><% if(sw){ %>Mamlaka ya Elimu na Mafunzo ya Ufundi<% } else { %>Vocational Education & Training Authority<% } %></div>
