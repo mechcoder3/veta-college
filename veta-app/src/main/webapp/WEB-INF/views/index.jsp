@@ -192,7 +192,7 @@
           <div class="prog-icon">📚</div>
           <div class="prog-type">NVA <% if(sw){ %>KOZI NDEFU<% } else { %>LONG COURSE<% } %></div>
           <h3>${c.nameEn}</h3>
-          <div class="prog-nta">${c.ntaLevel} · ${c.getDurationDisplay()}</div>
+          <div class="prog-nva">${c.nvaLevel} · ${c.getDurationDisplay()}</div>
         </div>
         <div class="prog-body">
           <div class="prog-row">
