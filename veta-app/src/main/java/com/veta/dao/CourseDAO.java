@@ -57,7 +57,7 @@ public class CourseDAO {
         c.setNameEn(rs.getString("name_en"));
         c.setNameSw(rs.getString("name_sw"));
         c.setCourseType(rs.getString("course_type"));
-        c.setNtaLevel(rs.getString("nta_level"));
+        c.setNtaLevel(rs.getString("nva_level"));
         c.setDurationMonths(rs.getInt("duration_months"));
         c.setAnnualFee(rs.getBigDecimal("annual_fee"));
         c.setRegistrationFee(rs.getBigDecimal("registration_fee"));

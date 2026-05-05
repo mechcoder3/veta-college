@@ -712,7 +712,7 @@ button { cursor: pointer; font-family: var(--fb); transition: all var(--tr); }
 .prog-card{background:#fff;border-radius:var(--r12);box-shadow:var(--s3);overflow:hidden;transition:all var(--tr);display:flex;flex-direction:column}
 .prog-card:hover{transform:translateY(-5px);box-shadow:var(--s5)}
 .prog-head{padding:24px 21px 17px}.prog-icon{font-size:1.9rem;margin-bottom:9px}.prog-type{font-size:.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.prog-head h3{font-size:1rem;color:#fff;margin-bottom:3px}.prog-nta{font-size:.72rem;color:rgba(255,255,255,.58)}
+.prog-head h3{font-size:1rem;color:#fff;margin-bottom:3px}.prog-nva{font-size:.72rem;color:rgba(255,255,255,.58)}
 .prog-body{padding:16px 21px;flex:1}.prog-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--g200);font-size:.82rem}.prog-row:last-of-type{border-bottom:none}
 .prl{color:var(--g400);font-weight:600}.prv{color:var(--navy);font-weight:700}.prog-foot{padding:14px 21px;border-top:1px solid var(--g100)}
 
