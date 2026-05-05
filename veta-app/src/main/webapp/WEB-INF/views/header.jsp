@@ -21,28 +21,45 @@
         margin: 0;
     }
 
+    /* Background ya Logo */
     body::before {
         content: "";
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 100%; 
+        width: 100%;
         height: 100%;
         background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        opacity: 0.25; 
-        
-        /* ── SULUHISHO LA TATIZO LAKO ── */
-        z-index: 9999; /* Inaiweka juu ili ionekane kote */
-        pointer-events: none; /* Hii inaruhusu menu na button zibonyezeke */
+        opacity: 0.25;
+        z-index: 9999;
+        pointer-events: none; /* Hii ni sahihi, inaruhusu click kupita */
     }
 
-    /* Hakikisha Mobile Menu inakaa juu zaidi ya kila kitu */
+    /* Button ya Hamburger Menu */
+    /* Badilisha '.hamburger-btn' na class halisi ya button yako */
+    .hamburger-btn {
+        position: relative; /* au fixed/absolute */
+        z-index: 10002; /* Juu kuliko background na menu */
+        cursor: pointer;
+        /* Hakikisha hii inaonekana vizuri */
+    }
+
+    /* Mobile Menu */
     #mobileNav {
-        z-index: 10000; 
+        position: fixed; /* Muhimu sana kwa menu ya simu */
+        top: 0;
+        left: 0; /* au right: 0 kulingana na design */
+        width: 100%; /* au width unayotaka */
+        height: 100vh;
+        z-index: 10001; /* Juu kuliko background (9999) */
+        background-color: white; /* Au rangi yako */
+        
+        /* Kwa kawaida menu hufichwa kwanza */
+        /* display: none; */ 
     }
 </style>
 </head>
