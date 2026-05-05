@@ -14,14 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
-<%-- ── ONGEZA HII STYLE KWA AJILI YA WATERMARK ── --%>
 <style>
-    body {
-        position: relative;
-        min-height: 100vh;
-        margin: 0;
-    }
-
     body::before {
         content: "";
         position: fixed;
@@ -35,30 +28,57 @@
         background-position: center;
         background-size: contain;
         opacity: 0.20;
-        z-index: 0; /* Badilisha kutoka -1 kuwa 0 */
+        z-index: -1;
         pointer-events: none;
     }
 
-    /* Hakikisha mobile menu iko juu ya background */
     #mobileNav {
-        z-index: 9999 !important;
-        position: relative;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 75%;
+        height: 100vh;
+        background: var(--navy);
+        z-index: 99999;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        padding-top: 60px;
+    }
+
+    #mobileNav.open {
+        left: 0;
     }
 
     .menu-toggle {
-        z-index: 9999 !important;
+        z-index: 99999;
         position: relative;
     }
 
     .fixed-header-container {
-        z-index: 9999 !important;
-        position: relative;
+        position: sticky;
+        top: 0;
+        z-index: 9000;
+    }
+
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 99998;
+    }
+
+    .nav-overlay.active {
+        display: block;
     }
 </style>
-<%-- ────────────────────────────────────────── --%>
-
 </head>
 <body>
+
+<div class="nav-overlay" id="navOverlay" onclick="toggleMobileNav()"></div>
 
 <div class="fixed-header-container">
 
@@ -133,7 +153,21 @@
             <a href="${pageContext.request.contextPath}/contact"            class="${activePage=='contact'?'active':''}"    ><% if(sw){ %>Wasiliana<% } else { %>Contact<% } %></a>
             <a href="${pageContext.request.contextPath}/admin"              class="nav-admin"                               ><% if(sw){ %>Msimamizi<% } else { %>Admin Login<% } %></a>
         </div>
-        <button class="menu-toggle" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+        <button class="menu-toggle" onclick="toggleMobileNav()">☰</button>
       </div>
     </div>
 </div>
+
+<script>
+function toggleMobileNav() {
+    var nav = document.getElementById('mobileNav');
+    var overlay = document.getElementById('navOverlay');
+    if (nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        overlay.classList.remove('active');
+    } else {
+        nav.classList.add('open');
+        overlay.classList.add('active');
+    }
+}
+</script>
