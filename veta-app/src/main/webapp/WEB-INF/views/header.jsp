@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
+<%-- ── ONGEZA HII STYLE KWA AJILI YA WATERMARK ── --%>
 <style>
     body {
         position: relative;
@@ -21,47 +22,29 @@
         margin: 0;
     }
 
-    /* Background ya Logo */
     body::before {
         content: "";
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
+        transform: translate(-50%, -50%); /* Inaiweka logo katikati kabisa */
+        width: 90%;  /* Inachukua 80% ya upana wa skrini */
+        height: 90%;
+        
+        /* Path ya picha yako ya best.jpeg */
         background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        opacity: 0.25;
-        z-index: 9999;
-        pointer-events: none; /* Hii ni sahihi, inaruhusu click kupita */
-    }
-
-    /* Button ya Hamburger Menu */
-    /* Badilisha '.hamburger-btn' na class halisi ya button yako */
-    .hamburger-btn {
-        position: relative; /* au fixed/absolute */
-        z-index: 10002; /* Juu kuliko background na menu */
-        cursor: pointer;
-        /* Hakikisha hii inaonekana vizuri */
-    }
-
-    /* Mobile Menu */
-    #mobileNav {
-        position: fixed; /* Muhimu sana kwa menu ya simu */
-        top: 0;
-        left: 0; /* au right: 0 kulingana na design */
-        width: 100%; /* au width unayotaka */
-        height: 100vh;
-        z-index: 10001; /* Juu kuliko background (9999) */
-        background-color: white; /* Au rangi yako */
         
-        /* Kwa kawaida menu hufichwa kwanza */
-        /* display: none; */ 
+        /* Uwazi: 0.05 (5%) - logo itakuwa kama kivuli kwa mbali sana */
+        opacity: 0.15; 
+        z-index: -1; /* Inakaa nyuma ya maandishi na kadi zote */
+        pointer-events: none; /* Inahakikisha background haizuii ku-click vitu */
     }
 </style>
+<%-- ────────────────────────────────────────── --%>
+
 </head>
 <body>
 
