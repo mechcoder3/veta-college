@@ -7,11 +7,22 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
-        <div class="logo-emblem" style="background:#1a3a6b;padding:4px;overflow:hidden;border-radius:50%;">
+  <div class="logo-emblem" style="
+    background: transparent;
+    padding: 2px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+">
     <img 
         src="${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png" 
         alt="VETA Logo"
-        style="width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1);"
+        style="
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            mix-blend-mode: screen;
+        "
     />
 </div>
           <div>

@@ -22,7 +22,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 85%;
+    width: 100%;
     max-width: 700px;
     min-width: 292px;
     aspect-ratio: 1 / 1;
@@ -30,7 +30,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    opacity: 0.08; /* ✅ Faint sana - haionekani wazi */
+    opacity: 0.05; /* ✅ Faint sana - haionekani wazi */
     pointer-events: none; /* ✅ Haizuii click yoyote */
     z-index: 0;
   }
