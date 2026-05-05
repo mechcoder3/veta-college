@@ -13,6 +13,28 @@
 <title><c:out value="${pageTitle != null ? pageTitle : 'KIGOMA RVTSC'}"/> | KIGOMA RVTSC</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+
+<style>
+  /* ✅ Background Logo kwenye pages zote - haizuii click yoyote */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    max-width: 480px;
+    min-width: 200px;
+    aspect-ratio: 1 / 1;
+    background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.13; /* ✅ Faint sana - haionekani wazi */
+    pointer-events: none; /* ✅ Haizuii click yoyote */
+    z-index: 0;
+  }
+</style>
 </head>
 <body>
 
@@ -49,18 +71,13 @@
       </div>
     </div>
 
-    <%-- 2. NAVBAR YENYE MUUNDO MPYA --%>
+    <%-- 2. NAVBAR --%>
     <header id="nav-header" style="background-image: url('${pageContext.request.contextPath}/Images/bendera.PNG');">
         <div class="nav-header-inner">
-            <%-- Logo ya Kushoto --%>
             <div class="logo-box">
                 <img src="${pageContext.request.contextPath}/Images/emblo.png" alt="Coat of Arms">
             </div>
-
-            <%-- Jina la Chuo (PEMBENI) --%>
             <div class="college-name-left">KIGOMA RVTSC</div>
-
-            <%-- Maandishi ya Kati (SERIKALI) --%>
             <div class="government-titles-center">
                 <div class="title-country">
                     <%= sw ? "JAMHURI YA MUUNGANO WA TANZANIA" : "THE UNITED REPUBLIC OF TANZANIA" %>
@@ -72,8 +89,6 @@
                     <%= sw ? "MAMLAKA YA ELIMU NA MAFUNZO YA UFUNDI" : "VOCATIONAL EDUCATION AND TRAINING AUTHORITY" %>
                 </div>
             </div>
-
-            <%-- Logo ya Kulia --%>
             <div class="logo-box">
                 <img src="${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png" alt="VETA Logo">
             </div>
