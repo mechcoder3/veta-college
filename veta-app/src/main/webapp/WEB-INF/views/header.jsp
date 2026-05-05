@@ -22,15 +22,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 45%;
-    max-width: 480px;
-    min-width: 200px;
+    width: 85%;
+    max-width: 700px;
+    min-width: 292px;
     aspect-ratio: 1 / 1;
     background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    opacity: 0.13; /* ✅ Faint sana - haionekani wazi */
+    opacity: 0.08; /* ✅ Faint sana - haionekani wazi */
     pointer-events: none; /* ✅ Haizuii click yoyote */
     z-index: 0;
   }
