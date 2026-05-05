@@ -35,8 +35,8 @@ public class Course {
     public void setNameSw(String v)             { this.nameSw = v; }
     public String getCourseType()               { return courseType; }
     public void setCourseType(String v)         { this.courseType = v; }
-    public String getNtaLevel()                 { return nvaLevel; }
-    public void setNtaLevel(String v)           { this.nvaLevel = v; }
+    public String getnvaLevel()                 { return nvaLevel; }
+    public void setnvaLevel(String v)           { this.nvaLevel = v; }
     public int getDurationMonths()              { return durationMonths; }
     public void setDurationMonths(int v)        { this.durationMonths = v; }
     public BigDecimal getAnnualFee()            { return annualFee; }
