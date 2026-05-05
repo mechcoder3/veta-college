@@ -13,72 +13,8 @@
 <title><c:out value="${pageTitle != null ? pageTitle : 'KIGOMA RVTSC'}"/> | KIGOMA RVTSC</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-
-<style>
-    body::before {
-        content: "";
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-        background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        opacity: 0.20;
-        z-index: -1;
-        pointer-events: none;
-    }
-
-    #mobileNav {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 75%;
-        height: 100vh;
-        background: var(--navy);
-        z-index: 99999;
-        transition: left 0.3s ease;
-        overflow-y: auto;
-        padding-top: 60px;
-    }
-
-    #mobileNav.open {
-        left: 0;
-    }
-
-    .menu-toggle {
-        z-index: 99999;
-        position: relative;
-    }
-
-    .fixed-header-container {
-        position: sticky;
-        top: 0;
-        z-index: 9000;
-    }
-
-    .nav-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 99998;
-    }
-
-    .nav-overlay.active {
-        display: block;
-    }
-</style>
 </head>
 <body>
-
-<div class="nav-overlay" id="navOverlay" onclick="toggleMobileNav()"></div>
 
 <div class="fixed-header-container">
 
@@ -113,13 +49,18 @@
       </div>
     </div>
 
-    <%-- 2. NAVBAR --%>
+    <%-- 2. NAVBAR YENYE MUUNDO MPYA --%>
     <header id="nav-header" style="background-image: url('${pageContext.request.contextPath}/Images/bendera.PNG');">
         <div class="nav-header-inner">
+            <%-- Logo ya Kushoto --%>
             <div class="logo-box">
                 <img src="${pageContext.request.contextPath}/Images/emblo.png" alt="Coat of Arms">
             </div>
+
+            <%-- Jina la Chuo (PEMBENI) --%>
             <div class="college-name-left">KIGOMA RVTSC</div>
+
+            <%-- Maandishi ya Kati (SERIKALI) --%>
             <div class="government-titles-center">
                 <div class="title-country">
                     <%= sw ? "JAMHURI YA MUUNGANO WA TANZANIA" : "THE UNITED REPUBLIC OF TANZANIA" %>
@@ -131,6 +72,8 @@
                     <%= sw ? "MAMLAKA YA ELIMU NA MAFUNZO YA UFUNDI" : "VOCATIONAL EDUCATION AND TRAINING AUTHORITY" %>
                 </div>
             </div>
+
+            <%-- Logo ya Kulia --%>
             <div class="logo-box">
                 <img src="${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png" alt="VETA Logo">
             </div>
@@ -153,21 +96,25 @@
             <a href="${pageContext.request.contextPath}/contact"            class="${activePage=='contact'?'active':''}"    ><% if(sw){ %>Wasiliana<% } else { %>Contact<% } %></a>
             <a href="${pageContext.request.contextPath}/admin"              class="nav-admin"                               ><% if(sw){ %>Msimamizi<% } else { %>Admin Login<% } %></a>
         </div>
-        <button class="menu-toggle" onclick="toggleMobileNav()">☰</button>
+        <button class="menu-toggle" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
       </div>
     </div>
+
 </div>
 
-<script>
-function toggleMobileNav() {
-    var nav = document.getElementById('mobileNav');
-    var overlay = document.getElementById('navOverlay');
-    if (nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        overlay.classList.remove('active');
-    } else {
-        nav.classList.add('open');
-        overlay.classList.add('active');
-    }
-}
-</script>
+<%-- 4. MOBILE MENU --%>
+<div id="mobileNav">
+  <div class="mobile-inner">
+    <a href="${pageContext.request.contextPath}/home">🏠 <% if(sw){ %>Nyumbani<% } else { %>Home<% } %></a>
+    <a href="${pageContext.request.contextPath}/about">ℹ️ <% if(sw){ %>Kuhusu Sisi<% } else { %>About Us<% } %></a>
+    <a href="${pageContext.request.contextPath}/courses?type=short">⚡ <% if(sw){ %>Kozi Fupi<% } else { %>Short Courses<% } %></a>
+    <a href="${pageContext.request.contextPath}/courses?type=long">🎓 <% if(sw){ %>Kozi Ndefu<% } else { %>Long Courses<% } %></a>
+    <a href="${pageContext.request.contextPath}/admissions">📝 <% if(sw){ %>Maombi<% } else { %>Admissions<% } %></a>
+    <a href="${pageContext.request.contextPath}/production">🔨 <% if(sw){ %>Uzalishaji<% } else { %>Production<% } %></a>
+    <a href="${pageContext.request.contextPath}/payments">💳 <% if(sw){ %>Malipo<% } else { %>Payments<% } %></a>
+    <a href="${pageContext.request.contextPath}/news">📰 <% if(sw){ %>Habari<% } else { %>News<% } %></a>
+    <a href="${pageContext.request.contextPath}/portal">🖥️ <% if(sw){ %>Tovuti ya Wanafunzi<% } else { %>Student Portal<% } %></a>
+    <a href="${pageContext.request.contextPath}/contact">📞 <% if(sw){ %>Wasiliana<% } else { %>Contact<% } %></a>
+    <a href="${pageContext.request.contextPath}/admin">🔐 <% if(sw){ %>Msimamizi<% } else { %>Admin Login<% } %></a>
+  </div>
+</div>
