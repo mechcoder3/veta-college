@@ -25,9 +25,9 @@
         <div class="prog-card">
           <div class="prog-head" style="background:linear-gradient(135deg,#0A2463,#1565C0)">
             <div class="prog-icon">📚</div>
-            <div class="prog-type"><% if(sw){ %>KOZI FUPI<% } else { %>SHORT COURSE<% } %> · ${c.ntaLevel}</div>
+            <div class="prog-type"><% if(sw){ %>KOZI FUPI<% } else { %>SHORT COURSE<% } %> · ${c.nvaLevel}</div>
             <h3>${c.nameEn}</h3>
-            <c:if test="${not empty c.nameSw}"><div class="prog-nta">${c.nameSw}</div></c:if>
+            <c:if test="${not empty c.nameSw}"><div class="prog-nva">${c.nameSw}</div></c:if>
           </div>
           <div class="prog-body">
             <div class="prog-row"><span class="prl"><% if(sw){ %>Muda<% } else { %>Duration<% } %></span><span class="prv">${c.getDurationDisplay()}</span></div>
