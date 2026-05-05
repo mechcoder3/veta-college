@@ -14,7 +14,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
-<%-- ── ONGEZA HII STYLE KWA AJILI YA WATERMARK ── --%>
 <style>
     body {
         position: relative;
@@ -27,24 +26,25 @@
         position: fixed;
         top: 70%;
         left: 70%;
-        transform: translate(-50%, -50%); /* Inaiweka logo katikati kabisa */
-        width: 100%;  /* Inachukua 80% ya upana wa skrini */
+        transform: translate(-50%, -50%);
+        width: 100%; 
         height: 100%;
-        
-        /* Path ya picha yako ya best.jpeg */
-        background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
+        background-image: url('${pageContext.request.contextPath}/Images/best.jpeg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        
-        /* Uwazi: 0.05 (5%) - logo itakuwa kama kivuli kwa mbali sana */
         opacity: 0.25; 
-        z-index: -1; /* Inakaa nyuma ya maandishi na kadi zote */
-        pointer-events: none; /* Inahakikisha background haizuii ku-click vitu */
+        
+        /* ── SULUHISHO LA TATIZO LAKO ── */
+        z-index: 9999; /* Inaiweka juu ili ionekane kote */
+        pointer-events: none; /* Hii inaruhusu menu na button zibonyezeke */
+    }
+
+    /* Hakikisha Mobile Menu inakaa juu zaidi ya kila kitu */
+    #mobileNav {
+        z-index: 10000; 
     }
 </style>
-<%-- ────────────────────────────────────────── --%>
-
 </head>
 <body>
 
