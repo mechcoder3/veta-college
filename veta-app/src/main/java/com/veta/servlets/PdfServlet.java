@@ -63,7 +63,7 @@ public class PdfServlet extends HttpServlet {
                 com.itextpdf.text.BaseColor.GRAY);
 
         // Header
-        doc.add(new com.itextpdf.text.Paragraph("VETA COLLEGE TANZANIA", titleFont));
+        doc.add(new com.itextpdf.text.Paragraph("KIGOMA RVTSC", titleFont));
         doc.add(new com.itextpdf.text.Paragraph(
                 "Vocational Education & Training Authority(VETA)\nKigoma, Tanzania\n+255282804951 | kigomarvtsc@veta.go.tz",
                 labelFont));
@@ -127,7 +127,7 @@ public class PdfServlet extends HttpServlet {
             doc.add(com.itextpdf.text.Chunk.NEWLINE);
             doc.add(new com.itextpdf.text.Paragraph(
                 "Please proceed to the Payments page to generate a Control Number and pay your application fee of TZS 5,000 " +
-                "to confirm your place. For inquiries, contact admissions@vetacollege.ac.tz or +255282804951.", normalFont));
+                "to confirm your place. For inquiries, contact kigomarvtsc@veta.go.tz or +255282804951.", normalFont));
         }
         doc.add(com.itextpdf.text.Chunk.NEWLINE);
         doc.add(new com.itextpdf.text.Paragraph("Yours faithfully,", normalFont));
