@@ -27,20 +27,32 @@
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%); /* Inaiweka logo katikati kabisa */
-        width: 90%;  /* Inachukua 80% ya upana wa skrini */
-        height: 90%;
-        
-        /* Path ya picha yako ya best.jpeg */
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
         background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        
-        /* Uwazi: 0.05 (5%) - logo itakuwa kama kivuli kwa mbali sana */
-        opacity: 0.15; 
-        z-index: -1; /* Inakaa nyuma ya maandishi na kadi zote */
-        pointer-events: none; /* Inahakikisha background haizuii ku-click vitu */
+        opacity: 0.20;
+        z-index: 0; /* Badilisha kutoka -1 kuwa 0 */
+        pointer-events: none;
+    }
+
+    /* Hakikisha mobile menu iko juu ya background */
+    #mobileNav {
+        z-index: 9999 !important;
+        position: relative;
+    }
+
+    .menu-toggle {
+        z-index: 9999 !important;
+        position: relative;
+    }
+
+    .fixed-header-container {
+        z-index: 9999 !important;
+        position: relative;
     }
 </style>
 <%-- ────────────────────────────────────────── --%>
