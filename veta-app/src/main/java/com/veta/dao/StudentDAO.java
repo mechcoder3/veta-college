@@ -1,4 +1,5 @@
 package com.veta.dao;
+
 import com.veta.models.*;
 import com.veta.utils.DBConnection;
 import com.veta.utils.RefGenerator;
@@ -69,29 +70,25 @@ public class StudentDAO {
 
     private Student mapRow(ResultSet rs) throws SQLException {
         Student s = new Student();
-        s.setId(rs.getInt("id"));
-        s.setStudentNumber(rs.getString("student_number"));
-        s.setFullName(rs.getString("full_name"));
-        s.setNidaNumber(rs.getString("nida_number"));
-        s.setPhone(rs.getString("phone"));
-        s.setEmail(rs.getString("email"));
-        s.setCourseId(rs.getInt("course_id"));
-        s.setCourseName(rs.getString("course_name"));
-        s.setYearOfStudy(rs.getInt("year_of_study"));
-        s.setSemester(rs.getInt("semester"));
-        s.setIntakeYear(rs.getInt("intake_year"));
-        s.setStatus(rs.getString("status"));
-        s.setPhotoPath(rs.getString("photo_path"));
 
-        // ✅ Salama — haitaleta error kwa date mbaya
-        try { s.setEnrollmentDate(rs.getDate("enrollment_date")); } 
-        catch (Exception ignored) {}
-        
-        try { s.setDateOfBirth(rs.getDate("date_of_birth")); } 
-        catch (Exception ignored) {}
+        try { s.setId(rs.getInt("id")); } catch (Exception ignored) {}
+        try { s.setStudentNumber(rs.getString("student_number")); } catch (Exception ignored) {}
+        try { s.setFullName(rs.getString("full_name")); } catch (Exception ignored) {}
+        try { s.setNidaNumber(rs.getString("nida_number")); } catch (Exception ignored) {}
+        try { s.setPhone(rs.getString("phone")); } catch (Exception ignored) {}
+        try { s.setEmail(rs.getString("email")); } catch (Exception ignored) {}
+        try { s.setCourseId(rs.getInt("course_id")); } catch (Exception ignored) {}
+        try { s.setCourseName(rs.getString("course_name")); } catch (Exception ignored) {}
+        try { s.setYearOfStudy(rs.getInt("year_of_study")); } catch (Exception ignored) {}
+        try { s.setSemester(rs.getInt("semester")); } catch (Exception ignored) {}
+        try { s.setIntakeYear(rs.getInt("intake_year")); } catch (Exception ignored) {}
+        try { s.setStatus(rs.getString("status")); } catch (Exception ignored) {}
+        try { s.setPhotoPath(rs.getString("photo_path")); } catch (Exception ignored) {}
 
-        try { s.setCreatedAt(rs.getTimestamp("created_at")); } 
-        catch (Exception ignored) {}
+        // ✅ Dates — salama kabisa dhidi ya 0000-00-00
+        try { s.setEnrollmentDate(rs.getDate("enrollment_date")); } catch (Exception ignored) {}
+        try { s.setDateOfBirth(rs.getDate("date_of_birth")); } catch (Exception ignored) {}
+        try { s.setCreatedAt(rs.getTimestamp("created_at")); } catch (Exception ignored) {}
 
         return s;
     }

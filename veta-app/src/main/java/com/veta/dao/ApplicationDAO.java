@@ -23,7 +23,15 @@ public class ApplicationDAO {
             ps.setString(1, ref);
             ps.setString(2, app.getFullName());
             ps.setString(3, app.getNidaNumber());
-            ps.setString(4, app.getDateOfBirth());
+
+            // ✅ Rekebisha date_of_birth — kama tupu weka NULL
+            String dob = app.getDateOfBirth();
+            if (dob == null || dob.trim().isEmpty() || dob.equals("0000-00-00")) {
+                ps.setNull(4, java.sql.Types.DATE);
+            } else {
+                ps.setString(4, dob);
+            }
+
             ps.setString(5, app.getGender());
             ps.setString(6, app.getPhone());
             ps.setString(7, app.getEmail());
@@ -111,7 +119,6 @@ public class ApplicationDAO {
             ps.setString(4, refNumber);
             boolean updated = ps.executeUpdate() > 0;
 
-            // ✅ Kama imeidhinishwa - ongeza kwenye students table
             if (updated && "APPROVED".equalsIgnoreCase(newStatus)) {
 
                 // ✅ Pata sequence number
@@ -125,7 +132,7 @@ public class ApplicationDAO {
                 // ✅ Tengeneza student number
                 String stuNum = RefGenerator.studentNumber(sequence);
 
-                // ✅ Insert kwenye students - na student_number na enrollment_date
+                // ✅ Insert kwenye students
                 String insertStudent =
                     "INSERT IGNORE INTO students (student_number, full_name, nida_number, phone, email, " +
                     "gender, date_of_birth, region_of_origin, residential_address, " +
@@ -141,6 +148,10 @@ public class ApplicationDAO {
                     ps2.setString(2, refNumber);
                     ps2.executeUpdate();
                 }
+
+                // ✅ Tengeneza User account kwa student
+                UserDAO userDAO = new UserDAO();
+                userDAO.createStudentUsers();
             }
             return updated;
         }
@@ -179,7 +190,10 @@ public class ApplicationDAO {
         a.setRefNumber(rs.getString("ref_number"));
         a.setFullName(rs.getString("full_name"));
         a.setNidaNumber(rs.getString("nida_number"));
-        a.setDateOfBirth(rs.getString("date_of_birth"));
+
+        // ✅ Salama — haitaleta error kwa date mbaya
+        try { a.setDateOfBirth(rs.getString("date_of_birth")); } catch (Exception ignored) {}
+
         a.setGender(rs.getString("gender"));
         a.setPhone(rs.getString("phone"));
         a.setEmail(rs.getString("email"));
