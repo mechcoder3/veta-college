@@ -237,7 +237,7 @@ button { cursor: pointer; font-family: var(--fb); transition: all var(--tr); }
    LOGO — Rangi Halisi 100% (Kwa PNG Original)
    ═══════════════════════════════════════════ */
 .logo-box img {
-  height: 85px; /* Unaweza kuongeza urefu hapa kama unataka ziwe kubwa zaidi */
+  height: 95px; /* Unaweza kuongeza urefu hapa kama unataka ziwe kubwa zaidi */
   width: auto;
   display: block; 
   
@@ -366,7 +366,7 @@ button { cursor: pointer; font-family: var(--fb); transition: all var(--tr); }
 
     /* Logo ziwe ndogo zaidi kwenye simu */
     .logo-box img {
-        height: 30px; 
+        height: 20px; 
     }
 
     /* Jina la Chuo (KIGOMA RVTSC) - Linakuwa dogo na kukaa katikati kwenye simu */
