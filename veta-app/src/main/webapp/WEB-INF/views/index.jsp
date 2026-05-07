@@ -14,7 +14,7 @@
 <section id="leadership">
   <div class="wrap">
     <div class="leader-intro">
-      <span class="leader-kicker">🏛️ <% if(sw){ %>Uongozi wa Chuo<% } else { %>College Management<% } %></span>
+      <span class="leader-kicker">🏛️ <% if(sw){ %>Uongozi wa Chuo<% } else { %>Center Management<% } %></span>
       <h2 class="leader-title"><% if(sw){ %>Timu ya Uongozi Wetu<% } else { %>Meet Our Leadership Team<% } %></h2>
       <p class="leader-sub"><% if(sw){ %>Wataalamu waliojitoa kwa ubora wa elimu ya ufundi<% } else { %>Experienced professionals dedicated to excellence in vocational education<% } %></p>
     </div>
@@ -96,7 +96,7 @@
   <div class="wrap">
     <div class="hero-content">
       <div class="hero-badge">🇹🇿 <% if(sw){ %>Imethibitishwa na Serikali · Ngazi ya NVA 1–3 · Est. 2005<% } else { %>Government Accredited · NVA Level 1–3 · Est. 2005<% } %></div>
-      <h1 class="hero-title"><% if(sw){ %>Kujenga Nguvu Kazi Yenye Ujuzi wa Tanzania<% } else { %>Building Tanzania's Skilled Workforce<% } %></h1>
+      <h1 class="hero-title"><% if(sw){ %>Nguvu Kazi Yenye Ujuzi mustakabali wa Tanzania<% } else { %>Skilled labour force the future of Tanzania<% } %></h1>
       <p class="hero-desc"><%= sw?
           "Mafunzo ya ufundi ya kiwango cha dunia katika uhandisi, TEHAMA, magari, ujenzi na zaidi." :
           "World-class vocational training in engineering, ICT, automotive, construction and more." %></p>
