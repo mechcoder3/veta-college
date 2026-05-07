@@ -5,10 +5,28 @@ import com.veta.utils.DBConnection;
 import com.veta.utils.RefGenerator;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ApplicationDAO {
+
+    // ✅ Helper: badilisha "MM/dd/yyyy" → "yyyy-MM-dd"
+    private String toMySQLDate(String input) {
+        if (input == null || input.trim().isEmpty() || input.equals("0000-00-00")) {
+            return null;
+        }
+        try {
+            SimpleDateFormat fromUser = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat toMySQL = new SimpleDateFormat("yyyy-MM-dd");
+            Date parsed = fromUser.parse(input.trim());
+            return toMySQL.format(parsed);
+        } catch (Exception e) {
+            // Kama format si sahihi, jaribu kurudisha kama ilivyo (labda tayari yyyy-MM-dd)
+            return input.trim();
+        }
+    }
 
     public String insertApplication(Application app) throws SQLException {
         String ref = RefGenerator.applicationRef();
@@ -24,12 +42,12 @@ public class ApplicationDAO {
             ps.setString(2, app.getFullName());
             ps.setString(3, app.getNidaNumber());
 
-            // ✅ Rekebisha date_of_birth — kama tupu weka NULL
-            String dob = app.getDateOfBirth();
-            if (dob == null || dob.trim().isEmpty() || dob.equals("0000-00-00")) {
+            // ✅ Badilisha format ya date
+            String dob = toMySQLDate(app.getDateOfBirth());
+            if (dob == null) {
                 ps.setNull(4, java.sql.Types.DATE);
             } else {
-                ps.setString(4, dob);
+                ps.setString(4, dob);  // sasa ni yyyy-MM-dd
             }
 
             ps.setString(5, app.getGender());
@@ -132,20 +150,45 @@ public class ApplicationDAO {
                 // ✅ Tengeneza student number
                 String stuNum = RefGenerator.studentNumber(sequence);
 
-                // ✅ Insert kwenye students
+                // ✅ Pata date_of_birth iliyobadilishwa tayari kwenye applications (sasa yyyy-MM-dd)
+                String dobMySQL = null;
+                String getDobSql = "SELECT date_of_birth FROM applications WHERE ref_number=?";
+                try (PreparedStatement psDob = conn.prepareStatement(getDobSql)) {
+                    psDob.setString(1, refNumber);
+                    try (ResultSet rsDob = psDob.executeQuery()) {
+                        if (rsDob.next()) {
+                            // Ikiwa db ina DATE type, getString inarudisha yyyy-MM-dd tayari
+                            dobMySQL = rsDob.getString("date_of_birth");
+                        }
+                    }
+                }
+
+                // ✅ Ikiwa bado ni mbaya (0000-00-00) au null, weka NULL
+                if (dobMySQL == null || dobMySQL.equals("0000-00-00") || dobMySQL.isEmpty()) {
+                    dobMySQL = null;
+                } else {
+                    // Bado jaribu kubadilisha ikiwa ilibakia format mbaya (safety)
+                    dobMySQL = toMySQLDate(dobMySQL); // Hiari — ikiwa tayari ni yyyy-MM-dd, itarudisha sawa
+                }
+
+                // ✅ Insert kwenye students – tumia prepared statement ya kawaida kuepuka STR_TO_DATE
                 String insertStudent =
                     "INSERT IGNORE INTO students (student_number, full_name, nida_number, phone, email, " +
                     "gender, date_of_birth, region_of_origin, residential_address, " +
                     "course_id, intake_period, enrollment_date, status) " +
                     "SELECT ?, full_name, nida_number, phone, email, gender, " +
-                    "NULLIF(date_of_birth, '0000-00-00'), " +
-                    "region_of_origin, residential_address, course_id, intake_period, " +
+                    "?, region_of_origin, residential_address, course_id, intake_period, " +
                     "CURDATE(), 'ACTIVE' " +
                     "FROM applications WHERE ref_number=?";
 
                 try (PreparedStatement ps2 = conn.prepareStatement(insertStudent)) {
                     ps2.setString(1, stuNum);
-                    ps2.setString(2, refNumber);
+                    if (dobMySQL == null) {
+                        ps2.setNull(2, java.sql.Types.DATE);
+                    } else {
+                        ps2.setString(2, dobMySQL);
+                    }
+                    ps2.setString(3, refNumber);
                     ps2.executeUpdate();
                 }
 
