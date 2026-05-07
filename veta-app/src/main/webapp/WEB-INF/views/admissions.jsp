@@ -514,8 +514,8 @@ boolean sw = "sw".equals(session.getAttribute("lang"));
 					</div>
 					<div class="form-check">
 						<input type="checkbox" id="terms" name="terms" required> <label
-							for="terms"><%=sw ? "Ninathibitisha kwamba taarifa zote ni za kweli na ninakubali masharti ya Chuo cha VETA."
-		: "I confirm all information is accurate and I accept VETA College's terms and conditions."%></label>
+							for="terms"><%=sw ? "Ninathibitisha kwamba taarifa zote ni za kweli na ninakubali masharti ya Chuo cha VETA KIGOMA."
+		: "I confirm all information is accurate and I accept KIGOMA RVTSC'S terms and conditions."%></label>
 					</div>
 					<button type="submit" class="btn btn-primary btn-lg btn-block">
 						📤
@@ -583,10 +583,10 @@ boolean sw = "sw".equals(session.getAttribute("lang"));
 						💳 <span>
 							<%
 							if (sw) {
-							%>Tengeneza nambari ya udhibiti, lipa TZS 20,000<%
+							%>Tengeneza nambari ya udhibiti, lipa TZS 5,000<%
 							} else {
 							%>Generate
-							control number, pay TZS 20,000<%
+							control number, pay TZS 5,000<%
 							}
 							%>
 						</span>
@@ -616,12 +616,12 @@ boolean sw = "sw".equals(session.getAttribute("lang"));
 					%>
 					</h4>
 					<div class="asi">
-						🟢 <span>January 2026 — <%
+						🟢 <span>January 2027 — <%
 					if (sw) {
-					%>Mwisho: Novemba 30, 2025<%
+					%>Mwisho: Novemba 30, 2026<%
 					} else {
 					%>Deadline:
-							30 Nov 2025<%
+							30 Nov 2026<%
 					}
 					%></span>
 					</div>
@@ -636,7 +636,7 @@ boolean sw = "sw".equals(session.getAttribute("lang"));
 					%></span>
 					</div>
 					<div class="asi">
-						📞 <span>+255 754 000 111</span>
+						📞 <span>+255282804951</span>
 					</div>
 				</div>
 				<div class="aside-card" style="border-top-color: var(--green)">
@@ -654,10 +654,10 @@ boolean sw = "sw".equals(session.getAttribute("lang"));
 						📌 <span>
 							<%
 							if (sw) {
-							%>Ada ya Maombi: TZS 20,000<%
+							%>Ada ya Maombi: TZS 5,000<%
 							} else {
 							%>Application Fee:
-							TZS 20,000<%
+							TZS 5,000<%
 							}
 							%>
 						</span>
@@ -666,10 +666,10 @@ boolean sw = "sw".equals(session.getAttribute("lang"));
 						📌 <span>
 							<%
 							if (sw) {
-							%>Usajili: TZS 50,000 (mara moja)<%
+							%>Usajili: TZS 5,000 (mara moja)<%
 							} else {
 							%>Registration:
-							TZS 50,000 (once)<%
+							TZS 5,000 (once)<%
 							}
 							%>
 						</span>
@@ -678,10 +678,10 @@ boolean sw = "sw".equals(session.getAttribute("lang"));
 						📌 <span>
 							<%
 							if (sw) {
-							%>Masomo: TZS 700K–920K/mwaka<%
+							%>Masomo: TZS 60,000 KUTWA–120,000 BWENI/mwaka<%
 							} else {
 							%>Tuition: TZS
-							700K–920K/yr<%
+							60,000 Day–120,000 Boarding/yr<%
 							}
 							%>
 						</span>
@@ -690,10 +690,10 @@ boolean sw = "sw".equals(session.getAttribute("lang"));
 						📌 <span>
 							<%
 							if (sw) {
-							%>Mtihani: TZS 80,000/mwaka<%
+							%>Mtihani: TZS 30,000/mwaka<%
 							} else {
 							%>Exam: TZS
-							80,000/yr<%
+							30,000/yr<%
 							}
 							%>
 						</span>
