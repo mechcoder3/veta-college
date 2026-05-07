@@ -14,37 +14,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
-<%-- ── ONGEZA HII STYLE KWA AJILI YA WATERMARK ── --%>
 <style>
-    body {
-        position: relative;
-        min-height: 100vh;
-        margin: 0;
-    }
-
-    body::before {
-        content: "";
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); /* Inaiweka logo katikati kabisa */
-        width: 90%;  /* Inachukua 80% ya upana wa skrini */
-        height: 90%;
-        
-        /* Path ya picha yako ya best.jpeg */
-        background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        
-        /* Uwazi: 0.05 (5%) - logo itakuwa kama kivuli kwa mbali sana */
-        opacity: 0.15; 
-        z-index: -1; /* Inakaa nyuma ya maandishi na kadi zote */
-        pointer-events: none; /* Inahakikisha background haizuii ku-click vitu */
-    }
+  /* ✅ Background Logo kwenye pages zote - haizuii click yoyote */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 700px;
+    min-width: 292px;
+    aspect-ratio: 1 / 1;
+    background-image: url('${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.05; /* ✅ Faint sana - haionekani wazi */
+    pointer-events: none; /* ✅ Haizuii click yoyote */
+    z-index: 0;
+  }
 </style>
-<%-- ────────────────────────────────────────── --%>
-
 </head>
 <body>
 
@@ -124,4 +114,22 @@
         <button class="menu-toggle" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
       </div>
     </div>
+
+</div>
+
+<%-- 4. MOBILE MENU --%>
+<div id="mobileNav">
+  <div class="mobile-inner">
+    <a href="${pageContext.request.contextPath}/home">🏠 <% if(sw){ %>Nyumbani<% } else { %>Home<% } %></a>
+    <a href="${pageContext.request.contextPath}/about">ℹ️ <% if(sw){ %>Kuhusu Sisi<% } else { %>About Us<% } %></a>
+    <a href="${pageContext.request.contextPath}/courses?type=short">⚡ <% if(sw){ %>Kozi Fupi<% } else { %>Short Courses<% } %></a>
+    <a href="${pageContext.request.contextPath}/courses?type=long">🎓 <% if(sw){ %>Kozi Ndefu<% } else { %>Long Courses<% } %></a>
+    <a href="${pageContext.request.contextPath}/admissions">📝 <% if(sw){ %>Maombi<% } else { %>Admissions<% } %></a>
+    <a href="${pageContext.request.contextPath}/production">🔨 <% if(sw){ %>Uzalishaji<% } else { %>Production<% } %></a>
+    <a href="${pageContext.request.contextPath}/payments">💳 <% if(sw){ %>Malipo<% } else { %>Payments<% } %></a>
+    <a href="${pageContext.request.contextPath}/news">📰 <% if(sw){ %>Habari<% } else { %>News<% } %></a>
+    <a href="${pageContext.request.contextPath}/portal">🖥️ <% if(sw){ %>Tovuti ya Wanafunzi<% } else { %>Student Portal<% } %></a>
+    <a href="${pageContext.request.contextPath}/contact">📞 <% if(sw){ %>Wasiliana<% } else { %>Contact<% } %></a>
+    <a href="${pageContext.request.contextPath}/admin">🔐 <% if(sw){ %>Msimamizi<% } else { %>Admin Login<% } %></a>
+  </div>
 </div>

@@ -196,7 +196,7 @@
     <div class="amc">
       <div class="atop"><h2><% if(sw){ %>Usimamizi wa Kozi<% } else { %>Course Management<% } %></h2></div>
       <div class="tw"><table class="at2">
-        <thead><tr><th><% if(sw){ %>Jina la Kozi<% } else { %>Course Name<% } %></th><th><% if(sw){ %>Aina<% } else { %>Type<% } %></th><th><% if(sw){ %>Muda<% } else { %>Duration<% } %></th><th><% if(sw){ %>Ada/Mwaka<% } else { %>Fee/yr<% } %></th><th>NTA</th><th><% if(sw){ %>Waliandikishwa<% } else { %>Enrolled<% } %></th><th><% if(sw){ %>Hali<% } else { %>Status<% } %></th></tr></thead>
+        <thead><tr><th><% if(sw){ %>Jina la Kozi<% } else { %>Course Name<% } %></th><th><% if(sw){ %>Aina<% } else { %>Type<% } %></th><th><% if(sw){ %>Muda<% } else { %>Duration<% } %></th><th><% if(sw){ %>Ada/Mwaka<% } else { %>Fee/yr<% } %></th><th>NVA</th><th><% if(sw){ %>Waliandikishwa<% } else { %>Enrolled<% } %></th><th><% if(sw){ %>Hali<% } else { %>Status<% } %></th></tr></thead>
         <tbody>
           <c:forEach var="c" items="${courses}">
           <tr>

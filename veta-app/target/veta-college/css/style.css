@@ -237,7 +237,7 @@ button { cursor: pointer; font-family: var(--fb); transition: all var(--tr); }
    LOGO — Rangi Halisi 100% (Kwa PNG Original)
    ═══════════════════════════════════════════ */
 .logo-box img {
-  height: 85px; /* Unaweza kuongeza urefu hapa kama unataka ziwe kubwa zaidi */
+  height: 95px; /* Unaweza kuongeza urefu hapa kama unataka ziwe kubwa zaidi */
   width: auto;
   display: block; 
   
@@ -366,7 +366,7 @@ button { cursor: pointer; font-family: var(--fb); transition: all var(--tr); }
 
     /* Logo ziwe ndogo zaidi kwenye simu */
     .logo-box img {
-        height: 30px; 
+        height: 20px; 
     }
 
     /* Jina la Chuo (KIGOMA RVTSC) - Linakuwa dogo na kukaa katikati kwenye simu */
@@ -601,8 +601,8 @@ button { cursor: pointer; font-family: var(--fb); transition: all var(--tr); }
 
 /* Duara la picha - Tumeongeza size iwe kubwa zaidi (150px) */
 .staff-avatar {
-    width: 150px; 
-    height: 150px;
+    width: 220px;
+  height: 220px;
     border-radius: 50%;
     margin: 0 auto 15px;
     background: rgba(255, 255, 255, .1);
@@ -618,8 +618,9 @@ button { cursor: pointer; font-family: var(--fb); transition: all var(--tr); }
     width: 100%;
     height: 100%;
     object-fit: cover; /* Inafanya picha ijaze duara bila kuvutwa vibaya */
-    object-position: center; /* Inahakikisha katikati ya picha ndiyo inaonekana */
-    display: block;
+  display:block;
+  object-fit: cover;
+  object-position: 50% 0%;
 }
 /* SIZE NA MNG'AO HAPA */
 .staff-name { 
@@ -711,7 +712,7 @@ button { cursor: pointer; font-family: var(--fb); transition: all var(--tr); }
 .prog-card{background:#fff;border-radius:var(--r12);box-shadow:var(--s3);overflow:hidden;transition:all var(--tr);display:flex;flex-direction:column}
 .prog-card:hover{transform:translateY(-5px);box-shadow:var(--s5)}
 .prog-head{padding:24px 21px 17px}.prog-icon{font-size:1.9rem;margin-bottom:9px}.prog-type{font-size:.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.prog-head h3{font-size:1rem;color:#fff;margin-bottom:3px}.prog-nta{font-size:.72rem;color:rgba(255,255,255,.58)}
+.prog-head h3{font-size:1rem;color:#fff;margin-bottom:3px}.prog-nva{font-size:.72rem;color:rgba(255,255,255,.58)}
 .prog-body{padding:16px 21px;flex:1}.prog-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--g200);font-size:.82rem}.prog-row:last-of-type{border-bottom:none}
 .prl{color:var(--g400);font-weight:600}.prv{color:var(--navy);font-weight:700}.prog-foot{padding:14px 21px;border-top:1px solid var(--g100)}
 
