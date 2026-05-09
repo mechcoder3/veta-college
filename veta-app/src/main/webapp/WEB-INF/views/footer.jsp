@@ -76,7 +76,7 @@
         <a href="#"><% if(sw){ %>Sera ya Faragha<% } else { %>Privacy Policy<% } %></a>
         <span class="sep">|</span>
         <a href="#"><% if(sw){ %>Masharti<% } else { %>Terms of Use<% } %></a>
-        <span class="govt-badge"><% if(sw){ %>Imeidhinishwa na VETA makao makuu<% } else { %>VETE HQ. Accredited<% } %></span>
+        <span class="govt-badge"><% if(sw){ %>Imeidhinishwa na VETA makao makuu<% } else { %>VETA HQ. Accredited<% } %></span>
       </div>
     </div>
   </div>
