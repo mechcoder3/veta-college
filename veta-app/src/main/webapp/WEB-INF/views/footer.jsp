@@ -12,7 +12,6 @@
     padding: 2px;
     overflow: hidden;
     border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.3);
 ">
     <img 
         src="${pageContext.request.contextPath}/Images/VETA LOGO EMBOSED.png" 

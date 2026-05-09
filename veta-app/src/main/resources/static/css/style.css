@@ -2226,8 +2226,8 @@ footer {
 .footer-logo {
 	display: flex;
 	align-items: center;
-	gap: 10px;
-	margin-bottom: 14px
+	gap: 8px;
+	margin-bottom: 10px
 }
 
 .footer-name {
