@@ -60,17 +60,15 @@
    na urefu wa .fixed-header-container
    ═══════════════════════════════════════════ */
 body {
-	font-family: var(--fb);
-	color: var(--g700);
-	background: linear-gradient(145deg, #C9E8F8 0%, #D8EEF5 35%, #E4F3FB 65%, #EAF7FF
-		100%);
-	background-attachment: fixed;
-	min-height: 100vh;
-	line-height: 1.65;
-	-webkit-font-smoothing: antialiased;
-	margin: 0;
-	/* MUHIMU: padding-top inazuia content kujificha nyuma ya navbar */
-	padding-top: var(--total-header-height);
+    font-family: var(--fb);
+    color: var(--g700);
+    background: linear-gradient(145deg, #C9E8F8 0%, #D8EEF5 35%, #E4F3FB 65%, #EAF7FF 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding-top: calc(var(--total-header-height) + 20px); /* ✅ Ongeza 20px */
 }
 
 h1, h2, h3 {
