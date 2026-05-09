@@ -605,8 +605,7 @@ button {
 		100%);
 	padding: 80px 0 64px;
 	position: relative;
-	 overflow: visible;
-    scroll-margin-top: var(--total-header-height); /* ✅ Ongeza hii */
+	overflow: hidden;
 }
 
 .leader-intro {
