@@ -68,7 +68,7 @@ body {
   -webkit-font-smoothing: antialiased;
   margin: 0;
   /* MUHIMU: padding-top inazuia content kujificha nyuma ya navbar */
-  padding-top: var(--total-header-height);
+   padding-top: calc(var(--total-header-height) + 20px);
 }
 
 h1,h2,h3 { font-family: var(--fh); line-height: 1.25; color: var(--navy); }
