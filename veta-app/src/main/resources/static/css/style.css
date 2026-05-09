@@ -68,7 +68,7 @@ body {
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     margin: 0;
-    padding-top: calc(var(--total-header-height) + 20px); /* ✅ Ongeza 20px */
+   padding-top: 220px !important;
 }
 
 h1, h2, h3 {
@@ -603,8 +603,9 @@ button {
 		100%);
 	padding: 80px 0 64px;
 	position: relative;
-	overflow: visible;
+	overflow: visible; 
     scroll-margin-top: var(--total-header-height); 
+    padding-top: 60px;
 }
 
 .leader-intro {
