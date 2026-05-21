@@ -29,7 +29,7 @@
           <a href="tel:+255282804951" style="font-size:.85rem;color:var(--g600);display:block;margin-bottom:2px">+255282804951 (<% if(sw){ %>Ofisi Kuu<% } else { %>Main Office<% } %>)</a>
           <a href="tel:+255282804951" style="font-size:.85rem;color:var(--g600);display:block;margin-bottom:2px">+255282804951 (<% if(sw){ %>Udahili<% } else { %>Admissions<% } %>)</a>
           <a href="tel:+255282804951" style="font-size:.85rem;color:var(--g600);display:block;margin-bottom:2px">+255282804951 (<% if(sw){ %>Malipo<% } else { %>Payments<% } %>)</a>
-          <a href="tel:+255282804951" style="font-size:.85rem;color:var(--g600);display:block">+255282804951 (<% if(sw){ %>Uzalishaji<% } else { %>Production<% } %>)</a>
+          <a href="tel:+255282804951" style="font-size:.85rem;color:var(--g600);display:block">+255765765790 (<% if(sw){ %>Uzalishaji<% } else { %>Production<% } %>)</a>
         </div>
       </div>
       <div style="display:flex;gap:14px;margin-bottom:20px">
