@@ -44,39 +44,69 @@ body::before {
 	z-index: 0;
 }
 
-/* === RESPONSIVE HEADER & LOGO SIZE TUNING === */
+/* === UTATUZI: Logo na Maandishi kutokatwa (Responsive Header) === */
+#nav-header {
+	height: auto !important; /* Inaruhusu header kutanuka kulingana na maandishi */
+	min-height: 90px;
+	padding: 10px 0;
+	background-size: cover;
+	background-position: center;
+}
 .nav-header-inner {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 10px 5%;
-	gap: 10px;
+	padding: 5px 4%;
+	gap: 12px;
+	width: 100%;
+	box-sizing: border-box;
+}
+.logo-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
 }
 .logo-box img {
-	max-width: 100%;
+	width: clamp(45px, 7vw, 75px); /* Logo haitakuwa kubwa sana wala ndogo sana */
 	height: auto;
-	width: clamp(45px, 8vw, 85px); /* Inajipanga yenyewe kulingana na kifaa */
+	object-fit: contain;
 }
 .college-name-left {
-	font-size: clamp(14px, 2vw, 22px);
+	font-size: clamp(13px, 1.8vw, 20px);
 	font-weight: bold;
+	white-space: nowrap; /* Inazuia jina kukatwa ovyo */
 }
 .government-titles-center {
 	text-align: center;
 	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 .title-country {
-	font-size: clamp(11px, 1.8vw, 18px);
+	font-size: clamp(10px, 1.6vw, 16px);
 	font-weight: 700;
 	line-height: 1.2;
 }
 .title-subtext {
-	font-size: clamp(9px, 1.4vw, 13px);
+	font-size: clamp(8.5px, 1.3vw, 12px);
 	line-height: 1.3;
 	margin-top: 2px;
 }
 
-/* === FIX: Mobile menu KUSHOTO, Bluu, Maandishi Nyeupe na Upana Mdogo === */
+/* Kwenye simu ndogo sana, vitu vishuke chini kuliko kubanana na kukatika */
+@media (max-width: 480px) {
+	.nav-header-inner {
+		gap: 6px;
+		padding: 5px 2%;
+	}
+	.college-name-left {
+		display: none; /* Mara nyingi kwenye simu jina hili linafichwa kwa kuwa nembo na maelezo ya kati yanatosha */
+	}
+}
+
+/* === UTATUZI WA SCROLL: Mobile menu KUSHOTO yenye Scroll huru === */
 #mobileNavBackdrop {
 	display: none;
 	position: fixed !important;
@@ -97,42 +127,51 @@ body::before {
 #mobileNav {
 	position: fixed !important;
 	top: 0;
-	left: 0; /* Imewekwa upande wa Kushoto */
-	width: min(70vw, 260px); /* Upana umepunguzwa */
-	height: 100vh;
-	overflow-y: auto;
-	-webkit-overflow-scrolling: touch;
+	left: 0; 
+	width: min(75vw, 260px); 
+	height: 100% !important; /* Badala ya 100vh ili kuzuia matatizo ya simu */
+	max-height: 100vh;
 	background: #002147; /* Rangi ya Bluu nzito */
 	z-index: 99999;
-	transform: translateX(-100%); /* Inatokea kushoto */
+	transform: translateX(-100%); 
 	transition: transform 0.3s ease;
 	box-shadow: 6px 0 20px rgba(0, 0, 0, 0.3);
+	
+	/* Hapa ndio suluhisho la kuscroll */
+	overflow-y: auto !important;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch !important; 
 }
 #mobileNav.open {
 	transform: translateX(0);
 }
+
+/* Inazuia tu background ya nyuma isiscroll, lakini inaruhusu menu iscrolo */
 body.menu-open {
-	overflow: hidden;
+	overflow: hidden !important;
+	position: fixed;
+	width: 100%;
 }
 
 .mobile-close-btn {
 	display: block;
-	margin: 12px auto 12px 18px; /* Kushoto zaidi karibu na maandishi */
+	margin: 12px auto 12px 18px; 
 	font-size: 26px;
 	line-height: 1;
 	background: none;
 	border: none;
 	cursor: pointer;
 	padding: 4px 8px;
-	color: #ffffff; /* Rangi nyeupe */
+	color: #ffffff; 
 }
 .mobile-inner {
-	padding-top: 10px;
+	padding-top: 5px;
+	padding-bottom: 40px; /* Nafasi ya ziada chini kabisa baada ya kulink kote ili isigomee mwishoni */
 }
 .mobile-inner a {
 	display: block;
-	padding: 12px 20px;
-	color: #ffffff !important; /* Hakikisha maandishi ni meupe kabisa */
+	padding: 14px 20px;
+	color: #ffffff !important; 
 	text-decoration: none;
 	font-family: 'Inter', sans-serif;
 	font-size: 15px;
@@ -141,7 +180,7 @@ body.menu-open {
 }
 .mobile-inner a:hover {
 	background: rgba(255, 255, 255, 0.1);
-	color: #ffeb3b !important; /* Njano ya kuvutia mtumiaji anapoguza */
+	color: #ffeb3b !important; 
 }
 </style>
 </head>
