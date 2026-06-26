@@ -7,8 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
-
-@WebServlet("/home")
+@WebServlet({"/home", "/", "/index"})
 public class HomeServlet extends HttpServlet {
     private final StaffDAO staffDAO = new StaffDAO();
     private final CourseDAO courseDAO = new CourseDAO();
