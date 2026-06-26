@@ -23,7 +23,7 @@ boolean sw = "sw".equals(lang);
 	href="${pageContext.request.contextPath}/css/style.css">
 
 <style>
-/* Background Logo kwenye pages zote - haizuii click yoyote */
+/* Background Logo kwenye pages zote */
 body::before {
 	content: '';
 	position: fixed;
@@ -44,8 +44,39 @@ body::before {
 	z-index: 0;
 }
 
-/* === FIX: Mobile menu sasa ni SIDEBAR (sio full screen),
-   inafunguka kutoka kulia, ina scroll yake, na backdrop nyuma === */
+/* === RESPONSIVE HEADER & LOGO SIZE TUNING === */
+.nav-header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 5%;
+	gap: 10px;
+}
+.logo-box img {
+	max-width: 100%;
+	height: auto;
+	width: clamp(45px, 8vw, 85px); /* Inajipanga yenyewe kulingana na kifaa */
+}
+.college-name-left {
+	font-size: clamp(14px, 2vw, 22px);
+	font-weight: bold;
+}
+.government-titles-center {
+	text-align: center;
+	flex: 1;
+}
+.title-country {
+	font-size: clamp(11px, 1.8vw, 18px);
+	font-weight: 700;
+	line-height: 1.2;
+}
+.title-subtext {
+	font-size: clamp(9px, 1.4vw, 13px);
+	line-height: 1.3;
+	margin-top: 2px;
+}
+
+/* === FIX: Mobile menu KUSHOTO, Bluu, Maandishi Nyeupe na Upana Mdogo === */
 #mobileNavBackdrop {
 	display: none;
 	position: fixed !important;
@@ -53,7 +84,7 @@ body::before {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.6);
 	z-index: 99998;
 	opacity: 0;
 	transition: opacity 0.3s ease;
@@ -66,16 +97,16 @@ body::before {
 #mobileNav {
 	position: fixed !important;
 	top: 0;
-	right: 0;
-	width: min(82vw, 300px);
+	left: 0; /* Imewekwa upande wa Kushoto */
+	width: min(70vw, 260px); /* Upana umepunguzwa */
 	height: 100vh;
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
-	background: #ffffff;
+	background: #002147; /* Rangi ya Bluu nzito */
 	z-index: 99999;
-	transform: translateX(100%);
+	transform: translateX(-100%); /* Inatokea kushoto */
 	transition: transform 0.3s ease;
-	box-shadow: -6px 0 20px rgba(0, 0, 0, 0.25);
+	box-shadow: 6px 0 20px rgba(0, 0, 0, 0.3);
 }
 #mobileNav.open {
 	transform: translateX(0);
@@ -86,18 +117,31 @@ body.menu-open {
 
 .mobile-close-btn {
 	display: block;
-	margin: 8px 8px 8px auto;
-	font-size: 28px;
+	margin: 12px auto 12px 18px; /* Kushoto zaidi karibu na maandishi */
+	font-size: 26px;
 	line-height: 1;
 	background: none;
 	border: none;
 	cursor: pointer;
-	padding: 6px 14px;
-	color: #333;
+	padding: 4px 8px;
+	color: #ffffff; /* Rangi nyeupe */
+}
+.mobile-inner {
+	padding-top: 10px;
 }
 .mobile-inner a {
 	display: block;
-	padding: 12px 18px;
+	padding: 12px 20px;
+	color: #ffffff !important; /* Hakikisha maandishi ni meupe kabisa */
+	text-decoration: none;
+	font-family: 'Inter', sans-serif;
+	font-size: 15px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+	transition: background 0.2s ease;
+}
+.mobile-inner a:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: #ffeb3b !important; /* Njano ya kuvutia mtumiaji anapoguza */
 }
 </style>
 </head>
@@ -363,4 +407,3 @@ body.menu-open {
 			document.body.classList.remove('menu-open');
 		}
 	</script>
-
