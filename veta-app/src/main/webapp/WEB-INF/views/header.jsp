@@ -44,22 +44,60 @@ body::before {
 	z-index: 0;
 }
 
-/* === FIX: Mobile menu === */
-#mobileNav {
+/* === FIX: Mobile menu sasa ni SIDEBAR (sio full screen),
+   inafunguka kutoka kulia, ina scroll yake, na backdrop nyuma === */
+#mobileNavBackdrop {
 	display: none;
 	position: fixed !important;
 	top: 0;
 	left: 0;
 	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 99998;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+#mobileNavBackdrop.open {
+	display: block;
+	opacity: 1;
+}
+
+#mobileNav {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+	width: min(82vw, 300px);
 	height: 100vh;
 	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	background: #ffffff;
 	z-index: 99999;
+	transform: translateX(100%);
+	transition: transform 0.3s ease;
+	box-shadow: -6px 0 20px rgba(0, 0, 0, 0.25);
 }
 #mobileNav.open {
-	display: block;
+	transform: translateX(0);
 }
 body.menu-open {
 	overflow: hidden;
+}
+
+.mobile-close-btn {
+	display: block;
+	margin: 8px 8px 8px auto;
+	font-size: 28px;
+	line-height: 1;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 6px 14px;
+	color: #333;
+}
+.mobile-inner a {
+	display: block;
+	padding: 12px 18px;
 }
 </style>
 </head>
@@ -226,16 +264,19 @@ body.menu-open {
  %>
 					</a>
 				</div>
-				<button class="menu-toggle"
-					onclick="document.getElementById('mobileNav').classList.toggle('open'); document.body.classList.toggle('menu-open')">☰</button>
+				<button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
 			</div>
 		</div>
 
 	</div>
 
-	<%-- 4. MOBILE MENU --%>
+	<%-- 4. MOBILE MENU BACKDROP --%>
+	<div id="mobileNavBackdrop" onclick="closeMobileMenu()"></div>
+
+	<%-- 5. MOBILE MENU --%>
 	<div id="mobileNav">
 		<div class="mobile-inner">
+			<button class="mobile-close-btn" onclick="closeMobileMenu()">&times;</button>
 			<a href="${pageContext.request.contextPath}/home">🏠 <%
 			if (sw) {
 			%>Nyumbani<%
@@ -309,4 +350,17 @@ body.menu-open {
  %></a>
 		</div>
 	</div>
+
+	<script>
+		function toggleMobileMenu() {
+			document.getElementById('mobileNav').classList.toggle('open');
+			document.getElementById('mobileNavBackdrop').classList.toggle('open');
+			document.body.classList.toggle('menu-open');
+		}
+		function closeMobileMenu() {
+			document.getElementById('mobileNav').classList.remove('open');
+			document.getElementById('mobileNavBackdrop').classList.remove('open');
+			document.body.classList.remove('menu-open');
+		}
+	</script>
 
