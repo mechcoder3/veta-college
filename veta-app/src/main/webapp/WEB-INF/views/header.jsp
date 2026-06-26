@@ -68,7 +68,8 @@ body::before {
 	flex-shrink: 0;
 }
 .logo-box img {
-	width: clamp(45px, 7vw, 75px); /* Logo haitakuwa kubwa sana wala ndogo sana */
+	/* IMEBADILISHWA: Nembo imezidishwa ukubwa hapa */
+	width: clamp(55px, 9vw, 95px); 
 	height: auto;
 	object-fit: contain;
 }
@@ -76,6 +77,7 @@ body::before {
 	font-size: clamp(13px, 1.8vw, 20px);
 	font-weight: bold;
 	white-space: nowrap; /* Inazuia jina kukatwa ovyo */
+
 }
 .government-titles-center {
 	text-align: center;
@@ -98,8 +100,8 @@ body::before {
 /* Kwenye simu ndogo sana, vitu vishuke chini kuliko kubanana na kukatika */
 @media (max-width: 480px) {
 	.nav-header-inner {
-		gap: 6px;
-		padding: 5px 2%;
+		gap: 8px;
+		padding: 3px 2%;
 	}
 	.college-name-left {
 		display: none; /* Mara nyingi kwenye simu jina hili linafichwa kwa kuwa nembo na maelezo ya kati yanatosha */
