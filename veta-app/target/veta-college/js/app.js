@@ -146,4 +146,28 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => a.remove(), 400); 
         }, 6000);
     });
+	document.addEventListener('contextmenu', function(e) {
+		    e.preventDefault();
+		});
+
+		
+		document.addEventListener('keydown', function(e) {
+		    // Zuia F12
+		    if (e.key === "F12") {
+		        e.preventDefault();
+		    }
+		    // Zuia Ctrl + Shift + I (Inspect)
+		    if (e.ctrlKey && e.shiftKey && e.key === "I") {
+		        e.preventDefault();
+		    }
+		    // Zuia Ctrl + Shift + J (Console)
+		    if (e.ctrlKey && e.shiftKey && e.key === "J") {
+		        e.preventDefault();
+		    }
+		    // Zuia Ctrl + U (View Source)
+		    if (e.ctrlKey && e.key === "u") {
+		        e.preventDefault();
+		    }
+		});
+	
 });
