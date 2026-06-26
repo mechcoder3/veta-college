@@ -1,4 +1,4 @@
-/* VETA College Tanzania — Frontend JavaScript for JSP pages */
+/* kigomarvtsc — Frontend JavaScript for JSP pages */
 'use strict';
 
 // ── MODALS ────────────────────────────────────────────────────
@@ -41,10 +41,10 @@ function copyText(text) {
             console.error('Error:', err);
         });
     }
-} // <--- Hili ndilo bano linaloweza kuwa na error kama yaliyopita hayajafungwa
+} 
 // ── TOAST ────────────────────────────────────────────────────
 function showToast(msg, type, ms) {
-    // Kuweka default values kwa sababu Eclipse mzee hapendi type='info'
+    
     if (type === undefined) type = 'info';
     if (ms === undefined) ms = 3000;
 
@@ -68,13 +68,13 @@ function showToast(msg, type, ms) {
 
     var t = document.createElement('div');
     
-    // Line 10 Fix: Badala ya Ternary ndefu, tunatumia logic rahisi
+    // Line 10 Fix
     var bgColor = '#0A2463';
     if (type === 'success') bgColor = '#1B5E20';
     else if (type === 'error') bgColor = '#B71C1C';
     else if (type === 'warning') bgColor = '#C2410C';
 
-    // Style kulingana na matakwa yako ya 'rounded-corners' (999px)
+    //  'rounded-corners' (999px)
     t.style.backgroundColor = bgColor;
     t.style.color = '#fff';
     t.style.padding = '10px 20px';
@@ -88,13 +88,12 @@ function showToast(msg, type, ms) {
     t.style.gap = '8px';
     t.style.transition = 'all 0.3s ease';
 
-    // Line 11 Fix: Badala ya backticks (``), tunatumia concatenation (+)
     var iconHtml = (icons[type] || '');
     t.innerHTML = '<span>' + iconHtml + '</span><span>' + msg + '</span>';
     
     c.appendChild(t);
 
-    // Timeout Fix: Badala ya arrow function (=>), tunatumia function()
+    // Timeout Fix: 
     setTimeout(function() {
         t.style.opacity = '0';
         t.style.transform = 'translateY(16px)';
@@ -108,7 +107,7 @@ function showToast(msg, type, ms) {
 
 // ── ANNOUNCEMENT BAR ROTATION (BILINGUAL SUPPORT) ───────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Dictionary ya ujumbe katika lugha mbili
+    // 1. Dictionary 
     const translations = {
         en: [
             'JULY 2026 Intake Now Open — Apply Online Today! Deadline: 30 AUGUST 2026',

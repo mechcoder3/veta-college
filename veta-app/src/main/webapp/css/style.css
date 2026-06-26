@@ -1,8 +1,8 @@
-/* VETA College Tanzania — Style Sheet (FIXED v3) */
+/* KIGOMA RVTSC — Stylesheet */
+
 @import
 	url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap')
 	;
-
 :root {
 	--navy: #0A2463;
 	--blue: #1565C0;
@@ -37,12 +37,6 @@
 	--glass-border: rgba(255, 255, 255, 0.55);
 	--glass-shadow: 0 8px 32px rgba(10, 36, 99, 0.12);
 	--glass-blur: blur(16px);
-	/* ═══ UREFU WA HEADER YOTE ═══
-     Topbar:    ~34px  (padding 7px*2 + font ~20px)
-     Nav-header: 100px
-     Nav-links:  ~48px (padding 8px*2 + button ~32px)
-     JUMLA:      182px
-  */
 	--topbar-h: 34px;
 	--navheader-h: 100px;
 	--navlinks-h: 48px;
@@ -55,10 +49,6 @@
 	padding: 0;
 }
 
-/* ═══════════════════════════════════════════
-   BODY — padding-top lazima ilingane HASA
-   na urefu wa .fixed-header-container
-   ═══════════════════════════════════════════ */
 body {
     font-family: var(--fb);
     color: var(--g700);
@@ -101,31 +91,23 @@ button {
 	padding: 0 24px;
 }
 
-/* ═══════════════════════════════════════════
-   FIXED HEADER CONTAINER
-   Hii ndiyo wrapper inayoshikilia sehemu zote 3.
-   position:fixed inafanya ibaki juu wakati wa scroll.
-   ═══════════════════════════════════════════ */
 .fixed-header-container {
-	/* FIXED — inabaki juu daima, haibadiliki wakati wa scroll */
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 9999;
-	/* Flex column — inapanga topbar, nav-header, nav-links mmoja chini ya mwingine */
 	display: flex;
 	flex-direction: column;
-	/* MUHIMU: Hizi zinaondoa gap nyeupe kati ya vipande */
 	margin: 0;
 	padding: 0;
 	border: 0;
-	gap: 0 !important; /* Inalazimisha kusiwe na gap */
+	gap: 0 !important;
 	background: none;
-	line-height: 0; /* Inaondoa extra space ya line-height */
-	vertical-align: top; /* Inazuia inline gap */
+	line-height: 0;
+	vertical-align: top;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-	overflow: hidden; /* Inazuia chochote nje ya container */
+	overflow: hidden;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -133,10 +115,9 @@ button {
 	z-index: 9999;
 	display: flex;
 	flex-direction: column;
-	background: #1a1a2e; /* Rangi hii inaziba gap lolote lisiloonekana */
+	background: #1a1a2e;
 }
 
-/* Kila kipande cha moja kwa moja ndani ya container kisipachike gap */
 .fixed-header-container>* {
 	flex-shrink: 0;
 	display: block;
@@ -145,15 +126,12 @@ button {
 	padding-bottom: 0;
 }
 
-/* ═══════════════════════════════════════════
-   1. TOPBAR
-   ═══════════════════════════════════════════ */
+/* Topbar */
 #topbar {
 	background: #1a1a2e;
 	color: rgba(255, 255, 255, 0.9);
 	font-size: .78rem;
 	line-height: 1.4;
-	/* padding ya juu na chini inafafanua urefu wa topbar */
 	padding: 7px 0;
 	border-bottom: 0;
 	width: 100%;
@@ -170,7 +148,7 @@ button {
 	line-height: 1.4;
 	font-size: 0.78rem;
 }
-/* MAREKEBISHO YA CSS YA PAPO KWA PAPO ILI KUPATA MPANGILIO MPYA */
+
 .nav-header-inner {
 	display: flex;
 	align-items: center;
@@ -178,7 +156,6 @@ button {
 	padding: 10px 20px;
 }
 
-/* Jina la Chuo (Kushoto) */
 .college-name-left {
 	color: white;
 	font-size: 2.2rem;
@@ -188,7 +165,6 @@ button {
 	padding-left: 15px;
 }
 
-/* Container ya maandishi ya kati (Vertical Stack) */
 .government-titles-center {
 	display: flex;
 	flex-direction: column;
@@ -197,17 +173,15 @@ button {
 	flex-grow: 1;
 }
 
-/* Jina la Nchi - KUBWA ZAIDI */
 .title-country {
 	color: white;
-	font-size: 1.6rem; /* Font kubwa zaidi */
+	font-size: 1.6rem;
 	font-weight: 700;
 	letter-spacing: 1px;
 	margin: 0;
 	line-height: 1.2;
 }
 
-/* Wizara na VETA (Maandishi ya Chini) */
 .title-subtext {
 	color: white;
 	font-size: 1.0rem;
@@ -216,15 +190,12 @@ button {
 	line-height: 1.2;
 }
 
-/* ═══════════════════════════════════════════
-   2. NAV HEADER — Banner / Picha ya Tanzania
-   ═══════════════════════════════════════════ */
+/* Nav Header — Banner Image */
 #nav-header {
 	display: flex;
 	align-items: center;
 	width: 100%;
-	height: var(--navheader-h); /* 100px — urefu ulioainishwa */
-	/* MUHIMU: Hakuna margin wala padding ya juu/chini */
+	height: var(--navheader-h);
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -244,39 +215,27 @@ button {
 	padding: 0 30px;
 }
 
-/* ═══════════════════════════════════════════
-   LOGO — Halisi bila background nyeupe
-   ═══════════════════════════════════════════ */
+/* Logo */
 .logo-box {
 	flex-shrink: 0;
 	margin: 0;
 	padding: 0;
-	line-height: 0; /* Inaondoa extra space chini ya img */
+	line-height: 0;
 }
 
-/* ═══════════════════════════════════════════
-   LOGO — Rangi Halisi 100% (Kwa PNG Original)
-   ═══════════════════════════════════════════ */
 .logo-box img {
 	height: 95px;
-	/* Unaweza kuongeza urefu hapa kama unataka ziwe kubwa zaidi */
 	width: auto;
 	display: block;
-	/* ONDOA mix-blend-mode ili rangi zibaki halisi */
 	mix-blend-mode: normal !important;
-	/* Hakikisha opacity iko 100% */
 	opacity: 1 !important;
-	/* Hii inafanya picha iwe sharp zaidi */
 	image-rendering: -webkit-optimize-contrast;
-	/* Inaondoa kivuli chochote kinachoweza kuonekana kama weupe */
 	filter: none !important;
 	margin: 0;
 	padding: 0;
 }
 
-/* ═══════════════════════════════════════════
-   MAANDISHI YA HEADER
-   ═══════════════════════════════════════════ */
+/* Header Text */
 .header-text-main {
 	flex: 1;
 	display: flex;
@@ -307,15 +266,10 @@ button {
 	text-align: center;
 }
 
-/* ═══════════════════════════════════════════
-   3. NAV LINKS BAR
-   Imegandana moja kwa moja na nav-header.
-   Hakuna gap, hakuna margin.
-   ═══════════════════════════════════════════ */
+/* Nav Links Bar */
 #nav-links-bar {
 	background: #0d3b7a;
 	width: 100%;
-	/* MUHIMU: margin:0 kabisa — hii ilikuwa chanzo cha gap nyeupe */
 	margin: 0 !important;
 	padding: 8px 0;
 	border: 0;
@@ -323,7 +277,6 @@ button {
 	line-height: 1.4;
 	font-size: 1rem;
 	border-top: 2px solid #fcd116;
-	/* Mstari wa njano unagusa picha moja kwa moja */
 }
 
 #nav-links-bar .wrap {
@@ -343,7 +296,6 @@ button {
 	list-style: none;
 }
 
-/* Nav links — pill/rounded style */
 #nav-links-bar .nav-links a {
 	display: inline-block;
 	padding: 7px 14px;
@@ -369,26 +321,17 @@ button {
 	border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-   ═══════════════════════════════════════════ */
-/* --- RESPONSIVE DESIGN (KWA AJILI YA SIMU) --- */
+/* Responsive — Mobile Navigation */
 @media ( max-width : 768px) {
-	/* Punguza urefu wa header kwenye simu */
 	.nav-header-inner {
 		height: auto;
 		padding: 10px;
 		flex-wrap: wrap;
-		/* Inaruhusu vitu kujipanga mstari mpya kama nafasi haitoshi */
 		justify-content: center;
 	}
-
-	/* Logo ziwe ndogo zaidi kwenye simu */
 	.logo-box img {
 		height: 20px;
 	}
-
-	/* Jina la Chuo (KIGOMA RVTSC) - Linakuwa dogo na kukaa katikati kwenye simu */
 	.college-name-left {
 		font-size: 1.4rem;
 		width: 100%;
@@ -396,35 +339,25 @@ button {
 		padding: 5px 0;
 		margin: 0;
 		order: 2;
-		/* Inahakikisha linakaa chini ya nembo kama nafasi ni ndogo */
 	}
-
-	/* Container ya maandishi ya kati */
 	.government-titles-center {
 		width: 100%;
 		order: 3;
 		margin-top: 5px;
 	}
-
-	/* Jina la Nchi kwenye simu */
 	.title-country {
-		font-size: 1rem; /* Inapungua ili isizidi upana wa simu */
+		font-size: 1rem;
 		line-height: 1.2;
 	}
-
-	/* Wizara na VETA kwenye simu */
 	.title-subtext {
 		font-size: 0.8rem;
 		margin-top: 2px;
 	}
-
-	/* Topbar inaweza kufichwa au kupunguzwa maandishi kwenye simu */
 	#topbar .tb-left {
-		display: none; /* Inaficha namba za simu na email ili kubana nafasi */
+		display: none;
 	}
 }
 
-/* KWA SIMU NDOGO SANA (Kama iPhone SE) */
 @media ( max-width : 480px) {
 	.college-name-left {
 		font-size: 1.2rem;
@@ -489,7 +422,8 @@ button {
 		font-size: 0.65rem;
 	}
 }
-/* Mobile toggle */
+
+/* Mobile Menu Toggle */
 .menu-toggle {
 	display: none
 }
@@ -524,9 +458,7 @@ button {
 	color: #fff
 }
 
-/* ═══════════════════════════════════════════
-   PAGE HERO
-   ═══════════════════════════════════════════ */
+/* Page Hero */
 .page-hero {
 	padding: 52px 0 44px;
 	background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
@@ -567,9 +499,7 @@ button {
 	color: rgba(255, 255, 255, .25)
 }
 
-/* ═══════════════════════════════════════════
-   SECTION HEADERS
-   ═══════════════════════════════════════════ */
+/* Section Headers */
 .sk {
 	display: inline-flex;
 	align-items: center;
@@ -592,19 +522,14 @@ button {
 	margin-bottom: 8px
 }
 
-/* ═══════════════════════════════════════════
-   LEADERSHIP
-   ═══════════════════════════════════════════ */
-/* ═══════════════════════════════════════════ 
-   LEADERSHIP SECTION (MPANGILIO WA VIONGOZI 4)
-   ═══════════════════════════════════════════ */
+/* Leadership Section */
 #leadership {
 	background: linear-gradient(160deg, #061840 0%, var(--navy) 50%, #173a7a
 		100%);
 	padding: 80px 0 64px;
 	position: relative;
-	overflow: visible; 
-    scroll-margin-top: var(--total-header-height); 
+	overflow: visible;
+    scroll-margin-top: var(--total-header-height);
     padding-top: 60px;
 }
 
@@ -635,7 +560,7 @@ button {
 	margin-bottom: 10px;
 }
 
-/* 1. KADI YA MKUU WA CHUO (PRINCIPAL) - INAKAA JUU PEKE YAKE */
+/* Principal Card */
 .principal-card {
 	background: rgba(255, 255, 255, .06);
 	backdrop-filter: blur(10px);
@@ -702,7 +627,7 @@ button {
 	line-height: 1.85;
 }
 
-/* 2. GRID YA VIONGOZI 3 WA CHINI (MANAGEMENT) */
+/* Management Staff Grid */
 .staff-section-title {
 	color: var(--gold);
 	font-size: .75rem;
@@ -736,7 +661,6 @@ button {
 	border-color: var(--gold);
 }
 
-/* Duara la picha - Tumeongeza size iwe kubwa zaidi (150px) */
 .staff-avatar {
 	width: 220px;
 	height: 220px;
@@ -744,39 +668,38 @@ button {
 	margin: 0 auto 15px;
 	background: rgba(255, 255, 255, .1);
 	border: 3px solid var(--gold);
-	overflow: hidden; /* Hii ni muhimu ili picha isitoke nje ya duara */
+	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-/* Picha yenyewe - Hii ndiyo siri ya picha kukaa vizuri automatic */
 .staff-avatar img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover; /* Inafanya picha ijaze duara bila kuvutwa vibaya */
+	object-fit: cover;
 	display: block;
 	object-fit: cover;
 	object-position: 50% 15% !important;
 }
-/* SIZE NA MNG'AO HAPA */
+
 .staff-name {
 	font-family: var(--fh);
-	font-size: 1.15rem; /* Ilikuwa 1rem */
-	color: #ffffff; /* Nyeupe safi ili ing'ae */
+	font-size: 1.15rem;
+	color: #ffffff;
 	margin-bottom: 5px;
 	font-weight: 600;
 }
 
-/* SIZE KIDOGO ILI ISOMKE */
 .staff-role {
-	font-size: .8rem; /* Ilikuwa .7rem */
+	font-size: .8rem;
 	color: var(--gold);
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
-/* 3. RESPONSIVE (KWA AJILI YA SIMU) */
+
+/* Responsive — Leadership */
 @media ( max-width : 992px) {
 	.principal-card {
 		grid-template-columns: 1fr;
@@ -793,19 +716,17 @@ button {
 	}
 	.staff-grid {
 		grid-template-columns: repeat(2, 1fr);
-		/* Inapunguza kadi ziwe 2 kwa kila mstari kwenye tablet */
 	}
 }
 
 @media ( max-width : 650px) {
 	.staff-grid {
-		grid-template-columns: 1fr; /* Inapanga kadi mmoja mmoja kwenye simu */
+		grid-template-columns: 1fr;
 		max-width: 300px;
 	}
 }
-/* ═══════════════════════════════════════════
-   HERO
-   ═══════════════════════════════════════════ */
+
+/* Hero */
 #hero {
 	position: relative;
 	min-height: 530px;
@@ -932,9 +853,7 @@ button {
 	margin-top: 3px
 }
 
-/* ═══════════════════════════════════════════
-   ANNOUNCE BAR
-   ═══════════════════════════════════════════ */
+/* Announce Bar */
 .announce-bar {
 	background: var(--gold);
 	padding: 10px 0;
@@ -964,10 +883,7 @@ button {
 .a-text {white-space:nowrap;animation:marquee 30s linear infinite;color:var(--navy)}
 @keyframes marquee{0%{transform:translateX(60vw)}
 100%{transform:translateX(-100%)}}
-
-/* ═══════════════════════════════════════════
-   QUICK ACCESS
-   ═══════════════════════════════════════════ */
+/* Quick Access */
 #quick-access {
 	background: #fff;
 	padding: 50px 0;
@@ -1028,9 +944,7 @@ button {
 	line-height: 1.35
 }
 
-/* ═══════════════════════════════════════════
-   NEWS CARDS
-   ═══════════════════════════════════════════ */
+/* News Cards */
 .news-card {
 	background: #fff;
 	border-radius: var(--r12);
@@ -1094,9 +1008,7 @@ button {
 	margin-top: 9px
 }
 
-/* ═══════════════════════════════════════════
-   PROGRAMS
-   ═══════════════════════════════════════════ */
+/* Programs */
 .grid3 {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -1185,9 +1097,7 @@ button {
 	border-top: 1px solid var(--g100)
 }
 
-/* ═══════════════════════════════════════════
-   BUTTONS
-   ═══════════════════════════════════════════ */
+/* Buttons */
 .btn {
 	display: inline-flex;
 	align-items: center;
@@ -1306,9 +1216,7 @@ button {
 	width: 100%
 }
 
-/* ═══════════════════════════════════════════
-   FORMS
-   ═══════════════════════════════════════════ */
+/* Forms */
 .fg {
 	margin-bottom: 18px
 }
@@ -1396,9 +1304,7 @@ textarea.fc {
 	margin-top: 4px
 }
 
-/* ═══════════════════════════════════════════
-   ADMISSIONS
-   ═══════════════════════════════════════════ */
+/* Admissions */
 .apply-layout {
 	display: grid;
 	grid-template-columns: 1fr 330px;
@@ -1542,9 +1448,7 @@ textarea.fc {
 	margin-bottom: 5px
 }
 
-/* ═══════════════════════════════════════════
-   PAYMENTS
-   ═══════════════════════════════════════════ */
+/* Payments */
 .pay-layout {
 	display: grid;
 	grid-template-columns: 1fr 350px;
@@ -1673,9 +1577,7 @@ textarea.fc {
 	margin-bottom: 18px
 }
 
-/* ═══════════════════════════════════════════
-   PORTAL
-   ═══════════════════════════════════════════ */
+/* Student Portal */
 .plc {
 	background: #fff;
 	border-radius: var(--r16);
@@ -1812,9 +1714,7 @@ textarea.fc {
 	background: #E3F2FD
 }
 
-/* ═══════════════════════════════════════════
-   ADMIN
-   ═══════════════════════════════════════════ */
+/* Admin Dashboard */
 .adml {
 	display: grid;
 	grid-template-columns: 220px 1fr;
@@ -2041,9 +1941,7 @@ textarea.fc {
 	flex-wrap: nowrap
 }
 
-/* ═══════════════════════════════════════════
-   BADGES
-   ═══════════════════════════════════════════ */
+/* Badges */
 .badge {
 	display: inline-flex;
 	align-items: center;
@@ -2089,9 +1987,7 @@ textarea.fc {
 	color: #0369A1
 }
 
-/* ═══════════════════════════════════════════
-   MODALS
-   ═══════════════════════════════════════════ */
+/* Modals */
 .modal-overlay {
 	position: fixed;
 	inset: 0;
@@ -2184,9 +2080,7 @@ textarea.fc {
 	margin-bottom: 16px
 }
 
-/* ═══════════════════════════════════════════
-   ALERTS
-   ═══════════════════════════════════════════ */
+/* Alerts */
 .alert-error {
 	background: var(--redbg);
 	border: 1px solid #FECACA;
@@ -2207,9 +2101,7 @@ textarea.fc {
 	display: none !important
 }
 
-/* ═══════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════ */
+/* Footer */
 footer {
 	background: #061840;
 	color: rgba(255, 255, 255, .68);
@@ -2353,9 +2245,7 @@ footer p {
 	font-size: .7rem
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-   ═══════════════════════════════════════════ */
+/* Responsive */
 @media ( max-width :1100px) {
 	.quick-grid {
 		grid-template-columns: repeat(3, 1fr)

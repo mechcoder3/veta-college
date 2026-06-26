@@ -1,5 +1,5 @@
 -- ============================================================
---  VETA COLLEGE TANZANIA — COMPLETE MySQL DATABASE SCHEMA
+--  KGMRVTSC— COMPLETE MySQL DATABASE SCHEMA
 --  Database: veta_college
 --  Version:  2.0
 -- ============================================================
