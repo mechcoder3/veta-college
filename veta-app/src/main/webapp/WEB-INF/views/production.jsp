@@ -7,6 +7,103 @@
 <% boolean sw = "sw".equals(session.getAttribute("lang")); %>
 <jsp:include page="header.jsp"/>
 
+<style>
+.prod-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.10);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.prod-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(0,0,0,.18);
+}
+.prod-img-wrap {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.prod-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.prod-card:hover .prod-img-wrap img {
+  transform: scale(1.07);
+}
+.prod-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,36,99,.75) 0%, transparent 60%);
+  pointer-events: none;
+}
+.prod-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.prod-price-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #FFD700;
+  color: #1a1a1a;
+  font-size: .68rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  z-index: 2;
+}
+.prod-body {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.prod-name {
+  font-size: .93rem;
+  font-weight: 700;
+  color: #0A2463;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.prod-desc {
+  font-size: .77rem;
+  color: #555;
+  flex: 1;
+  margin-bottom: 14px;
+  line-height: 1.55;
+}
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 52px;
+}
+.prod-fallback {
+  font-size: 4rem;
+  position: absolute;
+}
+@media(max-width:1000px){ .prod-grid{ grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px) { .prod-grid{ grid-template-columns: 1fr; } }
+</style>
+
 <div class="page-hero">
   <div class="wrap">
     <div class="breadcrumb">
@@ -21,74 +118,166 @@
 
 <div class="wrap" style="padding:52px 0">
 
-  <%-- Success Message --%>
   <c:if test="${orderSuccess}">
-  <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:var(--r12);padding:26px;text-align:center;margin-bottom:28px;color:#fff">
-    <div style="font-size:2.5rem;margin-bottom:10px">✅</div>
-    <h3 style="color:#fff;margin-bottom:6px"><% if(sw){ %>Agizo Limewasilishwa!<% } else { %>Order Placed Successfully!<% } %></h3>
-    <div style="font-family:'Courier New',monospace;font-size:1.5rem;font-weight:700;color:var(--gold);letter-spacing:3px;margin-bottom:8px">${orderNumber}</div>
-    <p style="color:rgba(255,255,255,.75);font-size:.85rem"><% if(sw){ %>Tutawasiliana nawe ndani ya masaa 24 na nukuu.<% } else { %>We will contact you within 24 hours with a quotation.<% } %></p>
-  </div>
+    <div style="background:linear-gradient(135deg,#0A2463,#1565C0);border-radius:14px;padding:26px;text-align:center;margin-bottom:28px;color:#fff">
+      <div style="font-size:2.5rem;margin-bottom:10px">&#9989;</div>
+      <h3 style="color:#fff;margin-bottom:6px"><% if(sw){ %>Agizo Limewasilishwa!<% } else { %>Order Placed Successfully!<% } %></h3>
+      <div style="font-family:'Courier New',monospace;font-size:1.5rem;font-weight:700;color:#FFD700;letter-spacing:3px;margin-bottom:8px">${orderNumber}</div>
+      <p style="color:rgba(255,255,255,.75);font-size:.85rem"><% if(sw){ %>Tutawasiliana nawe ndani ya masaa 24 na nukuu.<% } else { %>We will contact you within 24 hours with a quotation.<% } %></p>
+    </div>
   </c:if>
   <c:if test="${not empty orderError}">
     <div class="alert-error"><c:out value="${orderError}"/></div>
   </c:if>
 
-  <%-- ══ PRODUCTS GRID ══
-       Format: emoji | name_en | name_sw | price | color | desc_en | desc_sw
-  --%>
-  <div style="margin-bottom:44px">
-    <h2 style="font-size:1.6rem;color:var(--navy);margin-bottom:24px">
-      🛍️ <% if(sw){ %>Bidhaa Zinazouzwa<% } else { %>Products For Sale<% } %>
-    </h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
+  <h2 style="font-size:1.6rem;color:#0A2463;margin-bottom:24px">
+    &#128717; <% if(sw){ %>Bidhaa Zinazouzwa<% } else { %>Products For Sale<% } %>
+  </h2>
 
-      <c:set var="products" value="
-🚪|Metal Security Doors|Milango ya Chuma ya Usalama|TZS 350,000–600,000|#0A2463|Heavy-gauge steel security doors with locks. Custom sizes and designs available. Installation included.|Milango ya chuma ya nguvu na kufuli. Ukubwa na muundo wa kuchagua. Usakinishaji umejumuishwa.;
-🪟|Metal Window Frames|Fremu za Madirisha ya Chuma|TZS 80,000–200,000|#1565C0|Welded steel window frames with security grills. Various designs, standard or custom sizes.|Fremu za chuma zenye grili za usalama. Miundo mbalimbali, ukubwa wa kawaida au maalum.;
-🪑|Office and School Furniture|Samani za Ofisi na Shule|TZS 120,000–450,000|#1B5E20|Desks, chairs, benches and cabinets. Durable wood and metal combinations. Bulk orders welcome.|Meza, viti, madawati na makabati. Mchanganyiko imara wa mbao na chuma. Maagizo ya wingi yanakaribishwa.;
-🧵|School Uniforms and Garments|Sare na Nguo Zilizoshonwa|TZS 25,000–80,000|#1A237E|School uniforms, office wear and traditional attire. Institutional bulk orders welcome.|Sare za shule, mavazi ya ofisi na nguo za jadi. Maagizo ya taasisi yanakaribishwa.;
-☀️|Solar Panel Systems|Mifumo ya Paneli za Jua|Bei ya Mazungumzo|#E65100|Solar installation for homes, schools and businesses. Supply, install and maintenance services.|Usakinishaji wa jua kwa nyumba, shule na biashara. Huduma za usambazaji, usakinishaji na matengenezo.;
-🔧|Vehicle Repair and Service|Ukarabati na Huduma za Magari|Bei ya Mazungumzo|#4A148C|Engine, brakes, electrical, body work and full service. Professional and competitive rates.|Injini, breki, umeme, mwili wa gari na huduma kamili. Viwango vya kitaalamu na vya ushindani.;
-🏗️|Custom Metal Fabrication|Uundaji Maalum wa Chuma|Bei ya Mazungumzo|#006064|Gates, fences, railings, tanks and structures. Designed to your specifications.|Malango, uzio, reli, matangi na miundo. Imeundwa kulingana na mahitaji yako.;
-⚡|Electrical Installation|Usakinishaji wa Umeme|Bei ya Mazungumzo|#BF360C|Residential and commercial wiring, distribution boards, security lighting and CCTV.|Waya za nyumba na biashara, bodi za usambazaji, taa za usalama na CCTV."/>
+  <div class="prod-grid">
 
-      <c:forTokens var="item" items="${products}" delims=";">
-        <c:set var="p" value="${fn:split(fn:trim(item),'|')}"/>
-        <c:if test="${fn:length(p) >= 7}">
-        <div style="background:#fff;border-radius:var(--r12);box-shadow:var(--s3);overflow:hidden;transition:all var(--tr);display:flex;flex-direction:column" class="card-hover">
-          <%-- Icon area --%>
-          <div style="height:155px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:linear-gradient(135deg,${p[4]},${p[4]}cc)">
-            ${p[0]}
-          </div>
-          <%-- Content --%>
-          <div style="padding:15px;flex:1;display:flex;flex-direction:column">
-            <div style="font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:3px">
-              <% if(sw){ %>${p[2]}<% } else { %>${p[1]}<% } %>
-            </div>
-            <div style="font-size:1rem;font-weight:700;color:var(--blue);margin-bottom:7px;font-family:var(--fh)">
-              ${p[3]}
-            </div>
-            <div style="font-size:.78rem;color:var(--g600);margin-bottom:12px;flex:1">
-              <% if(sw){ %>${p[6]}<% } else { %>${p[5]}<% } %>
-            </div>
-            <button class="btn btn-primary btn-sm"
-              onclick="document.getElementById('orderForm').scrollIntoView({behavior:'smooth'});
-                       document.getElementById('productField').value='<% if(sw){ %>${p[2]}<% } else { %>${p[1]}<% } %>'">
-              🛒 <% if(sw){ %>Agiza<% } else { %>Order<% } %>
-            </button>
-          </div>
-        </div>
-        </c:if>
-      </c:forTokens>
-
+    <%-- 1 --%>
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:#0A2463">
+        <span class="prod-fallback" id="fb1">&#128682;</span>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=220&fit=crop&auto=format"
+             alt="" onload="document.getElementById('fb1').style.display='none'" onerror="this.style.display='none'">
+        <div class="prod-overlay"></div>
+        <span class="prod-badge"><% if(sw){ %>Milango<% } else { %>Doors<% } %></span>
+        <span class="prod-price-tag">TZS 350,000–600,000</span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name"><% if(sw){ %>Milango ya Chuma ya Usalama<% } else { %>Metal Security Doors<% } %></div>
+        <div class="prod-desc"><% if(sw){ %>Milango ya chuma ya nguvu na kufuli. Ukubwa na muundo wa kuchagua. Usakinishaji umejumuishwa.<% } else { %>Heavy-gauge steel security doors with locks. Custom sizes and designs available. Installation included.<% } %></div>
+        <button class="btn btn-primary btn-sm" onclick="selectProduct('<% if(sw){ %>Milango ya Chuma ya Usalama<% } else { %>Metal Security Doors<% } %>')">&#128Shopping; <% if(sw){ %>Agiza<% } else { %>Order<% } %></button>
+      </div>
     </div>
-  </div>
 
-  <%-- ══ ORDER FORM ══ --%>
-  <div id="orderForm" style="background:#fff;border-radius:var(--r12);box-shadow:var(--s3);padding:32px;max-width:680px">
-    <h3 style="font-size:1.3rem;color:var(--navy);margin-bottom:20px">
-      📋 <% if(sw){ %>Weka Agizo / Omba Nukuu<% } else { %>Place Order / Request Quote<% } %>
+    <%-- 2 --%>
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:#1565C0">
+        <span class="prod-fallback" id="fb2">&#129695;</span>
+        <img src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=400&h=220&fit=crop&auto=format"
+             alt="" onload="document.getElementById('fb2').style.display='none'" onerror="this.style.display='none'">
+        <div class="prod-overlay"></div>
+        <span class="prod-badge"><% if(sw){ %>Madirisha<% } else { %>Windows<% } %></span>
+        <span class="prod-price-tag">TZS 80,000–200,000</span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name"><% if(sw){ %>Fremu za Madirisha ya Chuma<% } else { %>Metal Window Frames<% } %></div>
+        <div class="prod-desc"><% if(sw){ %>Fremu za chuma zenye grili za usalama. Miundo mbalimbali, ukubwa wa kawaida au maalum.<% } else { %>Welded steel window frames with security grills. Various designs, standard or custom sizes.<% } %></div>
+        <button class="btn btn-primary btn-sm" onclick="selectProduct('<% if(sw){ %>Fremu za Madirisha ya Chuma<% } else { %>Metal Window Frames<% } %>')">&#128722; <% if(sw){ %>Agiza<% } else { %>Order<% } %></button>
+      </div>
+    </div>
+
+    <%-- 3 --%>
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:#1B5E20">
+        <span class="prod-fallback" id="fb3">&#129681;</span>
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=220&fit=crop&auto=format"
+             alt="" onload="document.getElementById('fb3').style.display='none'" onerror="this.style.display='none'">
+        <div class="prod-overlay"></div>
+        <span class="prod-badge"><% if(sw){ %>Samani<% } else { %>Furniture<% } %></span>
+        <span class="prod-price-tag">TZS 120,000–450,000</span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name"><% if(sw){ %>Samani za Ofisi na Shule<% } else { %>Office and School Furniture<% } %></div>
+        <div class="prod-desc"><% if(sw){ %>Meza, viti, madawati na makabati. Mchanganyiko imara wa mbao na chuma. Maagizo ya wingi yanakaribishwa.<% } else { %>Desks, chairs, benches and cabinets. Durable wood and metal combinations. Bulk orders welcome.<% } %></div>
+        <button class="btn btn-primary btn-sm" onclick="selectProduct('<% if(sw){ %>Samani za Ofisi na Shule<% } else { %>Office and School Furniture<% } %>')">&#128722; <% if(sw){ %>Agiza<% } else { %>Order<% } %></button>
+      </div>
+    </div>
+
+    <%-- 4 --%>
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:#1A237E">
+        <span class="prod-fallback" id="fb4">&#129525;</span>
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&h=220&fit=crop&auto=format"
+             alt="" onload="document.getElementById('fb4').style.display='none'" onerror="this.style.display='none'">
+        <div class="prod-overlay"></div>
+        <span class="prod-badge"><% if(sw){ %>Nguo<% } else { %>Garments<% } %></span>
+        <span class="prod-price-tag">TZS 25,000–80,000</span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name"><% if(sw){ %>Sare na Nguo Zilizoshonwa<% } else { %>School Uniforms and Garments<% } %></div>
+        <div class="prod-desc"><% if(sw){ %>Sare za shule, mavazi ya ofisi na nguo za jadi. Maagizo ya taasisi yanakaribishwa.<% } else { %>School uniforms, office wear and traditional attire. Institutional bulk orders welcome.<% } %></div>
+        <button class="btn btn-primary btn-sm" onclick="selectProduct('<% if(sw){ %>Sare na Nguo Zilizoshonwa<% } else { %>School Uniforms and Garments<% } %>')">&#128722; <% if(sw){ %>Agiza<% } else { %>Order<% } %></button>
+      </div>
+    </div>
+
+    <%-- 5 --%>
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:#E65100">
+        <span class="prod-fallback" id="fb5">&#9728;&#65039;</span>
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=220&fit=crop&auto=format"
+             alt="" onload="document.getElementById('fb5').style.display='none'" onerror="this.style.display='none'">
+        <div class="prod-overlay"></div>
+        <span class="prod-badge"><% if(sw){ %>Jua<% } else { %>Solar<% } %></span>
+        <span class="prod-price-tag"><% if(sw){ %>Bei ya Mazungumzo<% } else { %>By Quotation<% } %></span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name"><% if(sw){ %>Mifumo ya Paneli za Jua<% } else { %>Solar Panel Systems<% } %></div>
+        <div class="prod-desc"><% if(sw){ %>Usakinishaji wa jua kwa nyumba, shule na biashara. Huduma za usambazaji, usakinishaji na matengenezo.<% } else { %>Solar installation for homes, schools and businesses. Supply, install and maintenance services.<% } %></div>
+        <button class="btn btn-primary btn-sm" onclick="selectProduct('<% if(sw){ %>Mifumo ya Paneli za Jua<% } else { %>Solar Panel Systems<% } %>')">&#128722; <% if(sw){ %>Agiza<% } else { %>Order<% } %></button>
+      </div>
+    </div>
+
+    <%-- 6 --%>
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:#4A148C">
+        <span class="prod-fallback" id="fb6">&#128295;</span>
+        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=400&h=220&fit=crop&auto=format"
+             alt="" onload="document.getElementById('fb6').style.display='none'" onerror="this.style.display='none'">
+        <div class="prod-overlay"></div>
+        <span class="prod-badge"><% if(sw){ %>Magari<% } else { %>Vehicles<% } %></span>
+        <span class="prod-price-tag"><% if(sw){ %>Bei ya Mazungumzo<% } else { %>By Quotation<% } %></span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name"><% if(sw){ %>Ukarabati na Huduma za Magari<% } else { %>Vehicle Repair and Service<% } %></div>
+        <div class="prod-desc"><% if(sw){ %>Injini, breki, umeme, mwili wa gari na huduma kamili. Viwango vya kitaalamu na vya ushindani.<% } else { %>Engine, brakes, electrical, body work and full service. Professional and competitive rates.<% } %></div>
+        <button class="btn btn-primary btn-sm" onclick="selectProduct('<% if(sw){ %>Ukarabati na Huduma za Magari<% } else { %>Vehicle Repair and Service<% } %>')">&#128722; <% if(sw){ %>Agiza<% } else { %>Order<% } %></button>
+      </div>
+    </div>
+
+    <%-- 7 --%>
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:#006064">
+        <span class="prod-fallback" id="fb7">&#127959;&#65039;</span>
+        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=220&fit=crop&auto=format"
+             alt="" onload="document.getElementById('fb7').style.display='none'" onerror="this.style.display='none'">
+        <div class="prod-overlay"></div>
+        <span class="prod-badge"><% if(sw){ %>Chuma<% } else { %>Fabrication<% } %></span>
+        <span class="prod-price-tag"><% if(sw){ %>Bei ya Mazungumzo<% } else { %>By Quotation<% } %></span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name"><% if(sw){ %>Uundaji Maalum wa Chuma<% } else { %>Custom Metal Fabrication<% } %></div>
+        <div class="prod-desc"><% if(sw){ %>Malango, uzio, reli, matangi na miundo. Imeundwa kulingana na mahitaji yako.<% } else { %>Gates, fences, railings, tanks and structures. Designed to your specifications.<% } %></div>
+        <button class="btn btn-primary btn-sm" onclick="selectProduct('<% if(sw){ %>Uundaji Maalum wa Chuma<% } else { %>Custom Metal Fabrication<% } %>')">&#128722; <% if(sw){ %>Agiza<% } else { %>Order<% } %></button>
+      </div>
+    </div>
+
+    <%-- 8 --%>
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:#BF360C">
+        <span class="prod-fallback" id="fb8">&#9889;</span>
+        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&h=220&fit=crop&auto=format"
+             alt="" onload="document.getElementById('fb8').style.display='none'" onerror="this.style.display='none'">
+        <div class="prod-overlay"></div>
+        <span class="prod-badge"><% if(sw){ %>Umeme<% } else { %>Electrical<% } %></span>
+        <span class="prod-price-tag"><% if(sw){ %>Bei ya Mazungumzo<% } else { %>By Quotation<% } %></span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name"><% if(sw){ %>Usakinishaji wa Umeme<% } else { %>Electrical Installation<% } %></div>
+        <div class="prod-desc"><% if(sw){ %>Waya za nyumba na biashara, bodi za usambazaji, taa za usalama na CCTV.<% } else { %>Residential and commercial wiring, distribution boards, security lighting and CCTV.<% } %></div>
+        <button class="btn btn-primary btn-sm" onclick="selectProduct('<% if(sw){ %>Usakinishaji wa Umeme<% } else { %>Electrical Installation<% } %>')">&#128722; <% if(sw){ %>Agiza<% } else { %>Order<% } %></button>
+      </div>
+    </div>
+
+  </div><%-- end prod-grid --%>
+
+  <%-- ORDER FORM --%>
+  <div id="orderForm" style="background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.10);padding:36px;max-width:680px">
+    <h3 style="font-size:1.3rem;color:#0A2463;margin-bottom:20px">
+      &#128203; <% if(sw){ %>Weka Agizo / Omba Nukuu<% } else { %>Place Order / Request Quote<% } %>
     </h3>
     <form method="post" action="${pageContext.request.contextPath}/production">
       <div class="fg">
@@ -99,8 +288,7 @@
       <div class="form-row">
         <div class="fg">
           <label><% if(sw){ %>Jina Lako Kamili<% } else { %>Your Full Name<% } %> *</label>
-          <input class="fc" name="clientName" required
-                 placeholder="<% if(sw){ %>Jina kamili<% } else { %>Full name<% } %>">
+          <input class="fc" name="clientName" required placeholder="<% if(sw){ %>Jina kamili<% } else { %>Full name<% } %>">
         </div>
         <div class="fg">
           <label><% if(sw){ %>Nambari ya Simu<% } else { %>Phone Number<% } %> *</label>
@@ -127,11 +315,18 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary btn-lg">
-        📋 <% if(sw){ %>Wasilisha Agizo<% } else { %>Submit Order<% } %>
+        &#128203; <% if(sw){ %>Wasilisha Agizo<% } else { %>Submit Order<% } %>
       </button>
     </form>
   </div>
 
 </div>
+
+<script>
+function selectProduct(name) {
+  document.getElementById('productField').value = name;
+  document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
 
 <jsp:include page="footer.jsp"/>
